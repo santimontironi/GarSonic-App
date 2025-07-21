@@ -1,5 +1,9 @@
 import User from "../models/user-model.js"
 import bcrypt from 'bcrypt'
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 export const RegisterUser = async (req,res) => {
     try{
@@ -21,6 +25,37 @@ export const RegisterUser = async (req,res) => {
         res.status(201).json({ message: "Usuario creado correctamente" });
     }
     catch(error){
-        return res.status(500).json({message: "Error en registrar el usuario."})
+        return res.status(500).json({error: "Error en registrar el usuario."})
+    }
+}
+
+export const LoginUser = async (req,res) => {
+    try{
+        const {identifier,password} = req.body
+
+        const user = await User.findOne({
+            $or: [{ email: identifier }, { username: identifier }]
+        });
+
+        if(!user){
+            return res.status(404).json({message:"Usuario no encontrado."})
+        }
+        
+        const validPassword = await bcrypt.compare(password,user.password)
+
+        if(!validPassword){
+            return res.status(401).json({message:"Contraseña incorrecta."})
+        }
+
+        const token = jwt.sign(
+            {id:user._id}, //payload, datos del usuario
+            process.env.JWT_SECRET,
+            {expiresIn:"1d"}
+        )
+
+        res.json({usuarioCreado:user,token})
+    }
+    catch(error){
+        return res.status(500).json({error: "Error al ingresar como usuario."})
     }
 }
