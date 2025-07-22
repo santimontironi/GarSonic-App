@@ -25,7 +25,7 @@ export const RegisterUser = async (req,res) => {
         res.status(201).json({ message: "Usuario creado correctamente" });
     }
     catch(error){
-        return res.status(500).json({error: "Error en registrar el usuario."})
+        return res.status(500).json({message: "Error en registrar el usuario."})
     }
 }
 
@@ -56,6 +56,6 @@ export const LoginUser = async (req,res) => {
         res.json({usuarioCreado:user,token})
     }
     catch(error){
-        return res.status(500).json({error: "Error al ingresar como usuario."})
+        return res.status(500).json({message: "Error al ingresar como usuario."})
     }
 }

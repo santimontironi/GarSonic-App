@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const artistModel = new mongoose.Schema({
-    name: {
+    artistName: {
         type: String,
         required: true
     },
