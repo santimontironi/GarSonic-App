@@ -8,7 +8,8 @@
 
 #navIndex{
     padding: 0 40px;
-    background: linear-gradient(100deg,#662d91,#7704a1);
+    background: linear-gradient(#662d91,#7704a1);
+    box-shadow: 6px 15px 20px #000;
 }
 
 #navIndex .navbar-brand img{
@@ -22,3 +23,70 @@
     align-items: center;
     font-size: 20px;
 }
+
+#navIndex .navbar-nav .btnIngresar{
+    background-color: #fff;
+    color: #7704a1;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: 800;
+}
+
+#navIndex .navbar-nav .btnIngresar:hover{
+    opacity: 80%;
+}
+
+.index{
+    min-width: 100%;
+    height: 100vh;
+    background: linear-gradient(#7704a1,#7704a1,#000,#101010);
+}
+
+.contentIndex{
+    height: 500px;
+    width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.contentIndex .tituloIndex{
+    font-family: "Special Gothic Expanded One", sans-serif;
+    color: #fff;
+    font-size: 70px;
+    text-shadow: 2px 2px 4px #000;
+}
+
+.contentIndex .introIndex{
+    color: #fff;
+    width: 800px;
+    font-weight: 200;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

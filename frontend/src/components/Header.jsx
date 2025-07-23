@@ -21,7 +21,7 @@ const Header = () => {
                         <Link className="nav-link text-light" aria-current="page" href="/rols">Roles</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link text-light" aria-current="page" href="/loginPage">Ingresar</Link>
+                        <Link className="nav-link btnIngresar" aria-current="page" href="/loginPage">Ingresar</Link>
                     </li>
                 </ul>
             </div>
