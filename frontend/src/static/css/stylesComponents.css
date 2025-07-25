@@ -50,6 +50,18 @@
     font-size: 150px;
 }
 
+@media (max-width:800px){
+    .loginOption{
+        width: 300px;
+        padding: 10px;
+    }
+    .iconoContainer i{
+        font-size: 100px;
+    }
+    .iconoContainer p{
+        font-size: 25px;
+    }
+}
 
 
 

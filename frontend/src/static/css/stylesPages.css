@@ -150,6 +150,16 @@
         font-size: 13px;
         width: 350px;
     }
+    .opcionesIngreso{
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+    .tituloComenzar h1{
+        font-size: 30px;
+        padding: 10px;
+        width: 350px;
+    }
 }
 
 @media (min-width: 801px) and (max-width: 1024px) {
