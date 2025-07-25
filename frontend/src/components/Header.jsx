@@ -12,16 +12,16 @@ const Header = () => {
             <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav ms-auto">
                     <li className="nav-item">
-                        <Link className="nav-link active text-light" aria-current="page" href="/">Inicio</Link>
+                        <Link className="nav-link active text-light" aria-current="page" to="/">Inicio</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link text-light" aria-current="page" href="/garSonicInfo">¿Qué es GarSonic?</Link>
+                        <Link className="nav-link text-light" aria-current="page" to="/garSonicInfo">¿Qué es GarSonic?</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link text-light" aria-current="page" href="/rols">Roles</Link>
+                        <Link className="nav-link text-light" aria-current="page" to="/rols">Roles</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link btnIngresar" aria-current="page" href="/loginPage">Ingresar</Link>
+                        <Link className="nav-link btnIngresar" aria-current="page" to="/loginPage">Ingresar</Link>
                     </li>
                 </ul>
             </div>
