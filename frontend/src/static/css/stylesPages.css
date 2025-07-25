@@ -89,6 +89,15 @@
     opacity: 85%;
 }
 
+.comenzar-container{
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(#000,#101010,#7704a1);
+}
+
+.opcionesIngreso a{
+    text-decoration: none;
+}
 
 @media (max-width:800px) {
     #navIndex{
@@ -108,7 +117,7 @@
         align-items: flex-start;
         flex-direction: column;
     }
-    .index{
+    .index-container{
         width: 100vw;
         height: 100vh;
     }
