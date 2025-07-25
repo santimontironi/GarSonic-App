@@ -1,6 +1,16 @@
-const LoginOption = () => {
+const LoginOption = ({imagen,rol,acciones}) => {
   return (
-    <div>LoginOption</div>
+    <div className="loginOption">
+        <img src={imagen} alt="icono-RolDeUsuario"/>
+        <div className="loginOption-content">
+            <span>{rol}</span>
+            <ul>
+                {acciones.map((index,accion) => (
+                    <li key={index}>{accion}</li>
+                ))}
+            </ul>
+        </div>
+    </div>
   )
 }
 
