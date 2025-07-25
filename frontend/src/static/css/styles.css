@@ -7,6 +7,7 @@
 }
 
 #navIndex{
+    height: 15vh;
     padding: 0 40px;
     background: linear-gradient(#662d91,#7704a1);
     box-shadow: 6px 15px 20px #000;
@@ -38,7 +39,7 @@
 
 .index{
     min-width: 100%;
-    height: 100vh;
+    height: 85vh;
     background: linear-gradient(#7704a1,#7704a1,#000,#101010);
 }
 
@@ -57,13 +58,29 @@
     font-family: "Special Gothic Expanded One", sans-serif;
     color: #fff;
     font-size: 70px;
-    text-shadow: 2px 2px 4px #000;
+    text-shadow: 6px 6px 4px #000;
 }
 
 .contentIndex .introIndex{
     color: #fff;
     width: 800px;
     font-weight: 200;
+}
+
+.contentIndex .btnIndexBox{
+    margin-top: 20px;
+}
+
+.contentIndex .btnIndex{
+    background-color: #fff;
+    color: #662d91;
+    border: none;
+    padding: 10px;
+    width: 140px;
+    font-weight: bold;
+    border-radius: 10px;
+    margin: auto;
+    text-decoration: none;
 }
 
 
@@ -137,6 +154,23 @@
     }
 }
 
+@media (min-width: 1025px) and (max-width: 1366px) {
+    #navIndex {
+        padding-left: 6%;
+        padding-right: 6%;
+    }
+    .contentIndex {
+        gap: 30px;
+    }
+    .contentIndex .tituloIndex {
+        font-size: 60px;
+        width: 1000px;
+    }
+    .contentIndex .introIndex {
+        font-size: 16px;
+        width: 750px;
+    }
+}
 
 
 
