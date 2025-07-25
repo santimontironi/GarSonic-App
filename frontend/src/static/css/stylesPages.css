@@ -1,11 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
-
-*{
-    font-family: "Quicksand", sans-serif;
-    user-select: none;
-}
-
 #navIndex{
     height: 15vh;
     padding: 0 40px;
@@ -92,11 +84,36 @@
 .comenzar-container{
     width: 100%;
     height: 100vh;
-    background: linear-gradient(#000,#101010,#7704a1);
+    background: linear-gradient(#7704a1,#000,#101010);
+}
+
+.tituloComenzar{
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tituloComenzar h1{
+    background-color: #000;
+    color: #fff;
+    padding: 40px;
+    font-size: 50px;
+    box-shadow: 16px 16px 15px #000;
+    border: solid 5px #7704a1;
 }
 
 .opcionesIngreso a{
     text-decoration: none;
+}
+
+.opcionesIngreso{
+    height: 600px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 70px;
 }
 
 @media (max-width:800px) {

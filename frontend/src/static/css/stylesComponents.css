@@ -1,0 +1,63 @@
+.loginOption{
+    width: 400px;
+    height: auto;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(#662d91,#3d0253);
+    border-radius: 20px;
+}
+
+.loginOption:hover{
+    border: solid 3px #fff;
+}
+
+.loginOption img{
+    width: 200px;
+}
+
+.loginOption-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.loginOption-content .rol{
+    color: #fff;
+    font-size: 30px;
+    font-weight: 900;
+    margin-top: 15px;
+}
+
+.iconoContainer{
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: solid 3px #fff;
+}
+
+.iconoContainer p{
+    color: #fff;
+    font-size: 35px;
+}
+
+.loginOption i{
+    color: #fff;
+    font-size: 150px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
