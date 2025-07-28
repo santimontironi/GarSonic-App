@@ -1,10 +1,18 @@
 import LoginOption from "../components/LoginOption"
+import { motion } from "framer-motion"
 
-const StartPage = () => {
+const LoginOptionPage = () => {
   return (
     <main className="comenzar-container">
       <div className="tituloComenzar">
-        <h1>¿Como quieres ingresar?</h1>
+        <motion.div
+          initial={{ opacity: 0, y:70 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+        >
+          <h1>¿Como quieres ingresar?</h1>
+        </motion.div>
       </div>
       <div className="opcionesIngreso">
 
@@ -27,4 +35,4 @@ const StartPage = () => {
   )
 }
 
-export default StartPage
+export default LoginOptionPage
