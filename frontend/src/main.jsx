@@ -4,9 +4,13 @@ import App from './App.jsx'
 import './static/css/global.css'
 import './static/css/stylesPages.css'
 import './static/css/stylesComponents.css'
+import './static/css/hover.css'
+import { AuthProvider } from './context/AuthProvider.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    <AuthProvider>
+      <App />
+    </AuthProvider>
   </StrictMode>,
 )
