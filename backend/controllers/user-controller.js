@@ -59,3 +59,16 @@ export const LoginUser = async (req,res) => {
         return res.status(500).json({message: "Error al ingresar como usuario."})
     }
 }
+
+export const DashboardUser = async (req,res) => {
+
+}
+
+
+
+
+
+
+
+
+
