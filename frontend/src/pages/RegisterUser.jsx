@@ -51,7 +51,7 @@ const RegisterUser = () => {
         <div className="mb-3">
           <label htmlFor="surname">Apellido</label>
           <input type="text" {...register("surname",{required:true})} />
-          {errors.name && (
+          {errors.surname && (
             <p className="error">El apellido es requerido</p>
           )}
         </div>
@@ -59,7 +59,7 @@ const RegisterUser = () => {
         <div className="mb-3">
           <label htmlFor="email">Correo electrónico</label>
           <input type="email" {...register("email",{required:true})} />
-          {errors.name && (
+          {errors.email && (
             <p className="error">El correo electrónico es requerido</p>
           )}
         </div>
@@ -67,7 +67,7 @@ const RegisterUser = () => {
         <div className="mb-3">
           <label htmlFor="username">Nombre de usuario</label>
           <input type="text" {...register("username",{required:true})} />
-          {errors.name && (
+          {errors.username && (
             <p className="error">El nombre de usuario es requerido</p>
           )}
         </div>
@@ -75,7 +75,7 @@ const RegisterUser = () => {
         <div className="mb-3">
           <label htmlFor="password">Contraseña</label>
           <input type="password" {...register("password",{required:true})} />
-          {errors.name && (
+          {errors.password && (
             <p className="error">La contraseña es requerida</p>
           )}
         </div>

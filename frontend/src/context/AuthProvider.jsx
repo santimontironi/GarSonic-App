@@ -1,6 +1,6 @@
 import { registerUserAxios, loginUserAxios } from "../api/api.js";
 import { useState } from "react";
-import { authContext } from "./AuthContext.jsx";
+import { AuthContext } from "./AuthContext.jsx";
 
 export const AuthProvider = ({children}) => {
 
@@ -19,12 +19,12 @@ export const AuthProvider = ({children}) => {
     }
 
     return(
-        <authContext.Provider value={{
+        <AuthContext.Provider value={{
             signUpUser,
             signInUser,
             user
         }}>
             {children}
-        </authContext.Provider>
+        </AuthContext.Provider>
     )
 }

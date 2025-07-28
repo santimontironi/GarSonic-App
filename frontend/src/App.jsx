@@ -3,6 +3,7 @@ import Index from "./pages/Index";
 import LoginOptionPage from "./pages/LoginOptionPage";
 import LoginUser from "./pages/LoginUser";
 import RegisterUser from "./pages/RegisterUser";
+import DashboardUser from "./pages/DashboardUser";
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
         <Route path="/ingresar" element={<LoginOptionPage/>} />
         <Route path="/loginUsuario" element={<LoginUser/>} />
         <Route path="/registroUsuario" element={<RegisterUser/>} />
+        <Route path="/usuario" element={<DashboardUser/>} />
       </Routes>
     </BrowserRouter>
   )
