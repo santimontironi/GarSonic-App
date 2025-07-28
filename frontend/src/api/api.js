@@ -9,3 +9,11 @@ export function registerUserAxios(user){
 export function loginUserAxios(user){
     return axios.post(`${URL_BACKEND}/login`,user)
 }
+
+export function dashboardUser(){
+    return axios.get(`${URL_BACKEND}/dashboardUser`,{
+        headers: {
+            Authorization: `Bearer ${user?.token}`
+        }
+    })
+}
