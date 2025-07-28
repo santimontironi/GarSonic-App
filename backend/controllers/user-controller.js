@@ -53,7 +53,13 @@ export const LoginUser = async (req,res) => {
             {expiresIn:"1d"}
         )
 
-        res.json({usuarioCreado:user,token})
+        res.cookie("token",token,{
+            httpOnly: true,         // no accesible desde JS del frontend
+            sameSite: "Strict",     // evitar CSRF
+            maxAge: 24 * 60 * 60 * 1000 // 1 día
+        })
+
+        res.json({ message: "Login exitoso", user })
     }
     catch(error){
         return res.status(500).json({message: "Error al ingresar como usuario."})
