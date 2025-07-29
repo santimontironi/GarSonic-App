@@ -39,7 +39,7 @@ const LoginUser = () => {
         <main className="containerLoginUser">
             
             <div className="titleLoginUser">
-                <h1>Ingreso de usuario.</h1>
+                <h1>Ingreso de usuario</h1>
             </div>
             
             <div className="contentLogin">
