@@ -53,7 +53,7 @@
 }
 
 .contentIndex{
-    height: 600px;
+    height: 450px;
     width: 100%;
     margin: auto;
     display: flex;
@@ -66,15 +66,15 @@
 .contentIndex .tituloIndex{
     font-family: "Special Gothic Expanded One", sans-serif;
     color: #fff;
-    font-size: 50px;
+    font-size: 40px;
     text-shadow: 6px 6px 4px #000;
 }
 
 .contentIndex .introIndex{
     color: #fff;
-    width: 450px;
+    width: 350px;
     font-weight: 200;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .contentIndex .btnIndexBox{
@@ -201,26 +201,64 @@
 }
 
 
-@media screen and (min-width: 1440px) {
-    #navIndex {
-        padding-left: 6%;
-        padding-right: 6%;
+@media screen and (min-width:768px) {
+    #navIndex{
+        padding: 0 0;
+        padding-left: 10%;
+        padding-right: 10%;
+        max-height: 100%;
+        min-height: 170px;
+    }
+    #navIndex .navbar-toggler{
+        background-color: #fff;
+        color: #662d91;
+        font-size: 24px;
+    }
+    #navIndex .navbar-collapse{
+        padding-bottom: 25px;
+    }
+    #navIndex .navbar-brand img{
+        width: 130px;
     }
     #navIndex .navbar-nav{
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         flex-direction: row;
     }
-    .contentIndex {
+    .index-container{
+        max-height: calc(100vh-170px);
+    }
+    .contentIndex{
+        height: 450px;
+        gap: 15px;
+    }
+    .contentIndex .tituloIndex{
+        font-size: 50px;
+        width: 100%;
+    }
+    .contentIndex .introIndex{
+        font-size: 18px;
+        width: 700px;
+    }
+    .opcionesIngreso{
+        display: flex;
+        flex-direction: column;
         gap: 30px;
     }
-    .contentIndex .tituloIndex {
-        font-size: 60px;
-        width: 1000px;
+    .tituloComenzar h1{
+        font-size: 30px;
+        padding: 10px;
+        width: 350px;
     }
-    .contentIndex .introIndex {
-        font-size: 25px;
-        width: 750px;
+    .titleLoginUser h1{
+        width: 320px;
+        font-size: 34px;
+    }
+    .contentLogin{
+        width: 100%;
+    }
+    .contentLogin form{
+        width: 300px;
     }
 }
 
@@ -232,6 +270,7 @@
     }
     #navIndex .navbar-nav{
         display: flex;
+        flex-direction: row;
         align-items: center;
     }
     #navIndex .navbar-collapse{
@@ -265,63 +304,33 @@
     }
 }
 
-@media screen and (min-width:768px) {
-    #navIndex{
-        padding: 0 0;
-        padding-left: 10%;
-        padding-right: 10%;
-    }
-    #navIndex .navbar-toggler{
-        background-color: #fff;
-        color: #662d91;
-        font-size: 24px;
-    }
-    #navIndex .navbar-collapse{
-        padding-bottom: 25px;
-    }
-    #navIndex .navbar-brand img{
-        width: 130px;
+@media screen and (min-width: 1440px) {
+    #navIndex {
+        padding-left: 6%;
+        padding-right: 6%;
+        max-height: auto;
+        height: 180px;
     }
     #navIndex .navbar-nav{
         display: flex;
-        align-items: flex-start;
-        flex-direction: column;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
     }
     .index-container{
-        width: 100%;
-        height: 100vh;
+        height: calc(100vh-120px);
     }
-    .contentIndex{
-        width: 100%;
-        gap: 15px;
-    }
-    .contentIndex .tituloIndex{
-        font-size: 50px;
-        width: 100%;
-    }
-    .contentIndex .introIndex{
-        font-size: 16px;
-        width: 500px;
-    }
-    .opcionesIngreso{
-        display: flex;
-        flex-direction: column;
+    .contentIndex {
+        height: 600px;
         gap: 30px;
     }
-    .tituloComenzar h1{
-        font-size: 30px;
-        padding: 10px;
-        width: 350px;
+    .contentIndex .tituloIndex {
+        font-size: 80px;
+        width: 1200px;
     }
-    .titleLoginUser h1{
-        width: 320px;
-        font-size: 34px;
-    }
-    .contentLogin{
-        width: 100%;
-    }
-    .contentLogin form{
-        width: 300px;
+    .contentIndex .introIndex {
+        font-size: 20px;
+        width: 900px;
     }
 }
 
