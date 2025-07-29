@@ -4,6 +4,7 @@ import LoginOptionPage from "./pages/LoginOptionPage";
 import LoginUser from "./pages/LoginUser";
 import RegisterUser from "./pages/RegisterUser";
 import DashboardUser from "./pages/DashboardUser";
+import SecurityRoutes from "./components/SecurityRoutes";
 
 const App = () => {
   return (
@@ -13,7 +14,11 @@ const App = () => {
         <Route path="/ingresar" element={<LoginOptionPage/>} />
         <Route path="/loginUsuario" element={<LoginUser/>} />
         <Route path="/registroUsuario" element={<RegisterUser/>} />
-        <Route path="/usuario" element={<DashboardUser/>} />
+        <Route path="/usuario" element={
+          <SecurityRoutes>
+            <DashboardUser/>
+          </SecurityRoutes>
+        } />
       </Routes>
     </BrowserRouter>
   )
