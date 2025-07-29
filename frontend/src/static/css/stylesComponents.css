@@ -50,7 +50,19 @@
     font-size: 150px;
 }
 
-@media (max-width:800px){
+@media screen and (max-width:768px){
+    
+}
+
+@media screen and (max-width:768px){
+    
+}
+
+@media screen and (max-width:768px){
+
+}
+
+@media screen and (max-width:480px){
     .loginOption{
         width: 300px;
         padding: 10px;
