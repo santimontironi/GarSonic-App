@@ -1,5 +1,6 @@
 #navIndex{
-    height: 15vh;
+    max-height: auto;
+    min-height: 150px;
     padding: 0 40px;
     background: linear-gradient(#662d91,#7704a1);
     box-shadow: 6px 15px 20px #000;
@@ -17,6 +18,22 @@
     font-size: 20px;
 }
 
+#navIndex .navbar-nav{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#navIndex .navbar-collapse{
+    padding-bottom: 25px;
+}
+
+#navIndex .navbar-toggler{
+    background-color: #fff;
+    color: #662d91;
+    font-size: 25px;
+}
+
 #navIndex .navbar-nav .btnIngresar{
     background-color: #fff;
     color: #7704a1;
@@ -30,14 +47,14 @@
 }
 
 .index-container{
-    min-width: 100%;
-    height: 85vh;
+    width: 100%;
+    height: calc(100vh - 150px);
     background: linear-gradient(#7704a1,#7704a1,#000,#101010);
 }
 
 .contentIndex{
-    height: 620px;
-    width: 1200px;
+    height: 600px;
+    width: 100%;
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -49,15 +66,15 @@
 .contentIndex .tituloIndex{
     font-family: "Special Gothic Expanded One", sans-serif;
     color: #fff;
-    font-size: 80px;
+    font-size: 50px;
     text-shadow: 6px 6px 4px #000;
 }
 
 .contentIndex .introIndex{
     color: #fff;
-    width: 900px;
+    width: 450px;
     font-weight: 200;
-    font-size: 19px;
+    font-size: 14px;
 }
 
 .contentIndex .btnIndexBox{
@@ -184,11 +201,10 @@
 }
 
 
-@media screen and (max-width: 1366px) {
+@media screen and (min-width: 1440px) {
     #navIndex {
         padding-left: 6%;
         padding-right: 6%;
-        height: 100%;
     }
     #navIndex .navbar-nav{
         display: flex;
@@ -208,7 +224,7 @@
     }
 }
 
-@media screen and (max-width: 1280px) {
+@media screen and (min-width: 1200px) {
     #navIndex {
         height: 100%;
         padding-left: 12%;
@@ -249,7 +265,7 @@
     }
 }
 
-@media screen and (max-width:768px) {
+@media screen and (min-width:768px) {
     #navIndex{
         padding: 0 0;
         padding-left: 10%;
@@ -309,55 +325,6 @@
     }
 }
 
-@media screen and (max-width:480px){
-    #navIndex{
-        height: 100%;
-    }
-    #navIndex .navbar-brand img{
-        width: 130px;
-    }
-    #navIndex .navbar-toggler{
-        background-color: #fff;
-        color: #662d91;
-        font-size: 20px;
-    }
-    #navIndex .navbar-collapse{
-        padding-bottom: 25px;
-    }
-    #navIndex .navbar-nav{
-        display: flex;
-        align-items: flex-start;
-        flex-direction: column;
-    }
-    .contentIndex{
-        width: 100%;
-    }
-    .contentIndex .tituloIndex{
-        font-size: 40px;
-        width: 100%;
-    }
-    .contentIndex .introIndex{
-        font-size: 13px;
-        width: 360px;
-    }
-    .comenzar-container{
-        height: auto;
-    }
-    .tituloComenzar{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .tituloComenzar h1{
-        padding: 10px;
-    }
-    .opcionesIngreso{
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        width: 100%;
-    }
-}
 
 
 
