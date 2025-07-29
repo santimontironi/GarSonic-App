@@ -1,7 +1,7 @@
 .loginOption{
-    width: 400px;
+    width: 300px;
     height: auto;
-    padding: 8px;
+    padding: 4px;
     display: flex;
     flex-direction: column;
     background: linear-gradient(#662d91,#3d0253);
@@ -10,10 +10,6 @@
 
 .loginOption:hover{
     border: solid 3px #fff;
-}
-
-.loginOption img{
-    width: 200px;
 }
 
 .loginOption-content{
@@ -26,7 +22,7 @@
 
 .loginOption-content .rol{
     color: #fff;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 900;
     margin-top: 15px;
 }
@@ -47,22 +43,19 @@
 
 .loginOption i{
     color: #fff;
-    font-size: 150px;
+    font-size: 100px;
 }
 
-@media screen and (max-width:768px){
+
+@media screen and (min-width:768px){
     
 }
 
-@media screen and (max-width:768px){
-    
-}
-
-@media screen and (max-width:768px){
+@media screen and (min-width:1200px){
 
 }
 
-@media screen and (max-width:480px){
+@media screen and (min-width:1440px){
     .loginOption{
         width: 300px;
         padding: 10px;

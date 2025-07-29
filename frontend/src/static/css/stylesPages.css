@@ -105,6 +105,7 @@
 }
 
 .tituloComenzar{
+    width: 100%;
     height: 200px;
     display: flex;
     justify-content: center;
@@ -112,10 +113,11 @@
 }
 
 .tituloComenzar h1{
+    width: 300px;
     background-color: #000;
     color: #fff;
     padding: 40px;
-    font-size: 50px;
+    font-size: 30px;
     box-shadow: 16px 16px 15px #000;
     border: solid 5px #7704a1;
 }
@@ -127,10 +129,10 @@
 .opcionesIngreso{
     height: 600px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 70px;
+    gap: 40px;
 }
 
 .containerLoginUser{
@@ -151,7 +153,7 @@
     box-shadow: 7px 10px 15px #000;
     font-family: "Special Gothic Expanded One", sans-serif;
     color: #fff;
-    font-size: 60px;
+    font-size: 40px;
     padding: 14px;
 }
 
@@ -226,7 +228,7 @@
         flex-direction: row;
     }
     .index-container{
-        max-height: calc(100vh-170px);
+        max-height: calc(100vh - 170px);
     }
     .contentIndex{
         height: 450px;
@@ -240,25 +242,14 @@
         font-size: 18px;
         width: 700px;
     }
-    .opcionesIngreso{
-        display: flex;
-        flex-direction: column;
-        gap: 30px;
-    }
     .tituloComenzar h1{
-        font-size: 30px;
-        padding: 10px;
-        width: 350px;
+        width: 700px;
+        text-align: center;
+        font-size: 50px;
     }
-    .titleLoginUser h1{
-        width: 320px;
-        font-size: 34px;
-    }
-    .contentLogin{
-        width: 100%;
-    }
-    .contentLogin form{
-        width: 300px;
+    .opcionesIngreso{
+        flex-direction: row;
+        gap: 90px;
     }
 }
 
@@ -302,6 +293,15 @@
         width: 700px;
         font-size: 20px;
     }
+    .tituloComenzar h1{
+        width: 700px;
+        text-align: center;
+        font-size: 50px;
+    }
+    .opcionesIngreso{
+        flex-direction: row;
+        gap: 90px;
+    }
 }
 
 @media screen and (min-width: 1440px) {
@@ -318,7 +318,7 @@
         justify-content: center;
     }
     .index-container{
-        height: calc(100vh-120px);
+        max-height: calc(100vh - 180px);
     }
     .contentIndex {
         height: 600px;
@@ -331,6 +331,15 @@
     .contentIndex .introIndex {
         font-size: 20px;
         width: 900px;
+    }
+    .tituloComenzar h1{
+        width: 700px;
+        text-align: center;
+        font-size: 50px;
+    }
+    .opcionesIngreso{
+        flex-direction: row;
+        gap: 90px;
     }
 }
 
