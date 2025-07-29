@@ -49,32 +49,32 @@ const RegisterUser = () => {
         </div>
 
         <div className="mb-3">
-          <label htmlFor="surname">Apellido</label>
-          <input type="text" {...register("surname",{required:true})} />
+          <label className="label-form" htmlFor="surname">Apellido</label>
+          <input className="form-control" type="text" {...register("surname",{required:true})} />
           {errors.surname && (
             <p className="error">El apellido es requerido</p>
           )}
         </div>
 
         <div className="mb-3">
-          <label htmlFor="email">Correo electrónico</label>
-          <input type="email" {...register("email",{required:true})} />
+          <label className="label-form" htmlFor="email">Correo electrónico</label>
+          <input className="form-control" type="email" {...register("email",{required:true})} />
           {errors.email && (
             <p className="error">El correo electrónico es requerido</p>
           )}
         </div>
 
         <div className="mb-3">
-          <label htmlFor="username">Nombre de usuario</label>
-          <input type="text" {...register("username",{required:true})} />
+          <label className="label-form" htmlFor="username">Nombre de usuario</label>
+          <input className="form-control" type="text" {...register("username",{required:true})} />
           {errors.username && (
             <p className="error">El nombre de usuario es requerido</p>
           )}
         </div>
 
         <div className="mb-3">
-          <label htmlFor="password">Contraseña</label>
-          <input type="password" {...register("password",{required:true})} />
+          <label className="label-form" htmlFor="password">Contraseña</label>
+          <input className="form-control" type="password" {...register("password",{required:true})} />
           {errors.password && (
             <p className="error">La contraseña es requerida</p>
           )}
@@ -84,7 +84,7 @@ const RegisterUser = () => {
       </form>
 
       {errorRegister && (
-        <p className="errorRegister">Error al registrarse: {errorRegister}</p>
+        <p className="errorAuth">Error al registrarse: {errorRegister}</p>
       )}
     </main>
   )

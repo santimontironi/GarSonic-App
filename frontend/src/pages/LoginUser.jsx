@@ -37,31 +37,40 @@ const LoginUser = () => {
 
     return (
         <main className="containerLoginUser">
+            
+            <div className="titleLoginUser">
+                <h1>Ingreso de usuario.</h1>
+            </div>
+            
+            <div className="contentLogin">
+                <form method="post" onSubmit={handleSubmit(submitForm)}>
 
-            <form method="post" onSubmit={handleSubmit(submitForm)}>
+                    <div className="mb-3">
+                        <label className="form-label" htmlFor="identifier">Correo electrónico o nombre de usuario</label>
+                        <input className="form-control" type="text" {...register("identifier",{required:true})} />
+                        {errors.user && (
+                            <p className="error">El correo electrónico o nombre de usuario es requerido</p>
+                        )}
+                    </div>
 
-                <div className="mb-3">
-                    <label htmlFor="identifier">Correo electrónico o nombre de usuario</label>
-                    <input type="text" {...register("identifier",{required:true})} />
-                    {errors.user && (
-                        <p className="error">El correo electrónico o nombre de usuario es requerido</p>
-                    )}
-                </div>
+                    <div className="mb-3">
+                        <label className="form-label" htmlFor="password">Contraseña</label>
+                        <input className="form-control" type="password" {...register("password",{required:true})} />
+                        {errors.password && (
+                            <p className="error">La contraseña es requerida</p>
+                        )}
+                    </div>
+                    
+                    <button type="submit">Iniciar sesión</button>
+                </form>
 
-                <div className="mb-3">
-                    <label htmlFor="password">Contraseña</label>
-                    <input type="password" {...register("password",{required:true})} />
-                    {errors.password && (
-                        <p className="error">La contraseña es requerida</p>
-                    )}
-                </div>
-                
-                <button type="submit">Iniciar sesión</button>
-            </form>
+                <a href="/registroUsuario">¿No tenés cuenta?</a>
 
-            {errorLoginUser && (
-                <p className="errorLogin">Error al iniciar sesión: {errorLoginUser}</p>
-            )}
+                {errorLoginUser && (
+                    <p className="errorAuth">Error al iniciar sesión: {errorLoginUser}</p>
+                )}
+            </div>
+
 
         </main>
     )
