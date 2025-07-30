@@ -58,7 +58,8 @@ export const LoginUser = async (req,res) => {
         res.cookie("token",token,{
             httpOnly: true,         // no accesible desde JS del frontend
             sameSite: "Strict",     // evitar CSRF
-            maxAge: 24 * 60 * 60 * 1000 // 1 día
+            maxAge: 86400000,     // 1 día
+            sameSite: "Lax"      // permite enviar cookies entre frontend y backend en distintos puertos
         })
 
         res.json({ message: "Login exitoso", user })

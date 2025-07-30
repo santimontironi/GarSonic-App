@@ -8,19 +8,19 @@ export const AuthProvider = ({children}) => {
 
     async function signUpUser(user){
         const res = await registerUserAxios(user)
-        setUser(res.data)
+        setUser(res.data.user)
         return res.data
     }
 
     async function signInUser(user){
         const res = await loginUserAxios(user)
-        setUser(res.data)
+        setUser(res.data.user)
         return res.data
     }
 
     async function fetchUser(){
         const res = await dashboardUser()
-        setUser(res.data)
+        setUser(res.data.user)
         return res
     }
 
