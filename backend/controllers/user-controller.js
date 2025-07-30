@@ -19,7 +19,9 @@ export const RegisterUser = async (req,res) => {
 
         const hashPassword = await bcrypt.hash(password,10)
 
-        const newUser = new User({name,surname,email,username,password:hashPassword})
+        const profilePhoto = req.file ? req.file.name : null
+
+        const newUser = new User({name,surname,email,username,password:hashPassword,profilePhoto})
         await newUser.save()
 
         res.status(201).json({ message: "Usuario creado correctamente" });
