@@ -1,11 +1,13 @@
 import axios from 'axios'
 
-const URL_BACKEND = 'http://localhost:3000'
+const URL_BACKEND = import.meta.env.VITE_BACKEND
 
 export function registerUserAxios(formData){
     return axios.post(`${URL_BACKEND}/register`,formData,{
         withCredentials:true,
-        "Content-Type": "multipart/form-data"
+        headers:{
+            "Content-Type": "multipart/form-data"
+        }
     })
 }
 
