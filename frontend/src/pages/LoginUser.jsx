@@ -24,6 +24,7 @@ const LoginUser = () => {
         }
         catch(error){
             if(error.response?.data?.message){
+                reset()
                 setErrorLoginUser(error.response.data.message)
             }
         }

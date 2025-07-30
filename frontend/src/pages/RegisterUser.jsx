@@ -27,7 +27,7 @@ const RegisterUser = () => {
       formData.append("username", values.username);
       formData.append("password", values.password);
       if (file) {
-        formData.append("profilePicture", file);
+        formData.append("profilePhoto", file);
       }
 
       await signUpUser(formData); 
@@ -60,9 +60,10 @@ const RegisterUser = () => {
       <form method="post" onSubmit={handleSubmit(submitForm)}>
 
         <div className="mb-3">
-            <label htmlFor="profilePicture">Foto de perfil</label>
+            <label htmlFor="profilePhoto">Foto de perfil</label>
             <input
               className="form-control"
+              name="profilePhoto"
               type="file"
               accept="image/*"
               onChange={(e) => setFile(e.target.files[0])}

@@ -18,10 +18,15 @@ export const AuthProvider = ({children}) => {
         return res.data
     }
 
+    async function logout(){
+        return setUser(null)
+    }
+
     return(
         <AuthContext.Provider value={{
             signUpUser,
             signInUser,
+            logout,
             user
         }}>
             {children}
