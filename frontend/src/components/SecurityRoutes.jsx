@@ -1,4 +1,4 @@
-import { UseAuth } from "../context/UseAuth";
+import { UseAuth } from "../context/useAuth.js";
 import { Navigate } from "react-router-dom";
 
 const SecurityRoutes = ({children}) => {
