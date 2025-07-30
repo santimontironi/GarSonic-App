@@ -52,6 +52,11 @@ const RegisterUser = () => {
 
   return (
     <main className="containerRegisterUser">
+
+      <div className="titleRegisterUser">
+        <h1>Registro de usuario</h1>
+      </div>
+
       <form method="post" onSubmit={handleSubmit(submitForm)}>
 
         <div className="mb-3">
@@ -65,8 +70,8 @@ const RegisterUser = () => {
         </div>
 
         <div className="mb-3">
-          <label htmlFor="name">Nombre</label>
-          <input type="text" {...register("name",{required:true})} />
+          <label className="label-form" htmlFor="name">Nombre</label>
+          <input className="form-control" type="text" {...register("name",{required:true})} />
           {errors.name && (
             <p className="error">El nombre es requerido</p>
           )}

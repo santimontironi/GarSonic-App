@@ -201,6 +201,54 @@
     margin-top: 20px;
 }
 
+.containerRegisterUser{
+    width: 100%;
+    height: 110vh;
+    padding-bottom: 30px;
+    background: linear-gradient(#000,#000,#662d91,#662d91);
+}
+
+.titleRegisterUser{
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.titleRegisterUser h1{
+    font-family: "Special Gothic Expanded One", sans-serif;
+    color: #fff;
+    background-color: #662d91;
+    padding: 10px;
+}
+
+.containerRegisterUser form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 340px;
+    margin: auto;
+    border: solid 2px #fff;
+    padding: 10px;
+}
+
+.containerRegisterUser form label{
+    color: #fff;
+}
+
+.containerRegisterUser form input{
+    width: 300px;
+}
+
+.containerRegisterUser form button{
+    margin: auto;
+    background-color: #fff;
+    color: #662d91;
+    padding: 10px;
+    font-weight: 900;
+    border: none;
+    cursor: pointer;
+}
 
 @media screen and (min-width:768px) {
     #navIndex{
@@ -303,6 +351,52 @@
         color: #fff;
         font-size: 18px;
         margin-top: 20px;
+    }
+    .containerRegisterUser{
+        width: 100%;
+        height: 100vh;
+        padding-bottom: 30px;
+        background: linear-gradient(#000,#000,#662d91,#662d91);
+    }
+    .titleRegisterUser{
+        height: 250px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .titleRegisterUser h1{
+        font-family: "Special Gothic Expanded One", sans-serif;
+        color: #fff;
+        background-color: #662d91;
+        padding: 12px;
+        font-size: 50px;
+    }
+    .containerRegisterUser form{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 600px;
+        margin: auto;
+        border: solid 2px #fff;
+        padding: 10px;
+    }
+    .containerRegisterUser form label{
+        color: #fff;
+        font-size: 20px;
+    }
+    .containerRegisterUser form input{
+        width: 550px;
+        font-size: 25px;
+    }
+    .containerRegisterUser form button{
+        margin: auto;
+        background-color: #fff;
+        color: #662d91;
+        padding: 10px;
+        font-weight: 900;
+        border: none;
+        cursor: pointer;
+        font-size: 22px;
     }
 }
 
@@ -501,6 +595,54 @@
         color: #fff;
         font-size: 18px;
         margin-top: 20px;
+    }
+    .containerRegisterUser{
+        width: 100%;
+        height: 100vh;
+        background: linear-gradient(#000,#000,#662d91,#662d91);
+        padding-bottom: 0;
+    }
+    .titleRegisterUser{
+        height: 240px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .titleRegisterUser h1{
+        font-family: "Special Gothic Expanded One", sans-serif;
+        color: #fff;
+        background-color: #662d91;
+        padding: 12px;
+        font-size: 60px;
+    }
+    .containerRegisterUser form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        width: 600px;
+        margin: auto;
+        border: solid 3px #fff;
+        border-radius: 20px;
+        padding: 15px;
+    }
+    .containerRegisterUser form label{
+        color: #fff;
+        font-size: initial;
+    }
+    .containerRegisterUser form input{
+        width: 550px;
+        font-size: initial;
+    }
+    .containerRegisterUser form button{
+        margin: auto;
+        background-color: #fff;
+        color: #662d91;
+        padding: 10px;
+        font-weight: 900;
+        border: none;
+        cursor: pointer;
+        font-size: initial;
     }
 }
 
