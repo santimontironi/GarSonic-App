@@ -11,6 +11,8 @@ const RegisterUser = () => {
   const[correctRegister,setCorrectRegister] = useState(false)
 
   const[errorRegister,setErrorRegister] = useState("")
+
+  const[file,setFile] = useState(null)
   
   const {register,handleSubmit,reset, formState:{errors}} = useForm()
 
@@ -18,14 +20,26 @@ const RegisterUser = () => {
 
   async function submitForm(values){
     try{
-      signUpUser(values)
-      setCorrectRegister(true)
-      setErrorRegister("")
-      reset()
+      const formData = new FormData();
+      formData.append("name", values.name);
+      formData.append("surname", values.surname);
+      formData.append("email", values.email);
+      formData.append("username", values.username);
+      formData.append("password", values.password);
+      if (file) {
+        formData.append("profilePicture", file);
+      }
+
+      await signUpUser(formData); 
+
+      setCorrectRegister(true);
+      setErrorRegister("");
+      reset();
+      setFile(null);
     }
     catch(error){
       if(error.response?.data?.message){
-        setErrorRegister(error.response.data.message)
+        setErrorRegister(error.response.data.message);
       }
     }
   }
@@ -39,6 +53,16 @@ const RegisterUser = () => {
   return (
     <main className="containerRegisterUser">
       <form method="post" onSubmit={handleSubmit(submitForm)}>
+
+        <div className="mb-3">
+            <label htmlFor="profilePicture">Foto de perfil</label>
+            <input
+              className="form-control"
+              type="file"
+              accept="image/*"
+              onChange={(e) => setFile(e.target.files[0])}
+            />
+        </div>
 
         <div className="mb-3">
           <label htmlFor="name">Nombre</label>
