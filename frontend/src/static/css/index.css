@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+@import "tailwindcss";
+
+*{
+    font-family: "Quicksand", sans-serif;
+    user-select: none;
+}
+
+.tituloIndex{
+    font-family: "Special Gothic Expanded One", sans-serif;
+    text-shadow: 7px 7px 10px rgba(0,0,0,0.5);
+}
+
+.titleLoginUser h1{
+    font-family: "Special Gothic Expanded One", sans-serif;
+}
+
+.titleRegisterUser h1{
+    font-family: "Special Gothic Expanded One", sans-serif;
+}
