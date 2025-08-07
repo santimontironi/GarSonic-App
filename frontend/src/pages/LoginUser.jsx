@@ -47,16 +47,16 @@ const LoginUser = () => {
                 <form method="post" onSubmit={handleSubmit(submitForm)}>
 
                     <div className="mb-3">
-                        <label className="form-label" htmlFor="identifier">Correo electrónico o nombre de usuario</label>
-                        <input className="form-control" type="text" {...register("identifier",{required:true})} />
+                        <label htmlFor="identifier">Correo electrónico o nombre de usuario</label>
+                        <input type="text" {...register("identifier",{required:true})} />
                         {errors.user && (
                             <p className="error">El correo electrónico o nombre de usuario es requerido</p>
                         )}
                     </div>
 
                     <div className="mb-3">
-                        <label className="form-label" htmlFor="password">Contraseña</label>
-                        <input className="form-control" type="password" {...register("password",{required:true})} />
+                        <label htmlFor="password">Contraseña</label>
+                        <input type="password" {...register("password",{required:true})} />
                         {errors.password && (
                             <p className="error">La contraseña es requerida</p>
                         )}
