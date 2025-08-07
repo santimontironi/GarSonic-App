@@ -5,7 +5,7 @@ const Index = () => {
   return (
     <>
       <Header/>
-      <main className="overflow-hidden index-container w-full h-[calc(100vh-100px)] bg-gradient-to-b from-purple-900 to-purple-700">
+      <main className="index-container w-full h-[calc(100vh-100px)] bg-gradient-to-b from-purple-900 to-purple-700">
         <motion.div
           initial={{ opacity: 0, y:70 }}
           whileInView={{ opacity: 1, y: 0 }}

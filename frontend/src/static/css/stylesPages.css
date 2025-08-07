@@ -9,43 +9,6 @@
     margin-top: 20px;
 }
 
-.comenzar-container{
-    width: 100%;
-    height: 100vh;
-    background: linear-gradient(#7704a1,#000,#101010);
-}
-
-.tituloComenzar{
-    width: 100%;
-    height: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.tituloComenzar h1{
-    width: 300px;
-    background-color: #000;
-    color: #fff;
-    padding: 40px;
-    font-size: 30px;
-    box-shadow: 16px 16px 15px #000;
-    border: solid 5px #7704a1;
-}
-
-.opcionesIngreso a{
-    text-decoration: none;
-}
-
-.opcionesIngreso{
-    height: 600px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-}
-
 .containerLoginUser{
     height: 100vh;
     width: 100%;
@@ -162,15 +125,6 @@
 }
 
 @media screen and (min-width:768px) {
-    .tituloComenzar h1{
-        width: 700px;
-        text-align: center;
-        font-size: 50px;
-    }
-    .opcionesIngreso{
-        flex-direction: row;
-        gap: 90px;
-    }
     .containerLoginUser{
         height: 100vh;
         width: 100%;
@@ -274,11 +228,6 @@
 }
 
 @media screen and (min-width: 1200px) {
-    .tituloComenzar h1{
-        width: 700px;
-        text-align: center;
-        font-size: 50px;
-    }
     .opcionesIngreso{
         flex-direction: row;
         gap: 90px;
@@ -340,10 +289,6 @@
 }
 
 @media screen and (min-width: 1440px) {
-    .opcionesIngreso{
-        flex-direction: row;
-        gap: 90px;
-    }
     .containerLoginUser{
         height: 100vh;
         width: 100%;
