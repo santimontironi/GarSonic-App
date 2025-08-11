@@ -14,7 +14,7 @@ const LoginOptionPage = () => {
           <h1 className="w-[340px] bg-black text-center md:text-[30px] md:w-[650px] text-white p-[10px] border-2 border-white shadow-[5px_8px_15px_rgba(0,0,0,0.80)] mt-[10px] text-[25px] lg:text-[50px] lg:mt-[60px] lg:w-[800px] lg:p-[10px]" >¿Como quieres ingresar?</h1>
         </motion.div>
       </div>
-      <div className="flex flex-col h-[600px] gap-[40px] items-center justify-center lg:flex-row lg:gap-[60px] md:flex-row md:gap-[60px]">
+      <div className="flex flex-col h-[550px] lg:h-[700px] gap-[40px] items-center justify-center lg:flex-row lg:gap-[70px] md:flex-row md:gap-[60px]">
 
         <a className="decoration-none" href="/loginUsuario">
           <LoginOption
