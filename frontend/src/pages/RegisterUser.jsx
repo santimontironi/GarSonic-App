@@ -54,15 +54,15 @@ const RegisterUser = () => {
     <main className="containerRegisterUser min-h-screen w-full">
 
       <div className="titleRegisterUser h-[200px] flex justify-center items-center">
-        <h1 className="text-white bg-[#662d91] p-[10px] text-[30px]">Registro de usuario</h1>
+        <h1 className="text-white bg-[#662d91] p-[10px] text-[30px] lg:text-[50px]">Registro de usuario</h1>
       </div>
 
-      <form className="flex flex-col justify-center items-center m-auto w-[330px] h-[600px] p-[7px] border-2 border-white" method="post" onSubmit={handleSubmit(submitForm)}>
+      <form className="flex flex-col justify-center items-center m-auto w-[330px] h-[600px] p-[7px] border-2 border-white lg:w-[500px] shadow-[5px_7px_10px_#000]" method="post" onSubmit={handleSubmit(submitForm)}>
 
-        <div className="mt-3 flex flex-col gap-[10px] w-[300px]">
+        <div className="mt-3 flex flex-col gap-[10px]">
             <label className="text-white" htmlFor="profilePhoto">Foto de perfil</label>
             <input
-              className="bg-white text-black p-[5px]"
+              className="bg-white text-black p-[5px] w-[300px] lg:w-[450px]"
               name="profilePhoto"
               type="file"
               accept="image/*"
@@ -72,7 +72,7 @@ const RegisterUser = () => {
 
         <div className="mt-3 flex flex-col gap-[10px]">
           <label className="text-white" htmlFor="name">Nombre</label>
-          <input className="w-[300px] bg-white p-[7px] text-black" type="text" {...register("name",{required:true})} />
+          <input className="w-[300px] bg-white p-[7px] text-black lg:w-[450px]" type="text" {...register("name",{required:true})} />
           {errors.name && (
             <p className="error">El nombre es requerido</p>
           )}
@@ -80,7 +80,7 @@ const RegisterUser = () => {
 
         <div className="mt-3 flex flex-col gap-[10px]">
           <label className="text-white" htmlFor="surname">Apellido</label>
-          <input className="w-[300px] bg-white p-[7px] text-black" type="text" {...register("surname",{required:true})} />
+          <input className="w-[300px] bg-white p-[7px] text-black lg:w-[450px]" type="text" {...register("surname",{required:true})} />
           {errors.surname && (
             <p className="error">El apellido es requerido</p>
           )}
@@ -88,7 +88,7 @@ const RegisterUser = () => {
 
         <div className="mt-3 flex flex-col gap-[10px]">
           <label className="text-white" htmlFor="email">Correo electrónico</label>
-          <input className="w-[300px] bg-white p-[7px] text-black" type="email" {...register("email",{required:true})} />
+          <input className="w-[300px] bg-white p-[7px] text-black lg:w-[450px]" type="email" {...register("email",{required:true})} />
           {errors.email && (
             <p className="error">El correo electrónico es requerido</p>
           )}
@@ -96,7 +96,7 @@ const RegisterUser = () => {
 
         <div className="mt-3 flex flex-col gap-[10px]">
           <label className="text-white" htmlFor="username">Nombre de usuario</label>
-          <input className="w-[300px] bg-white p-[7px] text-black" type="text" {...register("username",{required:true})} />
+          <input className="w-[300px] bg-white p-[7px] text-black lg:w-[450px]" type="text" {...register("username",{required:true})} />
           {errors.username && (
             <p className="error">El nombre de usuario es requerido</p>
           )}
@@ -104,7 +104,7 @@ const RegisterUser = () => {
 
         <div className="mt-3 flex flex-col gap-[10px]">
           <label className="text-white" htmlFor="password">Contraseña</label>
-          <input className="w-[300px] bg-white p-[7px] text-black" type="password" {...register("password",{required:true})} />
+          <input className="w-[300px] bg-white p-[7px] text-black lg:w-[450px]" type="password" {...register("password",{required:true})} />
           {errors.password && (
             <p className="error">La contraseña es requerida</p>
           )}
