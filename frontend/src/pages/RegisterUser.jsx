@@ -53,16 +53,16 @@ const RegisterUser = () => {
   return (
     <main className="containerRegisterUser min-h-screen w-full">
 
-      <div className="titleRegisterUser">
-        <h1>Registro de usuario</h1>
+      <div className="titleRegisterUser h-[200px] flex justify-center items-center">
+        <h1 className="bg-[#662d91] text-white text-[32px] shadow-[7px_10px_15px_rgba(0,0,0,0.70)] p-[12px] md:text-[40px] md:w-[600px] text-center">Registro de usuario</h1>
       </div>
 
-      <form method="post" onSubmit={handleSubmit(submitForm)}>
+      <form className="flex flex-col w-[350px] m-auto h-[600px] p-[20px] rounded-[10px] shadow-[5px_7px_10px_#000] md:w-[450px] md:h-[600px] xl:h-[600px]" method="post" onSubmit={handleSubmit(submitForm)}>
 
-        <div className="mb-3">
-            <label htmlFor="profilePhoto">Foto de perfil</label>
+        <div className="mt-5 flex flex-col">
+            <label className="text-white" htmlFor="profilePhoto">Foto de perfil</label>
             <input
-              className="form-control"
+              className="w-full p-[7px] bg-white text-black"
               name="profilePhoto"
               type="file"
               accept="image/*"
@@ -70,47 +70,47 @@ const RegisterUser = () => {
             />
         </div>
 
-        <div className="mb-3">
-          <label className="label-form" htmlFor="name">Nombre</label>
-          <input className="form-control" type="text" {...register("name",{required:true})} />
+        <div className="mt-5 flex flex-col">
+          <label className="text-white" htmlFor="name">Nombre</label>
+          <input className="w-full p-[7px] bg-white text-black" type="text" {...register("name",{required:true})} />
           {errors.name && (
             <p className="error">El nombre es requerido</p>
           )}
         </div>
 
-        <div className="mb-3">
-          <label className="label-form" htmlFor="surname">Apellido</label>
-          <input className="form-control" type="text" {...register("surname",{required:true})} />
+        <div className="mt-5 flex flex-col">
+          <label className="text-white" htmlFor="surname">Apellido</label>
+          <input className="w-full p-[7px] bg-white text-black" type="text" {...register("surname",{required:true})} />
           {errors.surname && (
             <p className="error">El apellido es requerido</p>
           )}
         </div>
 
-        <div className="mb-3">
-          <label className="label-form" htmlFor="email">Correo electrónico</label>
-          <input className="form-control" type="email" {...register("email",{required:true})} />
+        <div className="mt-5 flex flex-col">
+          <label className="text-white" htmlFor="email">Correo electrónico</label>
+          <input className="w-full p-[7px] bg-white text-black" type="email" {...register("email",{required:true})} />
           {errors.email && (
             <p className="error">El correo electrónico es requerido</p>
           )}
         </div>
 
-        <div className="mb-3">
-          <label className="label-form" htmlFor="username">Nombre de usuario</label>
-          <input className="form-control" type="text" {...register("username",{required:true})} />
+        <div className="mt-5 flex flex-col">
+          <label className="text-white" htmlFor="username">Nombre de usuario</label>
+          <input className="w-full p-[7px] bg-white text-black" type="text" {...register("username",{required:true})} />
           {errors.username && (
             <p className="error">El nombre de usuario es requerido</p>
           )}
         </div>
 
-        <div className="mb-3">
-          <label className="label-form" htmlFor="password">Contraseña</label>
-          <input className="form-control" type="password" {...register("password",{required:true})} />
+        <div className="mt-5 flex flex-col">
+          <label className="text-white" htmlFor="password">Contraseña</label>
+          <input className="w-full p-[7px] bg-white text-black" type="password" {...register("password",{required:true})} />
           {errors.password && (
             <p className="error">La contraseña es requerida</p>
           )}
         </div>
         
-        <button className="m-auto text-[#662d91] bg-white font-bold border-none cursor-pointer p-[10px]" type="submit">Crear cuenta</button>
+        <button className="m-auto mt-5 text-[#662d91] bg-white font-bold border-none cursor-pointer p-[10px] hover:text-white hover:bg-black" type="submit">Crear cuenta</button>
       </form>
 
       {errorRegister && (
