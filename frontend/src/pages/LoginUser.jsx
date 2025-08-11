@@ -40,11 +40,11 @@ const LoginUser = () => {
         <main className="containerLoginUser w-full h-screen">
             
             <div className="titleLoginUser h-[200px] flex justify-center items-center">
-                <h1 className="bg-black text-white text-[27px] shadow-[7px_10px_15px_rgba(0,0,0,0.70)] p-[12px]">Ingreso de usuario</h1>
+                <h1 className="bg-black text-white text-[32px] shadow-[7px_10px_15px_rgba(0,0,0,0.70)] p-[12px] md:text-[40px] md:w-[600px] text-center">Ingreso de usuario</h1>
             </div>
             
             <div className="contentLogin flex justify-center items-center flex-col w-full h-[300px]">
-                <form className="flex flex-col w-[330px] h-[300px] p-[20px] rounded-[10px]" method="post" onSubmit={handleSubmit(submitForm)}>
+                <form className="flex flex-col w-[350px] h-[300px] p-[20px] rounded-[10px] shadow-[5px_7px_10px_#000] md:w-[450px] md:h-[350px]" method="post" onSubmit={handleSubmit(submitForm)}>
 
                     <div className="mt-5 flex flex-col">
                         <label className="text-white text-[15px]" htmlFor="identifier">Correo electrónico o nombre de usuario</label>
@@ -62,10 +62,10 @@ const LoginUser = () => {
                         )}
                     </div>
                     
-                    <button type="submit">Iniciar sesión</button>
+                    <button className="text-white bg-black p-[10px] mt-5 w-[160px] m-auto hover:text-black hover:bg-white" type="submit">Iniciar sesión</button>
                 </form>
 
-                <a href="/registroUsuario">¿No tenés cuenta?</a>
+                <a href="/registroUsuario" className="text-white mt-[16px]">¿No tenés cuenta?</a>
 
                 {errorLoginUser && (
                     <p className="errorAuth">Error al iniciar sesión: {errorLoginUser}</p>
