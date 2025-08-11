@@ -53,16 +53,16 @@ const RegisterUser = () => {
   return (
     <main className="containerRegisterUser min-h-screen w-full">
 
-      <div className="titleRegisterUser h-[200px] flex justify-center items-center">
-        <h1 className="text-white bg-[#662d91] p-[10px] text-[30px] lg:text-[50px]">Registro de usuario</h1>
+      <div className="titleRegisterUser">
+        <h1>Registro de usuario</h1>
       </div>
 
-      <form className="flex flex-col justify-center items-center m-auto w-[330px] h-[600px] p-[7px] border-2 border-white lg:w-[500px] shadow-[5px_7px_10px_#000]" method="post" onSubmit={handleSubmit(submitForm)}>
+      <form method="post" onSubmit={handleSubmit(submitForm)}>
 
-        <div className="mt-3 flex flex-col gap-[10px]">
-            <label className="text-white" htmlFor="profilePhoto">Foto de perfil</label>
+        <div className="mb-3">
+            <label htmlFor="profilePhoto">Foto de perfil</label>
             <input
-              className="bg-white text-black p-[5px] w-[300px] lg:w-[450px]"
+              className="form-control"
               name="profilePhoto"
               type="file"
               accept="image/*"
@@ -70,41 +70,41 @@ const RegisterUser = () => {
             />
         </div>
 
-        <div className="mt-3 flex flex-col gap-[10px]">
-          <label className="text-white" htmlFor="name">Nombre</label>
-          <input className="w-[300px] bg-white p-[7px] text-black lg:w-[450px]" type="text" {...register("name",{required:true})} />
+        <div className="mb-3">
+          <label className="label-form" htmlFor="name">Nombre</label>
+          <input className="form-control" type="text" {...register("name",{required:true})} />
           {errors.name && (
             <p className="error">El nombre es requerido</p>
           )}
         </div>
 
-        <div className="mt-3 flex flex-col gap-[10px]">
-          <label className="text-white" htmlFor="surname">Apellido</label>
-          <input className="w-[300px] bg-white p-[7px] text-black lg:w-[450px]" type="text" {...register("surname",{required:true})} />
+        <div className="mb-3">
+          <label className="label-form" htmlFor="surname">Apellido</label>
+          <input className="form-control" type="text" {...register("surname",{required:true})} />
           {errors.surname && (
             <p className="error">El apellido es requerido</p>
           )}
         </div>
 
-        <div className="mt-3 flex flex-col gap-[10px]">
-          <label className="text-white" htmlFor="email">Correo electrónico</label>
-          <input className="w-[300px] bg-white p-[7px] text-black lg:w-[450px]" type="email" {...register("email",{required:true})} />
+        <div className="mb-3">
+          <label className="label-form" htmlFor="email">Correo electrónico</label>
+          <input className="form-control" type="email" {...register("email",{required:true})} />
           {errors.email && (
             <p className="error">El correo electrónico es requerido</p>
           )}
         </div>
 
-        <div className="mt-3 flex flex-col gap-[10px]">
-          <label className="text-white" htmlFor="username">Nombre de usuario</label>
-          <input className="w-[300px] bg-white p-[7px] text-black lg:w-[450px]" type="text" {...register("username",{required:true})} />
+        <div className="mb-3">
+          <label className="label-form" htmlFor="username">Nombre de usuario</label>
+          <input className="form-control" type="text" {...register("username",{required:true})} />
           {errors.username && (
             <p className="error">El nombre de usuario es requerido</p>
           )}
         </div>
 
-        <div className="mt-3 flex flex-col gap-[10px]">
-          <label className="text-white" htmlFor="password">Contraseña</label>
-          <input className="w-[300px] bg-white p-[7px] text-black lg:w-[450px]" type="password" {...register("password",{required:true})} />
+        <div className="mb-3">
+          <label className="label-form" htmlFor="password">Contraseña</label>
+          <input className="form-control" type="password" {...register("password",{required:true})} />
           {errors.password && (
             <p className="error">La contraseña es requerida</p>
           )}
