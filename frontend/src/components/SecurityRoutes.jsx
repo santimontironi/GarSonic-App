@@ -7,7 +7,7 @@ const SecurityRoutes = ({children}) => {
 
     // Si todavía está verificando, no redirigir
     if(loading) {
-        return null; // No mostrar nada mientras verifica
+        return null; // No muestra nada, espera a que termine la verificación
     }
 
     // Una vez que terminó de verificar, si no hay usuario, redirigir al login
@@ -15,6 +15,7 @@ const SecurityRoutes = ({children}) => {
         return <Navigate to="/loginUsuario"/>
     }
 
+    // Si hay usuario, mostrar el contenido
     return (
         children
     )
