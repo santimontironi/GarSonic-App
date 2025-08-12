@@ -1,5 +1,6 @@
 import { UseAuth } from "../context/useAuth.js";
 import { Navigate } from "react-router-dom";
+import Loader from "./Loader.jsx";
 
 const SecurityRoutes = ({children}) => {
 
@@ -7,7 +8,7 @@ const SecurityRoutes = ({children}) => {
 
     // Si todavía está verificando, no redirigir
     if(loading) {
-        return null; // No muestra nada, espera a que termine la verificación
+        return <Loader/>
     }
 
     // Una vez que terminó de verificar, si no hay usuario, redirigir al login

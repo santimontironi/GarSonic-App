@@ -24,7 +24,7 @@ return (
                 <i className="bi bi-list text-white text-[25px]"></i>
             </button>
 
-            <nav className={`${openNav ? "opacity-100 translate-x-0" : "opacity-0 translate-x-full"} transition-all duration-300 ease-in-out text-white list-none fixed top-0 right-0 w-[200px] p-[15px] h-[100vh] bg-black
+            <nav className={`${openNav ? "opacity-100 translate-x-0 navPrincipal" : "opacity-0 translate-x-full"} transition-all duration-300 ease-in-out text-white list-none fixed top-0 right-0 w-[200px] p-[15px] h-[100vh] bg-black
 
             
             lg:static lg:flex lg:flex-row lg:gap-[30px] lg:transition-none lg:opacity-100 lg:h-auto lg:w-auto lg:bg-transparent lg:translate-x-0`}>

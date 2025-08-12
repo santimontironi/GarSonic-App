@@ -2,6 +2,7 @@ import { registerUserAxios, loginUserAxios, logoutUser, dashboardUser } from "..
 import { useState, useEffect } from "react";
 import { AuthContext } from "./AuthContext.jsx";
 
+
 export const AuthProvider = ({children}) => {
 
     const[user,setUser] = useState(null)
@@ -32,10 +33,13 @@ export const AuthProvider = ({children}) => {
         } catch (error) {
             setUser(null);
         } finally {
-            setLoading(false)
+            setTimeout(() => {
+                setLoading(false)
+            }, 2000)
         }
     }
 
+    //se pone en un useffect para que se ejecute cuando se monte el componente
     useEffect(() => {
         fetchUser();
     }, []);
