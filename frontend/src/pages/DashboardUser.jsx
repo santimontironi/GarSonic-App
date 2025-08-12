@@ -6,7 +6,7 @@ const DashboardUser = () => {
   const[userData,setUserData] = useState({})
   const[errorData,setErrorData] = useState(null)
 
-  const {fetchUser} = UseAuth()
+  const {fetchUser, logout} = UseAuth()
 
   useEffect(() => {
     async function fetchUserData(){
@@ -22,10 +22,32 @@ const DashboardUser = () => {
   },[])
 
   return (
-    <img 
-      src={`http://localhost:3000/uploads/${userData?.profilePhoto}`} 
-      alt="Foto de perfil" 
-    />
+    <main>
+      <header>
+
+        <div className="header-left">
+          <nav>
+            <ul>
+              <li><a href="">Mis listas</a></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </nav>
+        </div>
+
+        <div className="header-center">
+
+        </div>
+
+        <div className="header-right">
+          <img src={`http://localhost:3000/uploads/${userData?.profilePhoto}`}  alt="Foto de perfil" />
+          <span>{userData?.username}</span>
+          <button onClick={logout}>Cerrar sesión</button>
+        </div>
+
+      </header>
+    </main>
+    
   )
 }
 

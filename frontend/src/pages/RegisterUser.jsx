@@ -62,7 +62,7 @@ const RegisterUser = () => {
         <div className="mt-5 flex flex-col">
             <label className="text-white" htmlFor="profilePhoto">Foto de perfil</label>
             <input
-              className="w-full p-[7px] bg-white text-black"
+              className="w-full p-[7px] bg-white text-black cursor-pointer"
               name="profilePhoto"
               type="file"
               accept="image/*"

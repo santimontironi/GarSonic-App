@@ -26,6 +26,22 @@ body{
     font-family: "Special Gothic Expanded One", sans-serif;
 }
 
+.containerLoginUser{
+    background: linear-gradient(150deg,#662d91,#7704a1,#000);
+}
+
+.titleLoginUser h1{
+    font-family: "Special Gothic Expanded One", sans-serif;
+}
+
+.containerRegisterUser{
+    background: linear-gradient(#000,#000,#662d91,#662d91);
+}
+
+.titleRegisterUser h1{
+    font-family: "Special Gothic Expanded One", sans-serif;
+}
+
 @media screen and (min-width:300px) and (max-width:820px){
     nav{
         box-shadow: 0 0 100vmax 100vmax rgba(0, 0, 0, 0.5);

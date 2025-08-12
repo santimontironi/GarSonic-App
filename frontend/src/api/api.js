@@ -18,7 +18,7 @@ export function loginUserAxios(formData){
 }
 
 export function logoutUser(){
-    return axios.post(`${URL_BACKEND}/logout`,{
+    return axios.post(`${URL_BACKEND}/logout`, {}, {
         withCredentials:true
     })
 }

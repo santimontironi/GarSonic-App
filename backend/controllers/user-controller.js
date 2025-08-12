@@ -57,9 +57,8 @@ export const LoginUser = async (req,res) => {
 
         res.cookie("token",token,{
             httpOnly: true,         // no accesible desde JS del frontend
-            sameSite: "Strict",     // evitar CSRF
-            maxAge: 86400000,     // 1 día
-            sameSite: "Lax"      // permite enviar cookies entre frontend y backend en distintos puertos
+            sameSite: "Lax",      // más permisivo para desarrollo local
+            maxAge: 86400000      // 1 día
         })
 
         res.json({ message: "Login exitoso", user })
@@ -86,7 +85,10 @@ export const DashboardUser = async (req,res) => {
 }
 
 export const LogoutUser = (req, res) => {
-    res.clearCookie("token");
+    res.clearCookie("token", {
+        httpOnly: true,
+        sameSite: "Lax"
+    });
     res.json({ message: "Logout exitoso" });
 }
 

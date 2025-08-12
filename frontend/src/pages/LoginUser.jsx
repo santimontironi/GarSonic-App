@@ -62,13 +62,13 @@ const LoginUser = () => {
                         )}
                     </div>
                     
-                    <button className="text-white bg-black p-[10px] mt-5 w-[160px] m-auto hover:text-black hover:bg-white" type="submit">Iniciar sesión</button>
+                    <button className="text-white bg-black p-[10px] mt-5 w-[160px] m-auto hover:text-black hover:bg-white cursor-pointer" type="submit">Iniciar sesión</button>
                 </form>
 
                 <a href="/registroUsuario" className="text-white mt-[16px]">¿No tenés cuenta?</a>
 
                 {errorLoginUser && (
-                    <p className="errorAuth">Error al iniciar sesión: {errorLoginUser}</p>
+                    <p className="errorAuth text-center text-white bg-[#d81630] p-[10px] font-[900] m-auto mt-[20px] w-[700px]">Error al iniciar sesión: {errorLoginUser}</p>
                 )}
             </div>
 
