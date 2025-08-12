@@ -6,7 +6,7 @@ import { AuthContext } from "./AuthContext.jsx";
 export const AuthProvider = ({children}) => {
 
     const[user,setUser] = useState(null)
-    const[loading, setLoading] = useState(true)
+    const[loading,setLoading] = useState(true)
 
     async function signUpUser(user){
         const res = await registerUserAxios(user)
@@ -32,10 +32,11 @@ export const AuthProvider = ({children}) => {
             return res;
         } catch (error) {
             setUser(null);
-        } finally {
-            setTimeout(() => {
+        }
+        finally{
+            setTimeout(function() {
                 setLoading(false)
-            }, 2000)
+            }, 1500)
         }
     }
 

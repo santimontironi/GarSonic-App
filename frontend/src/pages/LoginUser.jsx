@@ -49,8 +49,8 @@ const LoginUser = () => {
                     <div className="mt-5 flex flex-col">
                         <label className="text-white text-[15px]" htmlFor="identifier">Correo electrónico o nombre de usuario</label>
                         <input className="w-full p-[7px] bg-white text-black" type="text" {...register("identifier",{required:true})} />
-                        {errors.user && (
-                            <p className="error">El correo electrónico o nombre de usuario es requerido</p>
+                        {errors.identifier && (
+                            <p className="text-white">El correo electrónico o nombre de usuario es requerido</p>
                         )}
                     </div>
 
@@ -58,20 +58,20 @@ const LoginUser = () => {
                         <label className="text-white text-[15px]" htmlFor="password">Contraseña</label>
                         <input className="w-full p-[7px] bg-white text-black" type="password" {...register("password",{required:true})} />
                         {errors.password && (
-                            <p className="error">La contraseña es requerida</p>
+                            <p className="text-white">La contraseña es requerida</p>
                         )}
                     </div>
                     
                     <button className="text-white bg-black p-[10px] mt-5 w-[160px] m-auto hover:text-black hover:bg-white cursor-pointer" type="submit">Iniciar sesión</button>
                 </form>
 
-                <a href="/registroUsuario" className="text-white mt-[16px]">¿No tenés cuenta?</a>
+                <a href="/registroUsuario" className="text-white mt-[16px] underline">¿No tenés cuenta?</a>
 
-                {errorLoginUser && (
-                    <p className="errorAuth text-center text-white bg-[#d81630] p-[10px] font-[900] m-auto mt-[20px] w-[700px]">Error al iniciar sesión: {errorLoginUser}</p>
-                )}
             </div>
 
+            {errorLoginUser && (
+                <p className="errorAuth text-center text-white bg-[#d81630] p-[8px] mt-[30px] shadow-[5px_10px_15px_#101010] w-[400px] lg:p-[10px] font-[900] m-auto lg:mt-[20px] lg:w-[700px]">Error al iniciar sesión: {errorLoginUser}</p>
+            )}
 
         </main>
     )

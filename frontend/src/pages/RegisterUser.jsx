@@ -82,7 +82,7 @@ const RegisterUser = () => {
           <label className="text-white" htmlFor="surname">Apellido</label>
           <input className="w-full p-[7px] bg-white text-black" type="text" {...register("surname",{required:true})} />
           {errors.surname && (
-            <p className="error">El apellido es requerido</p>
+            <p className="text-white">El apellido es requerido</p>
           )}
         </div>
 
@@ -90,7 +90,7 @@ const RegisterUser = () => {
           <label className="text-white" htmlFor="email">Correo electrónico</label>
           <input className="w-full p-[7px] bg-white text-black" type="email" {...register("email",{required:true})} />
           {errors.email && (
-            <p className="error">El correo electrónico es requerido</p>
+            <p className="text-white">El correo electrónico es requerido</p>
           )}
         </div>
 
@@ -114,7 +114,7 @@ const RegisterUser = () => {
       </form>
 
       {errorRegister && (
-        <p className="errorAuth">Error al registrarse: {errorRegister}</p>
+        <p className="errorAuth text-center text-white bg-[#d81630] p-[8px] mt-[30px] shadow-[5px_10px_15px_#101010] w-[400px] lg:p-[10px] font-[900] m-auto lg:mt-[20px] lg:w-[700px]">Error al registrarse: {errorRegister}</p>
       )}
     </main>
   )
