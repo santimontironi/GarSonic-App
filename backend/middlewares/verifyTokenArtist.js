@@ -6,17 +6,19 @@ dotenv.config();
 export const verifyToken = (req, res, next) => {
     // Obtener el token de la cookie
     const token = req.cookies.token;
-
+    
     if (!token) {
-        return res.status(401).json({ message: "No autorizado, token faltante." });
+        return res.json({ authenticated: false });
     }
-
-    try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    
+    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+    
+        if (err) {
+            return res.json({ authenticated: false });
+        }
+    
         req.artistId = decoded.id;
-        next(); 
-    } catch (error) {
-        console.error("Error al verificar token:", error);
-        return res.status(401).json({ message: "Token inválido o expirado." });
-    }
+        next();
+            
+    });
 }
