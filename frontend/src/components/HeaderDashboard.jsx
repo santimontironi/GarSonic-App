@@ -32,7 +32,7 @@ const HeaderDashboard = () => {
 
 
             <header
-                className={`text-white h-screen w-[300px] p-[25px] bg-gradient-to-b from-purple-900 to-black shadow-[10px_25px_25px_rgba(0,0,0,0.50)] fixed top-0 left-0 transform transition-transform duration-300 z-40 ${openNav ? "translate-x-0" : "-translate-x-full"} lg:translate-x-0`}>
+                className={`text-white h-screen w-[300px] p-[25px] bg-gradient-to-b from-purple-900 to-black shadow-[10px_25px_25px_rgba(0,0,0,0.50)] fixed top-0 left-0 transform transition-transform duration-300 z-40 ${openNav ? "translate-x-0 headerDashboard" : "-translate-x-full"} lg:translate-x-0`}>
 
                     <button
                         className="lg:hidden absolute top-4 right-4 bg-red-500 w-[40px] h-[40px] flex justify-center items-center rounded-[8px]"

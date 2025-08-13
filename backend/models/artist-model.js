@@ -1,6 +1,9 @@
 import mongoose from "mongoose";
 
 const artistModel = new mongoose.Schema({
+    profilePhoto:{
+        type: String
+    },
     artistName: {
         type: String,
         required: true

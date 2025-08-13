@@ -5,6 +5,8 @@ import LoginUser from "./pages/LoginUser";
 import RegisterUser from "./pages/RegisterUser";
 import DashboardUser from "./pages/DashboardUser";
 import SecurityRoutes from "./components/SecurityRoutes";
+import LoginArtist from "./pages/LoginArtist";
+import RegisterArtist from "./pages/RegisterArtist";
 
 const App = () => {
   return (
@@ -14,6 +16,8 @@ const App = () => {
         <Route path="/ingresar" element={<LoginOptionPage/>} />
         <Route path="/loginUsuario" element={<LoginUser/>} />
         <Route path="/registroUsuario" element={<RegisterUser/>} />
+        <Route path="/loginArtista" element={<LoginArtist/>} />
+        <Route path="/registroArtista" element={<RegisterArtist/>} />
         <Route path="/usuario" element={
           <SecurityRoutes>
             <DashboardUser/>
