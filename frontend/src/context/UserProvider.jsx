@@ -28,8 +28,12 @@ export const UserProvider = ({children}) => {
     async function fetchUser() {
         try {
             const res = await dashboardUser();
-            setUser(res.data.user);
-            return res;
+            if(res.data.authenticated === false){
+                setUser(null)
+            }else{
+                setUser(res.data.user);
+            }
+            return res
         } catch (error) {
             setUser(null);
         }

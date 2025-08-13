@@ -77,7 +77,7 @@ export const DashboardUser = async (req,res) => {
             return res.status(404).json({ message: "Usuario no encontrado" });
         }
         
-        res.json({ user });
+        res.json({ authenticated: true, user });
     } catch (error) {
         console.error("Error en DashboardUser:", error);
         return res.status(500).json({ message: "Error al obtener datos del usuario" });
