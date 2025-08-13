@@ -29,6 +29,12 @@ export function dashboardUser(){
     })
 }
 
+export function loginArtistAxios(formData){
+    return axios.post(`${URL_BACKEND}/loginArtist`,formData,{
+        withCredentials:true
+    })
+}
+
 export function registerArtistAxios(formData){
     return axios.post(`${URL_BACKEND}/registerArtist`,formData,{
         withCredentials:true,
