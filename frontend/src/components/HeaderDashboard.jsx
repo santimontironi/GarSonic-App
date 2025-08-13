@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import logo from "../static/img/logo.png";
-import { UseAuth } from "../context/useAuth.js";
+import { UseContextUser } from "../context/UseContextUser";
 
 const HeaderDashboard = () => {
     const [userData, setUserData] = useState({});
     const [openNav, setOpenNav] = useState(false);
 
-    const { fetchUser, logout } = UseAuth();
+    const { fetchUser, logout } = UseContextUser();
 
     useEffect(() => {
         async function fetchUserData() {

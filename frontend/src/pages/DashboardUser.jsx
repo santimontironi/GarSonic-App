@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { UseAuth } from "../context/useAuth.js"
+import { UseContextUser } from "../context/UseContextUser.js"
 import HeaderDashboard from "../components/HeaderDashboard.jsx"
 
 
@@ -8,7 +8,7 @@ const DashboardUser = () => {
   const[userData,setUserData] = useState({})
   const[errorData,setErrorData] = useState(null)
 
-  const {fetchUser} = UseAuth()
+  const {fetchUser} = UseContextUser()
 
   useEffect(() => {
     async function fetchUserData(){

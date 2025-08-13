@@ -1,9 +1,9 @@
 import { registerUserAxios, loginUserAxios, logoutUser, dashboardUser } from "../api/api.js";
 import { useState, useEffect } from "react";
-import { AuthContext } from "./AuthContext.jsx";
+import { ContextUser } from "./UserContext.jsx";
 
 
-export const AuthProvider = ({children}) => {
+export const UserProvider = ({children}) => {
 
     const[user,setUser] = useState(null)
     const[loading,setLoading] = useState(true)
@@ -46,7 +46,7 @@ export const AuthProvider = ({children}) => {
     }, []);
 
     return(
-        <AuthContext.Provider value={{
+        <ContextUser.Provider value={{
             signUpUser,
             signInUser,
             fetchUser,
@@ -55,6 +55,6 @@ export const AuthProvider = ({children}) => {
             loading
         }}>
             {children}
-        </AuthContext.Provider>
+        </ContextUser.Provider>
     )
 }

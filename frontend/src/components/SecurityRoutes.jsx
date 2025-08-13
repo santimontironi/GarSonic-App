@@ -1,10 +1,10 @@
-import { UseAuth } from "../context/useAuth.js";
+import { UseContextUser } from "../context/UseContextUser.js";
 import { Navigate } from "react-router-dom";
 import Loader from "./Loader.jsx";
 
 const SecurityRoutes = ({children}) => {
 
-    const {user, loading} = UseAuth()
+    const {user, loading} = UseContextUser()
 
     // Si todavía está verificando, no redirigir
     if(loading) {

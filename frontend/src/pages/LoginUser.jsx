@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { UseAuth } from "../context/useAuth";
+import { UseContextUser } from "../context/UseContextUser";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -11,7 +11,7 @@ const LoginUser = () => {
 
     const[errorLoginUser,setErrorLoginUser] = useState("")
 
-    const {signInUser} = UseAuth()
+    const {signInUser} = UseContextUser()
 
     const{register,reset,handleSubmit,formState:{errors}} = useForm()
 

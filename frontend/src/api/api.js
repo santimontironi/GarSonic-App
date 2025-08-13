@@ -28,3 +28,12 @@ export function dashboardUser(){
         withCredentials: true
     })
 }
+
+export function registerArtistAxios(formData){
+    return axios.post(`${URL_BACKEND}/registerArtist`,formData,{
+        withCredentials:true,
+        headers:{
+            "Content-Type": "multipart/form-data"
+        }
+    })
+}
