@@ -28,7 +28,6 @@ const songSchema = new mongoose.Schema({
     },
     releaseDate: {
         type: Date,
-        default: Date.now,
         required: true
     }
 });
