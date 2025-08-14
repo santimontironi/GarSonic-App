@@ -8,7 +8,7 @@ export const RegisterArtist = async (req,res) => {
     try{
         const {email,password,artistName,genre,bio} = req.body
 
-        const existingArtist = Artist.findOne({email})
+        const existingArtist = await Artist.findOne({email})
 
         if(existingArtist){
             return res.status(400).json({message: "Ya existe un artista con este correo electrónico."})

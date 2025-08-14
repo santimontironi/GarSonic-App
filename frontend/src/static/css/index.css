@@ -42,6 +42,14 @@ body{
     font-family: "Special Gothic Expanded One", sans-serif;
 }
 
+.containerRegisterArtist{
+    background: linear-gradient(#662d91,#662d91,#000,#000);
+}
+
+.titleRegisterArtist h1{
+    font-family: "Special Gothic Expanded One", sans-serif;
+}
+
 .tituloDashboard{
     font-family: "Special Gothic Expanded One", sans-serif;
     text-shadow: 7px 7px 10px #662d91;
