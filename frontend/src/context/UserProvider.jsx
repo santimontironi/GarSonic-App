@@ -19,7 +19,7 @@ export const UserProvider = ({children}) => {
         setUser(res.data.user)
         return res.data
     }
-    
+
     async function logout(){
         const res = await logoutUser()
         setUser(null)
@@ -32,7 +32,6 @@ export const UserProvider = ({children}) => {
             if(res.data.authenticated === false){
                 setUser(null)
             }else{
-                console.log(res.data)
                 setUser(res.data.user);
             }
             return res

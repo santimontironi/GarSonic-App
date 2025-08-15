@@ -43,7 +43,7 @@ body{
 }
 
 .containerRegisterArtist{
-    background: linear-gradient(#662d91,#662d91,#000,#000);
+    background: linear-gradient(#662d91,#000,#662d91,#000);
 }
 
 .titleRegisterArtist h1{
@@ -53,6 +53,14 @@ body{
 .tituloDashboard{
     font-family: "Special Gothic Expanded One", sans-serif;
     text-shadow: 7px 7px 10px #662d91;
+}
+
+.containerLoginArtist{
+    background: linear-gradient(150deg,#000,#662d91,#7704a1,#000,#000);
+}
+
+.titleLoginArtist h1{
+    font-family: "Special Gothic Expanded One", sans-serif;
 }
 
 @media screen and (min-width:300px) and (max-width:820px){

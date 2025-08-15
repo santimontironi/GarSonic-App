@@ -58,7 +58,7 @@ const RegisterArtist = () => {
         <h1 className="bg-[#662d91] text-white text-[32px] shadow-[7px_10px_15px_rgba(0,0,0,0.70)] p-[12px] md:text-[40px] md:w-[600px] text-center">Registro de Artista</h1>
       </div>
 
-      <form className="flex flex-col w-[350px] m-auto h-[600px] p-[20px] rounded-[10px] shadow-[5px_7px_10px_#000] md:w-[450px] md:h-[600px] xl:h-[600px]" method="post" onSubmit={handleSubmit(submitForm)}>
+      <form className="flex flex-col w-[350px] m-auto h-[620px] p-[20px] rounded-[10px] shadow-[5px_7px_10px_#000] md:w-[450px]" method="post" onSubmit={handleSubmit(submitForm)}>
 
         <div className="mt-5 flex flex-col">
             <label className="text-white" htmlFor="profilePhoto">Foto de perfil</label>

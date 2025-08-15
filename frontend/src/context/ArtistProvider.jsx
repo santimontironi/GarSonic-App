@@ -1,6 +1,6 @@
 import { ArtistContext } from "./ArtistContext"
 import { useState } from "react"
-import { loginArtistAxios, registerArtistAxios } from "../api/api"
+import { loginArtistAxios, registerArtistAxios } from "../api/api.js"
 
 const ArtistProvider = ({children}) => {
 
