@@ -28,7 +28,7 @@ export const RegisterArtist = async (req,res) => {
     }
 }
 
-export const LoginArtist = async () => {
+export const LoginArtist = async (req,res) => {
     try{
         const {identifier,password} = req.body
 
