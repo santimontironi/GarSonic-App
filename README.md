@@ -13,4 +13,4 @@
 | JWT        | Autenticación por token |
 | Bcrypt     | Hasheo de contraseñas |
 | Vite       | Entorno de desarrollo frontend |
-| TailwindCSS        | Estilos |
+| TailwindCSS | Estilos |
