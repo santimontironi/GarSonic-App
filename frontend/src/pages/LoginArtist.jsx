@@ -18,12 +18,11 @@ const LoginArtist = () => {
   async function submitForm(values) {
     try {
       await signInArtist(values)
-      setErrorLoginUser("")
+      setErrorLoginArtist("")
       reset()
       setCorrectLoginArtist(true)
     }
     catch (error) {
-      console.log("el error es ---->", error)
       if (error.response?.data?.message) {
         reset()
         setErrorLoginArtist(error.response.data.message)
@@ -33,7 +32,7 @@ const LoginArtist = () => {
 
   useEffect(() => {
     if (correctLoginArtist) {
-      navigate('/usuario')
+      navigate('/artist')
     }
   }, [correctLoginArtist, navigate])
 
@@ -73,7 +72,7 @@ const LoginArtist = () => {
       </div>
 
       {errorLoginArtist && (
-        <p className="errorAuth text-center text-white bg-[#d81630] p-[8px] mt-[30px] shadow-[5px_10px_15px_#101010] w-[400px] lg:p-[10px] font-[900] m-auto lg:mt-[20px] lg:w-[700px]">Error al iniciar sesión: {errorLoginArtist}</p>
+        <p className="errorAuth text-center text-white bg-[#d81630] p-[8px] mt-[30px] shadow-[5px_10px_15px_#101010] w-[100px] lg:p-[10px] font-[900] m-auto lg:mt-[20px] lg:w-[700px]">Error al iniciar sesión: {errorLoginArtist}</p>
       )}
 
     </main>
