@@ -7,12 +7,14 @@ import DashboardUser from "./pages/DashboardUser";
 import SecurityRoutesUser from "./components/SecurityRoutesUser";
 import LoginArtist from "./pages/LoginArtist";
 import RegisterArtist from "./pages/RegisterArtist";
+import About from "./pages/About";
 
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Index/>}/>
+        <Route path="/sobreNosotros" element={<About/>}/>
         <Route path="/ingresar" element={<LoginOptionPage/>} />
         <Route path="/loginUsuario" element={<LoginUser/>} />
         <Route path="/registroUsuario" element={<RegisterUser/>} />
