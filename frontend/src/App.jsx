@@ -4,7 +4,7 @@ import LoginOptionPage from "./pages/LoginOptionPage";
 import LoginUser from "./pages/LoginUser";
 import RegisterUser from "./pages/RegisterUser";
 import DashboardUser from "./pages/DashboardUser";
-import SecurityRoutes from "./components/SecurityRoutes";
+import SecurityRoutesUser from "./components/SecurityRoutesUser";
 import LoginArtist from "./pages/LoginArtist";
 import RegisterArtist from "./pages/RegisterArtist";
 
@@ -19,9 +19,9 @@ const App = () => {
         <Route path="/loginArtista" element={<LoginArtist/>} />
         <Route path="/registroArtista" element={<RegisterArtist/>} />
         <Route path="/usuario" element={
-          <SecurityRoutes>
+          <SecurityRoutesUser>
             <DashboardUser/>
-          </SecurityRoutes>
+          </SecurityRoutesUser>
         } />
       </Routes>
     </BrowserRouter>

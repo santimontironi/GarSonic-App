@@ -2,7 +2,7 @@ import { UseContextUser } from "../context/UseContextUser.js";
 import { Navigate } from "react-router-dom";
 import Loader from "./Loader.jsx";
 
-const SecurityRoutes = ({children}) => {
+const SecurityRoutesUser = ({children}) => {
 
     const {user, loading} = UseContextUser()
 
@@ -22,4 +22,4 @@ const SecurityRoutes = ({children}) => {
     )
 }
 
-export default SecurityRoutes
+export default SecurityRoutesUser
