@@ -45,9 +45,8 @@ const LoginUser = () => {
     useEffect(() => {
         if(location.state?.successMessage){
             toast.success(location.state.successMessage)
-            navigate(location.pathname, { replace: true, state:{} })
         }
-    },[location,navigate])
+    },[location])
 
     return (
         <main className="containerLoginUser w-full h-screen">
