@@ -46,9 +46,9 @@ const RegisterUser = () => {
 
   useEffect(() => {
     if (correctRegister) {
-      navigate('/loginUsuario')
+      navigate('/loginUsuario',{state: {successMessage: "Usuario registrado con éxito, inicia sesión."}})
     }
-  }, [correctRegister, navigate])
+  }, [correctRegister])
 
   return (
     <main className="containerRegisterUser min-h-screen w-full">

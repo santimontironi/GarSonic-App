@@ -3,10 +3,15 @@ import { UseContextUser } from "../context/UseContextUser";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion"
+import { useLocation } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const LoginUser = () => {
 
     const navigate = useNavigate()
+
+    const location = useLocation();
 
     const [correctLoginuser, setCorrectLoginUser] = useState(false)
 
@@ -36,6 +41,13 @@ const LoginUser = () => {
             navigate('/usuario')
         }
     }, [correctLoginuser, navigate])
+
+    useEffect(() => {
+        if(location.state?.successMessage){
+            toast.success(location.state.successMessage)
+            navigate(location.pathname, { replace: true, state:{} })
+        }
+    },[location,navigate])
 
     return (
         <main className="containerLoginUser w-full h-screen">
@@ -79,10 +91,11 @@ const LoginUser = () => {
             </motion.div>
 
 
-
             {errorLoginUser && (
                 <p className="errorAuth text-center text-white bg-[#d81630] p-[8px] mt-[30px] shadow-[5px_10px_15px_#101010] w-[350px] lg:p-[10px] font-[900] m-auto lg:mt-[20px] lg:w-[700px]">Error al iniciar sesión: {errorLoginUser}</p>
             )}
+
+            <ToastContainer/>
 
         </main>
     )
