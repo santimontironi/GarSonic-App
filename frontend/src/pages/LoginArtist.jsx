@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { UseContextArtist } from "../context/UseContextArtist.js";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion"
 
 const LoginArtist = () => {
 

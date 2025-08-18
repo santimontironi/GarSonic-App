@@ -8,11 +8,6 @@
     user-select: none;
 }
 
-body{
-    overflow-x: hidden;
-    overflow-y: hidden;
-}
-
 .tituloIndex{
     font-family: "Special Gothic Expanded One", sans-serif;
     text-shadow: 7px 7px 10px rgba(0,0,0,0.5);
