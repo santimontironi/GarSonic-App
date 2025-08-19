@@ -12,7 +12,7 @@ const About = () => {
         viewport={{ once: true }}
       >
 
-        <div className="flex flex-col items-center justify-center h-[700px] lg:flex-row border-b-2 border-purple-600 lg:w-[1000px] lg:justify-between lg:mx-auto lg:h-[650px] lg:gap-[25px]">
+        <div className="flex flex-col items-center justify-center h-[800px] md:flex-row md:h-[650px] border-b-2 border-purple-600 lg:w-[1000px] lg:justify-between lg:mx-auto lg:gap-[25px]">
           <figure className="w-[320px] h-[400px] bg-purple-800 relative p-4 shadow-[8px_6px_10px_rgba(0,0,0,0.70)] rounded-[8px] lg:w-[450px] lg:h-[480px]">
             <img className="w-[300px] object-cover absolute left-[-10px] rounded-[8px] lg:w-[400px] lg:left-[-20px]" src={photoNosotros} alt="Persona escuchando música" />
           </figure>
