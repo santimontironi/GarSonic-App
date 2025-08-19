@@ -8,7 +8,7 @@
 |------------|------|
 | MongoDB    | Base de datos NoSQL |
 | Express.js | Framework para Node.js |
-| React.js   | Frontend interactivo |
+| ReactJS  | Frontend interactivo |
 | Node.js    | Entorno de ejecución JS |
 | JWT        | Autenticación por token |
 | Bcrypt     | Hasheo de contraseñas |
