@@ -1,6 +1,55 @@
+import { motion } from "framer-motion"
+import photoNosotros from "../static/img/nosotros.jpg"
+
 const About = () => {
   return (
-    <div id="nosotros">About</div>
+
+    <section className="min-h-screen w-full pb-[50px]" id="nosotros">
+      <motion.div
+        initial={{ opacity: 0, y: 70 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7 }}
+        viewport={{ once: true }}
+      >
+
+        <div className="flex flex-col items-center justify-center h-[700px] lg:flex-row border-b-2 border-purple-600 lg:w-[1000px] lg:justify-between lg:mx-auto lg:h-[650px] lg:gap-[25px]">
+          <figure className="w-[320px] h-[400px] bg-purple-800 relative p-4 shadow-[8px_6px_10px_rgba(0,0,0,0.70)] rounded-[8px] lg:w-[450px] lg:h-[480px]">
+            <img className="w-[300px] object-cover absolute left-[-10px] rounded-[8px] lg:w-[400px] lg:left-[-20px]" src={photoNosotros} alt="Persona escuchando música" />
+          </figure>
+          <div className="flex flex-col items-center p-[10px]">
+            <h2 className="text-[30px] font-bold text-center mt-6 lg:text-[50px]">Nuestra misión</h2>
+            <p className="mt-4 text-center max-w-[400px] lg:max-w-[600px] lg:text-[17px]">
+              En <span className="font-semibold text-purple-600">GarSonic</span> buscamos conectar a las personas con la música que aman.
+              Nuestro objetivo es ofrecer un espacio donde artistas emergentes y consolidados
+              puedan compartir su arte, y donde los usuarios encuentren playlists personalizadas,
+              recomendaciones y experiencias únicas.
+            </p>
+            <div className="mt-5">
+              <a className="inline-block bg-purple-800 p-[10px] text-white rounded-[10px] hover:scale-110 transition duration-200 lg:rounded-[12px] lg:text-[20px]" href="/ingresar">Comenzar</a>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col items-center justify-center mt-[28px]">
+          <span className="text-[20px] font-bold">En nuestra aplicación podrás:</span>
+          <ul className="mt-[20px] list-none flex flex-col gap-[15px] lg:flex-row lg:gap-[30px] lg:mt-[40px]">
+            <li className="flex items-center gap-2 bg-purple-600 text-white p-[10px] rounded-[10px]">
+              <i class="bi bi-music-note text-[30px]"></i>
+              Explorar miles de géneros musicales
+            </li>
+            <li className="flex items-center gap-2 bg-purple-600 text-white p-[10px] rounded-[10px]">
+              <i class="bi bi-person-circle text-[30px]"></i>
+              Conectar con tus artistas favoritos
+            </li>
+            <li className="flex items-center gap-2 bg-purple-600 text-white p-[10px] rounded-[10px]">
+              <i class="bi bi-earbuds text-[30px]"></i>
+              Crear playlists personalizadas
+            </li>
+          </ul>
+        </div>
+
+      </motion.div>
+    </section>
   )
 }
 

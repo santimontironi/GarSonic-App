@@ -15,7 +15,7 @@ const Header = () => {
     }
 
 return (
-    <header className="xl:relative lg:relative w-full h-[100px] lg:h-[150px] flex justify-between bg-black items-center lg:pl-[50px] lg:pr-[50px] pl-[20px] pr-[20px] shadow-[10px_25px_25px_rgba(0,0,0,0.50)]">
+    <header className="sticky top-0 w-full z-50 h-[100px] lg:h-[150px] flex justify-between bg-black items-center lg:pl-[50px] lg:pr-[50px] pl-[20px] pr-[20px] shadow-[10px_25px_25px_rgba(0,0,0,0.50)]">
             <div>
                 <a href="/"><img className="w-[100px]" src={logo} alt="logo" /></a>
             </div>
@@ -24,7 +24,7 @@ return (
                 <i className="bi bi-list text-white text-[25px]"></i>
             </button>
 
-            <nav className={`${openNav ? "opacity-100 translate-x-0 navPrincipal" : "opacity-0 translate-x-full"} transition-all duration-300 ease-in-out text-white list-none fixed top-0 right-0 w-[200px] p-[15px] h-[100vh] bg-black
+            <nav className={`${openNav ? "opacity-100 translate-x-0 z-50 navPrincipal" : "opacity-0 translate-x-full"} transition-all duration-300 ease-in-out text-white list-none fixed top-0 right-0 w-[200px] p-[15px] h-[100vh] bg-black
 
             
             lg:static lg:flex lg:flex-row lg:gap-[30px] lg:transition-none lg:opacity-100 lg:h-auto lg:w-auto lg:bg-transparent lg:translate-x-0`}>

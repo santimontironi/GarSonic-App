@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 const Index = () => {
   return (
     <>
-      <section id="inicio" className="index-container w-full h-[calc(100vh-100px)] lg:h-[calc(100vh-150px)] md:h-[calc(100vh-100px)] bg-gradient-to-b from-purple-900 to-purple-700">
+      <section id="inicio" className="index-container w-full h-[calc(80vh-100px)] lg:h-[calc(100vh-150px)] md:h-[calc(100vh-100px)] bg-gradient-to-b from-purple-900 to-purple-700">
         <motion.div
           initial={{ opacity: 0, y:70 }}
           whileInView={{ opacity: 1, y: 0 }}
