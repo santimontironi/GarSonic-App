@@ -33,8 +33,8 @@ return (
                         <button className="lg:hidden border-none bg-purple-500 w-[50px] h-[50px] flex justify-center items-center rounded-[10px]" onClick={handleCloseNav}>
                                 <i className="bi bi-x-lg text-white text-[25px]"></i>
                         </button>
-                        <li ><Link className="text-[13px] lg:text-[16px] p-[8px] hvr-bounce-to-bottom" to="/">Inicio</Link></li>
-                        <li ><Link className="text-[13px] lg:text-[16px] p-[8px] hvr-bounce-to-bottom" to="/garSonicInfo">¿Qué es GarSonic?</Link></li>
+                        <li ><a href="#inicio" className="text-[13px] lg:text-[16px] p-[8px] hvr-bounce-to-bottom">Inicio</a></li>
+                        <li ><a href="#nosotros" className="text-[13px] lg:text-[16px] p-[8px] hvr-bounce-to-bottom">¿Qué es GarSonic?</a ></li>
                         <li ><Link className="text-[13px] lg:text-[16px] p-[8px] hvr-bounce-to-bottom" to="/rols">Roles</Link></li>
                         <li ><Link className="text-[13px] lg:text-[16px] p-[8px] bg-white text-black rounded-xl" to="/ingresar">Ingresar</Link></li>
                 </ul>

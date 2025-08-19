@@ -7,5 +7,6 @@ const router = Router()
 
 router.post('/registerArtist', upload.single('profilePhoto'), RegisterArtist)
 router.post('/loginArtist',LoginArtist)
+router.get('/dashboardArtist', verifyToken, RegisterArtist)
 
 export default router

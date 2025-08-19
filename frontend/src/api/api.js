@@ -43,3 +43,9 @@ export function registerArtistAxios(formData){
         }
     })
 }
+
+export function dashboardArtist(){
+    return axios.get(`${URL_BACKEND}/dashboardArtist`,{
+        withCredentials: true
+    })
+}

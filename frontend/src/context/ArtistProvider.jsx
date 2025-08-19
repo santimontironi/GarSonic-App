@@ -1,10 +1,12 @@
 import { ArtistContext } from "./ArtistContext"
 import { useState } from "react"
-import { loginArtistAxios, registerArtistAxios } from "../api/api.js"
+import { loginArtistAxios, registerArtistAxios, dashboardArtist} from "../api/api.js"
 
 const ArtistProvider = ({children}) => {
 
     const[artist,setArtist] = useState(null)
+
+    const[loading,setLoading] = useState(true)
 
     async function signUpArtist(artist){
         const res = await registerArtistAxios(artist)
@@ -17,6 +19,26 @@ const ArtistProvider = ({children}) => {
         setArtist(res.data.artist)
         return res.data
     }
+
+    async function dashboardArtist(){
+        try {
+            const res = await dashboardArtist();
+            if(res.data.authenticated === false){
+                setArtist(null)
+            }else{
+                setArtist(res.data.artist);
+            }
+            return res
+        } catch (error) {
+            setArtist(null);
+        }
+        finally{
+            setTimeout(function() {
+                setLoading(false)
+            }, 1500)
+        }
+    }
+
     async function logout(){
         const res = await logoutUser()
         setArtist(null)
@@ -24,7 +46,7 @@ const ArtistProvider = ({children}) => {
     }
 
     return (
-        <ArtistContext.Provider value={{artist,signInArtist,signUpArtist,logout}}>
+        <ArtistContext.Provider value={{artist,signInArtist,signUpArtist,dashboardArtist,logout}}>
             {children}
         </ArtistContext.Provider>
     )

@@ -5,7 +5,7 @@ dotenv.config();
 
 export const verifyToken = (req, res, next) => {
     // Obtener el token de la cookie
-    const token = req.cookies.token;
+    const token = req.cookies.tokenArtist;
     
     if (!token) {
         return res.json({ authenticated: false });

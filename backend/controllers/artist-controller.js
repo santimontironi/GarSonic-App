@@ -64,3 +64,19 @@ export const LoginArtist = async (req,res) => {
         return res.status(500).json({message: "Error al ingresar como artista."})
     }
 }
+
+export const DashboardArtist = async (req,res) => {
+    try{
+        const artistId = req.artistId;
+        const artist = await Artist.findById(artistId);
+        
+        if (!artist) {
+            return res.status(404).json({ message: "Artista no encontrado" });
+        }
+        
+        res.json({ authenticated: true, artist });
+    }
+    catch(error){
+        return res.status(500).json({message: "Error al obtener datos del artista."})
+    }
+}

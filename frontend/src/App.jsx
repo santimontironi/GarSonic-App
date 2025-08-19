@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
+import Landing from "./components/Landing";
 import LoginOptionPage from "./pages/LoginOptionPage";
 import LoginUser from "./pages/LoginUser";
 import RegisterUser from "./pages/RegisterUser";
@@ -13,8 +13,8 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Index/>}/>
-        <Route path="/sobreNosotros" element={<About/>}/>
+        <Route path="/" element={<Landing/>}/>
+        <Route path="/nosotros" element={<About/>}/>
         <Route path="/ingresar" element={<LoginOptionPage/>} />
         <Route path="/loginUsuario" element={<LoginUser/>} />
         <Route path="/registroUsuario" element={<RegisterUser/>} />
