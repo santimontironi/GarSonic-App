@@ -37,7 +37,7 @@ const LoginArtist = () => {
 
   useEffect(() => {
     if (correctLoginArtist) {
-      navigate('/artist')
+      navigate('/artista')
     }
   }, [correctLoginArtist, navigate])
 

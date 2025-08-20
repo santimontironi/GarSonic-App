@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import logo from "../static/img/logo.png";
 import { UseContextUser } from "../context/UseContextUser";
 
-const HeaderDashboard = () => {
+const HeaderDashboardUser = () => {
     const [userData, setUserData] = useState({});
     const [openNav, setOpenNav] = useState(false);
 
@@ -83,4 +83,4 @@ const HeaderDashboard = () => {
     );
 };
 
-export default HeaderDashboard;
+export default HeaderDashboardUser;

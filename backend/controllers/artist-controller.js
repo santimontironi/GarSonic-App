@@ -1,4 +1,5 @@
 import Artist from "../models/artist-model.js"
+import Song from "../models/song-model.js";
 import bcrypt from 'bcrypt'
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
@@ -80,3 +81,32 @@ export const DashboardArtist = async (req,res) => {
         return res.status(500).json({message: "Error al obtener datos del artista."})
     }
 }
+
+export const UploadSong = async (req,res) => {
+    try{
+        const artistId = req.artistId
+        const {title,coverImage,genre,audioUrl,releaseDate} = req.body
+
+        const newSong = new Song({title,coverImage,genre,audioUrl,releaseDate,artist:artistId})
+
+        await newSong.save()
+
+        res.status(201).json({ message: "Canción agregada correctamente" });
+    }
+    catch(error){
+        return res.status(500).json({message: "Error al subir foto"})
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

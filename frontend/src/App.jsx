@@ -7,6 +7,8 @@ import DashboardUser from "./pages/DashboardUser";
 import SecurityRoutesUser from "./components/SecurityRoutesUser";
 import LoginArtist from "./pages/LoginArtist";
 import RegisterArtist from "./pages/RegisterArtist";
+import DashboardArtist from "./pages/DashboardArtist";
+import SecurityRoutesArtist from "./components/SecurityRoutesArtist";
 import About from "./pages/About";
 
 const App = () => {
@@ -24,6 +26,11 @@ const App = () => {
           <SecurityRoutesUser>
             <DashboardUser/>
           </SecurityRoutesUser>
+        } />
+        <Route path="/artista" element={
+          <SecurityRoutesArtist>
+            <DashboardArtist/>
+          </SecurityRoutesArtist>
         } />
       </Routes>
     </BrowserRouter>

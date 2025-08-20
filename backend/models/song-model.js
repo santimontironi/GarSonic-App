@@ -10,10 +10,6 @@ const songSchema = new mongoose.Schema({
         ref: "Artist",
         required: true
     },
-    duration: { 
-        type: Number,
-        required: true
-    },
     genre: {
         type: String,
         required: true

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { UseContextUser } from "../context/UseContextUser.js"
-import HeaderDashboard from "../components/HeaderDashboard.jsx"
+import HeaderDashboardUser from "../components/HeaderDashboardUser.jsx"
 
 
 const DashboardUser = () => {
@@ -26,7 +26,7 @@ const DashboardUser = () => {
   return (
     <main className="w-full h-screen bg-[#171717]">
        
-      <HeaderDashboard />
+      <HeaderDashboardUser />
 
       <section className="flex flex-col items-center h-screen w-full justify-center">
         <h1 className="text-white tituloDashboard text-[32px]">Bienvenido <span>{userData.name}</span></h1>
