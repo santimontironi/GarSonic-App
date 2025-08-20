@@ -25,6 +25,10 @@ const songSchema = new mongoose.Schema({
     releaseDate: {
         type: Date,
         required: true
+    },
+    active: {
+        type: Boolean,
+        default: true
     }
 });
 

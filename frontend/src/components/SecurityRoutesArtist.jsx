@@ -11,7 +11,7 @@ const SecurityRoutesArtist = ({children}) => {
     }
 
     if(!artist){
-        <Navigate to='/loginArtista'/>
+        return <Navigate to='/loginArtista'/>
     }
 
     return (

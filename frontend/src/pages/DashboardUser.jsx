@@ -2,7 +2,6 @@ import { useState, useEffect } from "react"
 import { UseContextUser } from "../context/UseContextUser.js"
 import HeaderDashboardUser from "../components/HeaderDashboardUser.jsx"
 
-
 const DashboardUser = () => {
 
   const[userData,setUserData] = useState({})

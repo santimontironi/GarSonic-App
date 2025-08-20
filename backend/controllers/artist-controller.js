@@ -8,6 +8,7 @@ import dotenv from "dotenv";
 export const RegisterArtist = async (req,res) => {
     try{
         const {email,password,artistName,genre,bio} = req.body
+        const profilePhoto = req.file.filename; 
 
         const existingArtist = await Artist.findOne({email})
 
@@ -17,7 +18,7 @@ export const RegisterArtist = async (req,res) => {
 
         const hashPassword = await bcrypt.hash(password,10)
 
-        const newArtist = new Artist({email,password:hashPassword,artistName,genre,bio})
+        const newArtist = new Artist({profilePhoto,email,password:hashPassword,artistName,genre,bio})
 
         await newArtist.save()
 
@@ -98,8 +99,18 @@ export const UploadSong = async (req,res) => {
     }
 }
 
-
-
+export const Logout = async (req,res) => {
+    try{
+        res.clearCookie("tokenArtist",{
+            httpOnly: true,
+            sameSite: "Lax"
+        });
+        res.json({ message: "Logout exitoso" });
+    }
+    catch(error){
+        return res.status(500).json({message: "Error al cerrar sesión"})
+    }
+}
 
 
 

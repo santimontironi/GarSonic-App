@@ -1,6 +1,6 @@
 import { ArtistContext } from "./ArtistContext"
-import { useState } from "react"
-import { loginArtistAxios, registerArtistAxios, dashboardArtist} from "../api/api.js"
+import { useEffect, useState } from "react"
+import { loginArtistAxios, registerArtistAxios, dashboardArtist, logoutArtist} from "../api/api.js"
 
 const ArtistProvider = ({children}) => {
 
@@ -20,7 +20,7 @@ const ArtistProvider = ({children}) => {
         return res.data
     }
 
-    async function dashboardArtist(){
+    async function fetchArtist(){
         try {
             const res = await dashboardArtist();
             if(res.data.authenticated === false){
@@ -39,14 +39,18 @@ const ArtistProvider = ({children}) => {
         }
     }
 
+    useEffect(() => {
+        fetchArtist()
+    }, [])
+
     async function logout(){
-        const res = await logoutUser()
+        const res = await logoutArtist()
         setArtist(null)
         return res
     }
 
     return (
-        <ArtistContext.Provider value={{artist,signInArtist,signUpArtist,dashboardArtist,logout}}>
+        <ArtistContext.Provider value={{artist,signInArtist,signUpArtist,fetchArtist,logout,loading}}>
             {children}
         </ArtistContext.Provider>
     )

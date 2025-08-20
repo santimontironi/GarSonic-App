@@ -49,3 +49,9 @@ export function dashboardArtist(){
         withCredentials: true
     })
 }
+
+export function logoutArtist(){
+    return axios.post(`${URL_BACKEND}/logoutArtist`, {}, {
+        withCredentials:true
+    })
+}

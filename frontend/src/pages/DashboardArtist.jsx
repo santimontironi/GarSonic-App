@@ -1,8 +1,14 @@
-
+import HeaderDashboardArtist from "../components/HeaderDashboardArtist"
 
 const DashboardArtist = () => {
   return (
-    <div>DashboardArtist</div>
+    <>
+      <HeaderDashboardArtist />
+
+      <main className="w-full h-screen bg-purple-900">
+
+      </main>
+    </>
   )
 }
 
