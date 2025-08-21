@@ -1,6 +1,6 @@
 # 🎵 GarSonic - App Mini Spotify 🎧 (en desarrollo)
 
-**GarSonic** es una aplicación web inspirada en Spotify que permite a los usuarios y/o artistas registrarse, iniciar sesión, escuchar música y subir canciones de forma sencilla. Está desarrollada con el stack **MERN** (MongoDB, Express.js, React.js y Node.js), y cuenta con autenticación segura utilizando **JWT**.
+**GarSonic** es una aplicación web inspirada en Spotify que permite a los usuarios y/o artistas registrarse, iniciar sesión, gestor de playlist (CRUD), escuchar música y subir canciones. Está desarrollada con el stack **MERN** (MongoDB, Express.js, React.js y Node.js), y cuenta con autenticación segura utilizando **JWT**.
 
 ## 🛠️ Tecnologías utilizadas
 
