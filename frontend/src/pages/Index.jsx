@@ -10,7 +10,7 @@ const Index = () => {
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
         >
-          <div className="contentIndex text-white flex flex-col gap-3 h-[600px] md:h-[800px] lg:h-[640px] w-full justify-center items-center">
+          <div className="contentIndex text-white flex flex-col gap-3 h-[600px] md:h-[600px] lg:h-[640px] w-full justify-center items-center">
             <h1 className="tituloIndex text-center text-[45px] md:text-[50px] xl:text-[75px]">Te damos la bienvenida a GarSonic</h1>
             <p className="w-[320px] text-center lg:text-[20px] lg:w-[850px] md:text-[18px] md:w-[600px]">Tu nueva forma de escuchar música está acá. Descubrí artistas, explorá géneros y disfrutá de tus canciones favoritas en un solo lugar. GarSonic es una experiencia musical simple, rápida y sin distracciones. ¿Listo para empezar? Dale play y sentí la música.</p>
             <div className="mt-3">
