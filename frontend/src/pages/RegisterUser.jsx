@@ -3,6 +3,7 @@ import { UseContextUser } from "../context/UseContextUser.js";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion"
+import BackButton from "../components/BackButton.jsx";
 
 const RegisterUser = () => {
 
@@ -53,8 +54,10 @@ const RegisterUser = () => {
   return (
     <main className="containerRegisterUser min-h-screen w-full">
 
+      <BackButton to="/loginUsuario" />
+
       <div className="titleRegisterUser h-[160px] flex justify-center items-center">
-        <h1 className="bg-[#662d91] text-white text-[32px] shadow-[7px_10px_15px_rgba(0,0,0,0.70)] p-[12px] md:text-[40px] md:w-[600px] text-center">Registro de usuario</h1>
+        <h1 className="bg-[#662d91] w-[320px] text-white text-[27px] shadow-[7px_10px_15px_rgba(0,0,0,0.70)] p-[12px] md:text-[40px] md:w-[600px] text-center">Registro de usuario</h1>
       </div>
 
       <motion.div

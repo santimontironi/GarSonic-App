@@ -5,6 +5,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { motion } from "framer-motion"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import BackButton from "../components/BackButton.jsx";
 
 const LoginArtist = () => {
 
@@ -50,6 +51,8 @@ const LoginArtist = () => {
 
   return (
     <main className="containerLoginArtist w-full h-screen">
+
+      <BackButton to="/ingresar" />
 
       <div className="titleLoginUser h-[200px] flex justify-center items-center">
         <h1 className="bg-black text-white text-[32px] shadow-[7px_10px_15px_rgba(0,0,0,0.70)] p-[12px] md:text-[40px] md:w-[600px] text-center">Ingreso de artista</h1>
