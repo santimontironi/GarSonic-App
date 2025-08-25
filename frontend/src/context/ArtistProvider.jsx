@@ -1,6 +1,6 @@
 import { ArtistContext } from "./ArtistContext"
 import { useEffect, useState } from "react"
-import { loginArtistAxios, registerArtistAxios, dashboardArtist, logoutArtist} from "../api/api.js"
+import { loginArtistAxios, registerArtistAxios, dashboardArtist, uploadSongAxios, logoutArtist} from "../api/api.js"
 
 const ArtistProvider = ({children}) => {
 
@@ -39,6 +39,11 @@ const ArtistProvider = ({children}) => {
         }
     }
 
+    async function uploadSong(song){
+        const res = await uploadSongAxios(song)
+        return res.data
+    }
+
     useEffect(() => {
         fetchArtist()
     }, [])
@@ -50,7 +55,7 @@ const ArtistProvider = ({children}) => {
     }
 
     return (
-        <ArtistContext.Provider value={{artist,signInArtist,signUpArtist,fetchArtist,logout,loading}}>
+        <ArtistContext.Provider value={{artist,signInArtist,signUpArtist,fetchArtist,logout,loading,uploadSong}}>
             {children}
         </ArtistContext.Provider>
     )

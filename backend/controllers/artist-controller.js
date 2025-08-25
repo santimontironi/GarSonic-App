@@ -86,16 +86,19 @@ export const DashboardArtist = async (req,res) => {
 export const UploadSong = async (req,res) => {
     try{
         const artistId = req.artistId
-        const {title,coverImage,genre,audioUrl,releaseDate} = req.body
+        const {title,genre,releaseDate,duration} = req.body
+        
+        const coverImage = req.files.coverImage[0].filename;
+        const audioFile = req.files.audioFile[0].filename;
 
-        const newSong = new Song({title,coverImage,genre,audioUrl,releaseDate,artist:artistId})
+        const newSong = new Song({title,coverImage,genre,audioFile,releaseDate,duration,artist:artistId})
 
         await newSong.save()
 
         res.status(201).json({ message: "Canción agregada correctamente" });
     }
     catch(error){
-        return res.status(500).json({message: "Error al subir foto"})
+        return res.status(500).json({message: `Error al subir la canción: ${error.message}`})
     }
 }
 

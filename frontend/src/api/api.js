@@ -17,6 +17,15 @@ export function loginUserAxios(formData){
     })
 }
 
+export function uploadSongAxios(formData){
+    return axios.post(`${URL_BACKEND}/uploadSong`,formData,{
+        withCredentials:true,
+        headers:{
+            "Content-Type": "multipart/form-data"
+        }
+    })
+}
+
 export function logoutUser(){
     return axios.post(`${URL_BACKEND}/logout`, {}, {
         withCredentials:true
