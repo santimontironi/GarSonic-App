@@ -11,13 +11,13 @@ const ArtistProvider = ({children}) => {
     async function signUpArtist(artist){
         const res = await registerArtistAxios(artist)
         setArtist(res.data.artist)
-        return res
+        return res.data
     }
     
     async function signInArtist(artist){
         const res = await loginArtistAxios(artist)
         setArtist(res.data.artist)
-        return res
+        return res.data
     }
 
     async function fetchArtist(){

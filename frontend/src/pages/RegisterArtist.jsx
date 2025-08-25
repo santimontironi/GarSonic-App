@@ -35,11 +35,10 @@ const RegisterArtist = () => {
 
       setCorrectRegister(true);
       setErrorRegister("");
-      reset();
       setFile(null);
+      reset();
     }
     catch (error) {
-      console.log(error)
       if (error.response?.data?.message) {
         setErrorRegister(error.response.data.message);
       }

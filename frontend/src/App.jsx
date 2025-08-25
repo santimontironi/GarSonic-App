@@ -9,6 +9,7 @@ import LoginArtist from "./pages/LoginArtist";
 import RegisterArtist from "./pages/RegisterArtist";
 import DashboardArtist from "./pages/DashboardArtist";
 import SecurityRoutesArtist from "./components/SecurityRoutesArtist";
+import UploadSong from "./pages/UploadSong";
 import About from "./pages/About";
 
 const App = () => {
@@ -30,6 +31,11 @@ const App = () => {
         <Route path="/artista" element={
           <SecurityRoutesArtist>
             <DashboardArtist/>
+          </SecurityRoutesArtist>
+        } />
+        <Route path="/artista/subirCancion" element={
+          <SecurityRoutesArtist>
+            <UploadSong/>
           </SecurityRoutesArtist>
         } />
       </Routes>
