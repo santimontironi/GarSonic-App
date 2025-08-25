@@ -4,7 +4,7 @@ import photoNosotros from "../static/img/nosotros.jpg"
 const About = () => {
   return (
 
-    <section className="min-h-screen w-full pb-[50px]" id="nosotros">
+    <section className="h-screen lg:h-[120vh] xl:h-[95vh] md:h-[75vh] w-full pb-[50px] lg:pb-[0px]" id="nosotros">
       <motion.div
         initial={{ opacity: 0, y: 70 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -12,13 +12,13 @@ const About = () => {
         viewport={{ once: true }}
       >
 
-        <div className="flex flex-col items-center justify-center h-[800px] md:flex-row md:h-[650px] border-b-2 border-purple-600 lg:w-[1000px] lg:justify-between lg:mx-auto lg:gap-[25px]">
-          <figure className="w-[320px] h-[400px] bg-purple-800 relative p-4 shadow-[8px_6px_10px_rgba(0,0,0,0.70)] rounded-[8px] lg:w-[450px] lg:h-[480px]">
+        <div className="flex flex-col items-center justify-center h-[760px] md:flex-row md:h-[500px] lg:h-[600px] lg:w-[1000px] lg:justify-between lg:mx-auto lg:gap-[25px]">
+          <figure className="w-[320px] h-[400px] md:w-[280px] md:h-[400px] bg-purple-800 relative p-4 shadow-[8px_6px_10px_rgba(0,0,0,0.70)] rounded-[8px] lg:w-[450px] lg:h-[480px]">
             <img className="w-[300px] object-cover absolute left-[-10px] rounded-[8px] lg:w-[400px] lg:left-[-20px]" src={photoNosotros} alt="Persona escuchando música" />
           </figure>
           <div className="flex flex-col items-center p-[10px]">
             <h2 className="text-[30px] font-bold text-center mt-6 lg:text-[50px]">Nuestra misión</h2>
-            <p className="mt-4 text-center max-w-[400px] lg:max-w-[600px] lg:text-[17px]">
+            <p className="mt-4 text-center max-w-[400px] lg:max-w-[600px] md:text-[14px] lg:text-[17px]">
               En <span className="font-semibold text-purple-600">GarSonic</span> buscamos conectar a las personas con la música que aman.
               Nuestro objetivo es ofrecer un espacio donde artistas emergentes y consolidados
               puedan compartir su arte, y donde los usuarios encuentren playlists personalizadas,
@@ -30,8 +30,8 @@ const About = () => {
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-center mt-[28px]">
-          <span className="text-[20px] font-bold">En nuestra aplicación podrás:</span>
+        <div className="flex flex-col items-center justify-center md:pb-[100px] pb-[70px] lg:pb-[0px] lg:w-[1000px] lg:mx-auto md:mt-[28px] border-t-2 border-purple-600 lg:mt-[30px]">
+          <span className="text-[20px] font-bold mt-[30px]">En nuestra aplicación podrás:</span>
           <ul className="mt-[20px] list-none flex flex-col gap-[15px] lg:flex-row lg:gap-[30px] lg:mt-[40px]">
             <li className="flex items-center gap-2 bg-purple-600 text-white p-[10px] rounded-[10px]">
               <i class="bi bi-music-note text-[30px]"></i>

@@ -15,16 +15,16 @@ const Header = () => {
     }
 
 return (
-    <header className="sticky top-0 w-full z-50 h-[100px] lg:h-[150px] flex justify-between bg-black items-center lg:pl-[50px] lg:pr-[50px] pl-[20px] pr-[20px] shadow-[10px_25px_25px_rgba(0,0,0,0.50)]">
+    <header className="sticky top-0 w-full z-50 h-[100px] md:h-[150px] lg:h-[150px] flex justify-between bg-black items-center lg:pl-[50px] lg:pr-[50px] pl-[20px] pr-[20px] shadow-[10px_25px_25px_rgba(0,0,0,0.50)]">
             <div>
-                <a href="/"><img className="w-[100px]" src={logo} alt="logo" /></a>
+                <a href="/"><img className="w-[100px] md:w-[150px]" src={logo} alt="logo" /></a>
             </div>
 
-            <button className="lg:hidden border-none bg-purple-500 w-[50px] h-[50px] flex justify-center items-center rounded-[10px]" onClick={handleOpenNav}>
+            <button className="lg:hidden border-none bg-purple-500 w-[50px] h-[50px] md:w-[60px] md:h-[60px] flex justify-center items-center rounded-[10px]" onClick={handleOpenNav}>
                 <i className="bi bi-list text-white text-[25px]"></i>
             </button>
 
-            <nav className={`${openNav ? "opacity-100 translate-x-0 z-50 navPrincipal" : "opacity-0 translate-x-full"} transition-all duration-300 ease-in-out text-white list-none fixed top-0 right-0 w-[200px] p-[15px] h-[100vh] bg-black
+            <nav className={`${openNav ? "opacity-100 translate-x-0 z-50 navPrincipal" : "opacity-0 translate-x-full"} transition-all duration-300 ease-in-out text-white list-none fixed top-0 right-0 w-[200px] md:w-[250px] p-[15px] h-[100vh] bg-black
 
             
             lg:static lg:flex lg:flex-row lg:gap-[30px] lg:transition-none lg:opacity-100 lg:h-auto lg:w-auto lg:bg-transparent lg:translate-x-0`}>
@@ -33,10 +33,10 @@ return (
                         <button className="lg:hidden border-none bg-purple-500 w-[50px] h-[50px] flex justify-center items-center rounded-[10px]" onClick={handleCloseNav}>
                                 <i className="bi bi-x-lg text-white text-[25px]"></i>
                         </button>
-                        <li ><a href="#inicio" className="text-[13px] lg:text-[16px] p-[8px] hvr-bounce-to-bottom">Inicio</a></li>
-                        <li ><a href="#nosotros" className="text-[13px] lg:text-[16px] p-[8px] hvr-bounce-to-bottom">¿Qué es GarSonic?</a ></li>
-                        <li ><Link className="text-[13px] lg:text-[16px] p-[8px] hvr-bounce-to-bottom" to="/rols">Roles</Link></li>
-                        <li ><Link className="text-[13px] lg:text-[16px] p-[8px] bg-white text-black rounded-xl" to="/ingresar">Ingresar</Link></li>
+                        <li ><a href="#inicio" className="text-[13px] lg:text-[16px] md:text-[18px] p-[8px] hvr-bounce-to-bottom">Inicio</a></li>
+                        <li ><a href="#nosotros" className="text-[13px] lg:text-[16px] md:text-[18px] p-[8px] hvr-bounce-to-bottom">¿Qué es GarSonic?</a ></li>
+                        <li ><Link className="text-[13px] lg:text-[16px] md:text-[18px] p-[8px] hvr-bounce-to-bottom" to="/rols">Roles</Link></li>
+                        <li ><Link className="text-[13px] lg:text-[16px] md:text-[18px] p-[8px] bg-white text-black rounded-xl" to="/ingresar">Ingresar</Link></li>
                 </ul>
 
             </nav>
