@@ -1,8 +1,12 @@
 import { useState, useEffect } from "react"
 import { UseContextArtist } from "../context/UseContextArtist.js"
 import { motion } from "framer-motion"
+import { useLocation } from "react-router-dom"
+import { ToastContainer, toast } from 'react-toastify';
 
 const DashboardArtist = () => {
+
+  const location = useLocation()
 
   const [artistData, setArtistData] = useState({})
   const [errorData, setErrorData] = useState(null)
@@ -22,9 +26,17 @@ const DashboardArtist = () => {
     fetchArtistData()
   }, [])
 
+  useEffect(() => {
+    if (location.state?.successMessage) {
+      toast.success(location.state.successMessage)
+    }
+  }, [location])
+
 
   return (
     <main className="w-full h-screen flex justify-center items-center bg-[#171717]">
+
+      <ToastContainer />
 
       <motion.section
         initial={{ opacity: 0, y: 70 }}
