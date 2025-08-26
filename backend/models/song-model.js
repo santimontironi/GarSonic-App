@@ -10,15 +10,11 @@ const songSchema = new mongoose.Schema({
         ref: "Artist",
         required: true
     },
-    duration: { 
-        type: Number,
-        required: true
-    },
     genre: {
         type: String,
         required: true
     },
-    audioUrl: {
+    audioFile: {
         type: String,
         required: true
     },
@@ -29,6 +25,14 @@ const songSchema = new mongoose.Schema({
     releaseDate: {
         type: Date,
         required: true
+    },
+    duration : {
+        type: String,
+        required: true
+    },
+    active: {
+        type: Boolean,
+        default: true
     }
 });
 

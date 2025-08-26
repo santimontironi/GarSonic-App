@@ -1,27 +1,42 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
+import Landing from "./components/Landing";
 import LoginOptionPage from "./pages/LoginOptionPage";
 import LoginUser from "./pages/LoginUser";
 import RegisterUser from "./pages/RegisterUser";
 import DashboardUser from "./pages/DashboardUser";
-import SecurityRoutes from "./components/SecurityRoutes";
+import SecurityRoutesUser from "./components/SecurityRoutesUser";
 import LoginArtist from "./pages/LoginArtist";
 import RegisterArtist from "./pages/RegisterArtist";
+import DashboardArtist from "./pages/DashboardArtist";
+import SecurityRoutesArtist from "./components/SecurityRoutesArtist";
+import UploadSong from "./pages/UploadSong";
+import About from "./pages/About";
 
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Index/>}/>
+        <Route path="/" element={<Landing/>}/>
+        <Route path="/nosotros" element={<About/>}/>
         <Route path="/ingresar" element={<LoginOptionPage/>} />
         <Route path="/loginUsuario" element={<LoginUser/>} />
         <Route path="/registroUsuario" element={<RegisterUser/>} />
         <Route path="/loginArtista" element={<LoginArtist/>} />
         <Route path="/registroArtista" element={<RegisterArtist/>} />
         <Route path="/usuario" element={
-          <SecurityRoutes>
+          <SecurityRoutesUser>
             <DashboardUser/>
-          </SecurityRoutes>
+          </SecurityRoutesUser>
+        } />
+        <Route path="/artista" element={
+          <SecurityRoutesArtist>
+            <DashboardArtist/>
+          </SecurityRoutesArtist>
+        } />
+        <Route path="/artista/subirCancion" element={
+          <SecurityRoutesArtist>
+            <UploadSong/>
+          </SecurityRoutesArtist>
         } />
       </Routes>
     </BrowserRouter>

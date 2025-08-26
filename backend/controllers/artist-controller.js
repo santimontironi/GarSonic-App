@@ -1,4 +1,5 @@
 import Artist from "../models/artist-model.js"
+import Song from "../models/song-model.js";
 import bcrypt from 'bcrypt'
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
@@ -7,6 +8,7 @@ import dotenv from "dotenv";
 export const RegisterArtist = async (req,res) => {
     try{
         const {email,password,artistName,genre,bio} = req.body
+        const profilePhoto = req.file.filename; 
 
         const existingArtist = await Artist.findOne({email})
 
@@ -16,7 +18,7 @@ export const RegisterArtist = async (req,res) => {
 
         const hashPassword = await bcrypt.hash(password,10)
 
-        const newArtist = new Artist({email,password:hashPassword,artistName,genre,bio})
+        const newArtist = new Artist({profilePhoto,email,password:hashPassword,artistName,genre,bio})
 
         await newArtist.save()
 
@@ -64,3 +66,79 @@ export const LoginArtist = async (req,res) => {
         return res.status(500).json({message: "Error al ingresar como artista."})
     }
 }
+
+export const DashboardArtist = async (req,res) => {
+    try{
+        const artistId = req.artistId;
+        const artist = await Artist.findById(artistId);
+        
+        if (!artist) {
+            return res.status(404).json({ message: "Artista no encontrado" });
+        }
+        
+        res.json({ authenticated: true, artist });
+    }
+    catch(error){
+        return res.status(500).json({message: "Error al obtener datos del artista."})
+    }
+}
+
+export const UploadSong = async (req,res) => {
+    try{
+        const artistId = req.artistId
+        const {title,genre,releaseDate,duration} = req.body
+        
+        const coverImage = req.files.coverImage[0].filename;
+        const audioFile = req.files.audioFile[0].filename;
+
+        const newSong = new Song({title,coverImage,genre,audioFile,releaseDate,duration,artist:artistId})
+
+        await newSong.save()
+
+        res.status(201).json({ message: "Canción agregada correctamente" });
+    }
+    catch(error){
+        return res.status(500).json({message: "Error al subir la canción"})
+    }
+}
+
+export const GetSongs = async (req,res) => {
+    try{
+        const artistId = req.artistId
+
+        // se obtienen todas las canciones cuyo campo 'artist' sea igual al id del artista logueado (req.artistId)
+        const songs = await Song.find({artist:artistId})
+
+        if(!songs){
+            return res.status(404).json({message:'No hay canciones aún'})
+        }
+
+        res.json(songs)
+    }
+    catch(error){
+        return res.status(500).json({message: "Error al obtener canciones."})
+    }
+}
+
+export const Logout = async (req,res) => {
+    try{
+        res.clearCookie("tokenArtist",{
+            httpOnly: true,
+            sameSite: "Lax"
+        });
+        res.json({ message: "Logout exitoso" });
+    }
+    catch(error){
+        return res.status(500).json({message: "Error al cerrar sesión"})
+    }
+}
+
+
+
+
+
+
+
+
+
+
