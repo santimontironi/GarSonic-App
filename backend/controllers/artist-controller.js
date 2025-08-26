@@ -98,7 +98,25 @@ export const UploadSong = async (req,res) => {
         res.status(201).json({ message: "Canción agregada correctamente" });
     }
     catch(error){
-        return res.status(500).json({message: `Error al subir la canción: ${error.message}`})
+        return res.status(500).json({message: "Error al subir la canción"})
+    }
+}
+
+export const GetSongs = async (req,res) => {
+    try{
+        const artistId = req.artistId
+
+        // se obtienen todas las canciones cuyo campo 'artist' sea igual al id del artista logueado (req.artistId)
+        const songs = await Song.find({artist:artistId})
+
+        if(!songs){
+            return res.status(404).json({message:'No hay canciones aún'})
+        }
+
+        res.json(songs)
+    }
+    catch(error){
+        return res.status(500).json({message: "Error al obtener canciones."})
     }
 }
 

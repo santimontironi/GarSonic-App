@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react"
 import { UseContextArtist } from "../context/UseContextArtist.js"
 import { motion } from "framer-motion"
-import { useLocation } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import { ToastContainer, toast } from 'react-toastify';
 
 const DashboardArtist = () => {
 
   const location = useLocation()
+  const navigate = useNavigate()
 
   const [artistData, setArtistData] = useState({})
   const [errorData, setErrorData] = useState(null)
@@ -17,6 +18,7 @@ const DashboardArtist = () => {
     async function fetchArtistData() {
       try {
         const res = await fetchArtist()
+        console.log(res)
         setArtistData(res.data.artist)
       }
       catch (error) {
@@ -29,8 +31,9 @@ const DashboardArtist = () => {
   useEffect(() => {
     if (location.state?.successMessage) {
       toast.success(location.state.successMessage)
+      navigate(location.pathname, { replace: true })
     }
-  }, [location])
+  }, [location,navigate])
 
 
   return (

@@ -53,7 +53,13 @@ export function registerArtistAxios(formData){
     })
 }
 
-export function dashboardArtist(){
+export function dashboardArtistAxios(){
+    return axios.get(`${URL_BACKEND}/dashboardArtist`,{
+        withCredentials: true
+    })
+}
+
+export function mySongsAxios(){
     return axios.get(`${URL_BACKEND}/dashboardArtist`,{
         withCredentials: true
     })
