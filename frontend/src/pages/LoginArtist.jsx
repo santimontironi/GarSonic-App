@@ -38,11 +38,7 @@ const LoginArtist = () => {
 
   useEffect(() => {
     if (correctLoginArtist) {
-<<<<<<< HEAD
-      navigate('/artist')
-=======
       navigate('/artista')
->>>>>>> dbc440f4c6cf29955024cead4b2a3fd6411a687a
     }
   }, [correctLoginArtist, navigate])
 

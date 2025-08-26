@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { UseContextArtist } from "../context/UseContextArtist.js";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 import BackButton from "../components/BackButton.jsx";
 
 const RegisterArtist = () => {
@@ -55,13 +55,9 @@ const RegisterArtist = () => {
   return (
     <main className="containerRegisterArtist min-h-screen w-full">
 
-<<<<<<< HEAD
-      <div className="titleRegisterArtist h-[170px] flex justify-center items-center">
-=======
       <BackButton to="/loginArtista" />
 
       <div className="titleRegisterArtist h-[140px] flex justify-center items-center">
->>>>>>> dbc440f4c6cf29955024cead4b2a3fd6411a687a
         <h1 className="bg-[#662d91] w-[350px] text-white tex text-[29px] shadow-[7px_10px_15px_rgba(0,0,0,0.70)] p-[8px] md:p-[12px] md:text-[40px] md:w-[600px] text-center">Registro de Artista</h1>
       </div>
 
