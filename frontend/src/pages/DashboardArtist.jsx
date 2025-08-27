@@ -61,7 +61,7 @@ const DashboardArtist = () => {
           />
         </figure>
         <div className="flex gap-[15px]">
-          <a href="/canciones" className="text-white p-[10px] bg-purple-600 rounded-[8px] hover:bg-white hover:text-black">Mis Canciones</a>
+          <a href="/artista/misCanciones" className="text-white p-[10px] bg-purple-600 rounded-[8px] hover:bg-white hover:text-black">Mis Canciones</a>
           <a href="/artista/subirCancion" className="text-white p-[10px] bg-purple-600 rounded-[8px] hover:bg-white hover:text-black">Agregar canción</a>
         </div>
         <button

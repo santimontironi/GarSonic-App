@@ -11,6 +11,7 @@ import DashboardArtist from "./pages/DashboardArtist";
 import SecurityRoutesArtist from "./components/SecurityRoutesArtist";
 import UploadSong from "./pages/UploadSong";
 import About from "./pages/About";
+import MySongs from "./pages/MySongs";
 
 const App = () => {
   return (
@@ -36,6 +37,11 @@ const App = () => {
         <Route path="/artista/subirCancion" element={
           <SecurityRoutesArtist>
             <UploadSong/>
+          </SecurityRoutesArtist>
+        } />
+        <Route path="/artista/misCanciones" element={
+          <SecurityRoutesArtist>
+            <MySongs/>
           </SecurityRoutesArtist>
         } />
       </Routes>
