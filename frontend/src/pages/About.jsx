@@ -4,7 +4,7 @@ import photoNosotros from "../static/img/nosotros.jpg"
 const About = () => {
   return (
 
-    <section className="h-screen lg:h-[120vh] xl:h-[110vh] 2xl:h-[85vh] md:h-[75vh] w-full pb-[50px] lg:mb-[100px] xl:mb-[0px]" id="nosotros">
+    <section className="h-screen lg:h-[120vh] xl:h-[110vh] 2xl:h-[85vh]w-full pb-[50px] md:pb-[0px] lg:mb-[100px] xl:mb-[0px]" id="nosotros">
       <motion.div
         initial={{ opacity: 0, y: 70 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -30,7 +30,7 @@ const About = () => {
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-center md:pb-[100px] pb-[70px] lg:pb-[0px] lg:w-[1000px] lg:mx-auto md:mt-[28px] border-t-2 border-purple-600 lg:mt-[30px]">
+        <div className="flex flex-col items-center justify-center lg:pb-[0px] lg:w-[1000px] lg:mx-auto md:mt-[28px] border-t-2 border-purple-600 lg:mt-[30px]">
           <span className="text-[20px] font-bold mt-[30px]">En nuestra aplicación podrás:</span>
           <ul className="mt-[20px] list-none flex flex-col gap-[15px] lg:flex-row lg:gap-[30px] lg:mt-[40px]">
             <li className="flex items-center gap-2 bg-purple-600 text-white p-[10px] rounded-[10px]">
