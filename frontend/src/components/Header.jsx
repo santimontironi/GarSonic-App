@@ -15,7 +15,7 @@ const Header = () => {
     }
 
 return (
-    <header className="sticky top-0 w-full z-50 h-[100px] md:h-[150px] lg:h-[150px] flex justify-between bg-black items-center lg:pl-[50px] lg:pr-[50px] pl-[20px] pr-[20px] shadow-[10px_25px_25px_rgba(0,0,0,0.50)]">
+    <header className="sticky top-0 w-full z-50 h-[100px] md:h-[150px] lg:h-[120px] flex justify-between bg-black items-center lg:pl-[50px] lg:pr-[50px] pl-[20px] pr-[20px] shadow-[10px_25px_25px_rgba(0,0,0,0.50)]">
             <div>
                 <a href="/"><img className="w-[100px] md:w-[150px]" src={logo} alt="logo" /></a>
             </div>

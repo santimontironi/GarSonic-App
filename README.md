@@ -7,8 +7,13 @@
 | Tecnología | Rol |
 |------------|------|
 | MongoDB    | Base de datos NoSQL |
+<<<<<<< HEAD
+| Express.js | Framework de Node.js |
+| React.js   | Frontend interactivo |
+=======
 | Express.js | Framework para Node.js |
 | ReactJS  | Frontend interactivo |
+>>>>>>> dbc440f4c6cf29955024cead4b2a3fd6411a687a
 | Node.js    | Entorno de ejecución JS |
 | JWT        | Autenticación por token |
 | Bcrypt     | Hasheo de contraseñas |

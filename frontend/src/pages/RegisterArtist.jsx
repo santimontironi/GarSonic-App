@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { UseContextArtist } from "../context/UseContextArtist.js";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 import BackButton from "../components/BackButton.jsx";
 
 const RegisterArtist = () => {
@@ -141,6 +141,8 @@ const RegisterArtist = () => {
 
 
       <a href="/loginArtista" className="text-white mt-[16px] underline text-center flex items-center justify-center">Ya tengo cuenta</a>
+
+      <a href="/loginArtista" className="text-white mt-[16px] underline text-center flex items-center justify-center">Ingresa si ya tienes una cuenta</a>
 
       {errorRegister && (
         <p className="errorAuth text-center text-white bg-[#d81630] p-[8px] mt-[30px] shadow-[5px_10px_15px_#101010] w-[400px] lg:p-[10px] font-[900] m-auto lg:mt-[20px] lg:w-[700px]">Error al registrarse: {errorRegister}</p>
