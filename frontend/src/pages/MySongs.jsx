@@ -27,15 +27,17 @@ const MySongs = () => {
 
   return (
     <div>
-      {songs.map((song) => (
-        <SongCard key={song._id}
-          coverImage={`http://localhost:3000/uploads/${song.coverImage}`}
-          artist={song.artist.artistName} 
-          audioFile={`http://localhost:3000/uploads/${song.audioFile}`}
-          title={song.title}
-          duration={song.duration}
-          releaseDate={song.releaseDate} />
+      {songs.map((formattedSongs) => (
+        <SongCard key={formattedSongs._id}
+          coverImage={`http://localhost:3000/uploads/${formattedSongs.coverImage}`}
+          artist={formattedSongs.artist.artistName} 
+          audioFile={`http://localhost:3000/uploads/${formattedSongs.audioFile}`}
+          title={formattedSongs.title}
+          duration={formattedSongs.duration}
+          releaseDate={formattedSongs.releaseDate} />
       ))}
+
+      {errorGetSongs && <p>{errorGetSongs}</p>}
     </div>
   )
 }
