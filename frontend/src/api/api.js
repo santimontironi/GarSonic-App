@@ -60,7 +60,7 @@ export function dashboardArtistAxios(){
 }
 
 export function mySongsAxios(){
-    return axios.get(`${URL_BACKEND}/dashboardArtist`,{
+    return axios.get(`${URL_BACKEND}/mySongs`,{
         withCredentials: true
     })
 }

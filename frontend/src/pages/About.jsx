@@ -4,7 +4,7 @@ import photoNosotros from "../static/img/nosotros.jpg"
 const About = () => {
   return (
 
-    <section className="h-screen lg:h-[120vh] xl:h-[110vh] 2xl:h-[85vh]w-full pb-[50px] md:pb-[0px] lg:mb-[100px] xl:mb-[0px]" id="nosotros">
+    <section className="h-screen lg:h-[120vh] xl:h-[90vh] 2xl:h-[85vh]w-full pb-[50px] md:pb-[0px] lg:mb-[100px] xl:mb-[0px]" id="nosotros">
       <motion.div
         initial={{ opacity: 0, y: 70 }}
         whileInView={{ opacity: 1, y: 0 }}

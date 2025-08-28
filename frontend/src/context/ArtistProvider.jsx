@@ -44,8 +44,8 @@ const ArtistProvider = ({children}) => {
         return res.data
     }
 
-    async function mySongs(songs){
-        const res = await mySongsAxios(songs)
+    async function mySongs(){
+        const res = await mySongsAxios()
         return res.data
     }
 

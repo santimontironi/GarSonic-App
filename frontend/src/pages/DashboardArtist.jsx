@@ -18,7 +18,6 @@ const DashboardArtist = () => {
     async function fetchArtistData() {
       try {
         const res = await fetchArtist()
-        console.log(res)
         setArtistData(res.data.artist)
       }
       catch (error) {

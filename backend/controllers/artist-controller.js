@@ -107,7 +107,7 @@ export const GetSongs = async (req,res) => {
         const artistId = req.artistId
 
         // se obtienen todas las canciones cuyo campo 'artist' sea igual al id del artista logueado (req.artistId)
-        const songs = await Song.find({artist:artistId})
+        const songs = await Song.find({artist:artistId}).populate("artist","artistName");
 
         if(!songs){
             return res.status(404).json({message:'No hay canciones aún'})
