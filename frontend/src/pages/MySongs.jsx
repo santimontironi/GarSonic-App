@@ -26,19 +26,21 @@ const MySongs = () => {
   }, [])
 
   return (
-    <div>
-      {songs.map((formattedSongs) => (
-        <SongCard key={formattedSongs._id}
-          coverImage={`http://localhost:3000/uploads/${formattedSongs.coverImage}`}
-          artist={formattedSongs.artist.artistName} 
-          audioFile={`http://localhost:3000/uploads/${formattedSongs.audioFile}`}
-          title={formattedSongs.title}
-          duration={formattedSongs.duration}
-          releaseDate={formattedSongs.releaseDate} />
-      ))}
+    <section className="w-full min-h-screen flex justify-center items-center bg-violet-900 text-white">
+      <div className="flex flex-col items-center justify-center gap-[20px]">
+        {songs.map((formattedSongs) => (
+          <SongCard key={formattedSongs._id}
+            coverImage={`http://localhost:3000/uploads/${formattedSongs.coverImage}`}
+            artist={formattedSongs.artist.artistName} 
+            audioFile={`http://localhost:3000/uploads/${formattedSongs.audioFile}`}
+            title={formattedSongs.title}
+            duration={formattedSongs.duration}
+            releaseDate={formattedSongs.releaseDate} />
+        ))}
 
-      {errorGetSongs && <p>{errorGetSongs}</p>}
-    </div>
+        {errorGetSongs && <p>{errorGetSongs}</p>}
+      </div>
+    </section>
   )
 }
 
