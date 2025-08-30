@@ -8,8 +8,8 @@ const About = () => {
       <motion.div
         initial={{ opacity: 0, y: 70 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: false, amount: 0.3 }}
       >
 
         <div className="flex flex-col items-center justify-center h-[760px] md:flex-row md:h-[500px] lg:h-[600px] lg:w-[1000px] lg:justify-between lg:mx-auto lg:gap-[25px]">

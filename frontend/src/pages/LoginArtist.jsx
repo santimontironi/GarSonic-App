@@ -61,8 +61,8 @@ const LoginArtist = () => {
       <motion.div
         initial={{ opacity: 0, y: 70 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: false, amount: 0.3 }}
       >
         <div className="contentLogin flex justify-center items-center flex-col w-full h-[300px]">
           <form className="flex flex-col w-[350px] h-[300px] p-[20px] rounded-[10px] shadow-[5px_7px_10px_#000] md:w-[450px] md:h-[350px]" method="post" onSubmit={handleSubmit(submitForm)}>

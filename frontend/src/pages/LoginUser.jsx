@@ -61,8 +61,8 @@ const LoginUser = () => {
             <motion.div
                 initial={{ opacity: 0, y: 70 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7 }}
-                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: false, amount: 0.3 }}
             >
                 <div className="contentLogin flex justify-center items-center flex-col w-full h-[300px]">
 

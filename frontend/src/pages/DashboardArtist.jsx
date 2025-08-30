@@ -43,8 +43,8 @@ const DashboardArtist = () => {
       <motion.section
         initial={{ opacity: 0, y: 70 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: false, amount: 0.3 }}
         className="relative flex flex-col items-center h-[700px] bg-black shadow-[17px_10px_20px_#000] justify-center gap-[15px] border-1 border-white rounded-[8px] p-[10px] w-[450px] mx-auto md:w-[90%]"
       >
         <form className="absolute top-10" method="post">

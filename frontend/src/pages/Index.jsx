@@ -7,8 +7,8 @@ const Index = () => {
         <motion.div
           initial={{ opacity: 0, y:70 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: false, amount: 0.3 }}
         >
           <div className="contentIndex text-white flex flex-col gap-3 h-[600px] md:h-[600px] xl:h-[500px] 2xl:h-[800px] w-full justify-center items-center">
             <h1 className="tituloIndex text-center text-[45px] xl:text-[60px] md:text-[50px] 2xl:text-[75px]">Te damos la bienvenida a GarSonic</h1>
