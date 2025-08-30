@@ -107,7 +107,7 @@ export const GetSongs = async (req, res) => {
         const artistId = req.artistId
 
         // se obtienen todas las canciones cuyo campo 'artist' sea igual al id del artista logueado (req.artistId)
-        const songs = await Song.find({ artist: artistId }).populate("artist", "artistName");
+        const songs = await Song.find({ artist: artistId, active:true }).populate("artist", "artistName");
 
         if (!songs) {
             return res.status(404).json({ message: 'No hay canciones aún' })
@@ -125,23 +125,26 @@ export const GetSongs = async (req, res) => {
     }
 }
 
-export const DeleteSong = async (req,res) => {
-    try{
-        const{idSong} = req.params
-        const artistId = req.artistId
+export const DeleteSong = async (req, res) => {
+    try {
+        const { idSong } = req.params;
+        const artistId = req.artistId;
 
-        const song = Song.findByIdAndDelete({_id:id,artist:artistId})
+        const song = await Song.findOneAndUpdate(
+            { _id: idSong, artist: artistId },
+            { active: false },
+            { new: true } // devuelve el documento actualizado
+        );
 
-        if(!song){
-            return res.status(404).json({message: "No se ha encontrado esta canción."})
+        if (!song) {
+            return res.status(404).json({ message: "Canción no encontrada o no autorizada." });
         }
 
-        return res.json({message:"Canción eliminada correctamente."})
+        return res.json({ message: "Canción desactivada correctamente.", song });
+    } catch (error) {
+        return res.status(500).json({ message: "Error al desactivar la canción." });
     }
-    catch(error){
-        return res.status(500).json({message: "Error al eliminar la canción."})
-    }
-}
+};
 
 export const Logout = async (req, res) => {
     try {

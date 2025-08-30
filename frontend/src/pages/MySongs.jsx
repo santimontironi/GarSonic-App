@@ -27,7 +27,7 @@ const MySongs = () => {
   }, [])
 
   return (
-    <section className="w-full min-h-screen bg-gradient-to-b from-[#1e0333] to-[#1e0333] text-white">
+    <section className="w-full min-h-screen bg-gradient-to-b from-[#1e0333] to-[#1e0333] text-white pb-[50px]">
 
       <BackButton to={"/artista"} />
 
@@ -38,6 +38,7 @@ const MySongs = () => {
       <div className="flex flex-col items-center justify-center gap-[20px] md:grid md:grid-cols-2 md:w-[750px] md:items-center md:justify-items-center md:gap-[40px] xl:grid xl:grid-cols-3 xl:w-[1200px] xl:gap-[40px] 2xl:grid 2xl:grid-cols-3 2xl:w-[1350px] mx-auto 2xl:gap-[50px]">
         {songs.map((formattedSongs) => (
           <SongCard key={formattedSongs._id}
+            idSong={formattedSongs._id}
             coverImage={`http://localhost:3000/uploads/${formattedSongs.coverImage}`}
             artist={formattedSongs.artist.artistName} 
             audioFile={`http://localhost:3000/uploads/${formattedSongs.audioFile}`}

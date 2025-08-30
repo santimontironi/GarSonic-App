@@ -65,6 +65,12 @@ export function mySongsAxios(){
     })
 }
 
+export function deleteSongAxios(idSong){
+    return axios.put(`${URL_BACKEND}/deleteSong/${idSong}`,{},{
+        withCredentials: true
+    })
+}
+
 export function logoutArtist(){
     return axios.post(`${URL_BACKEND}/logoutArtist`, {}, {
         withCredentials:true

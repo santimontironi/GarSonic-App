@@ -10,7 +10,7 @@ router.post('/loginArtist',LoginArtist)
 router.get('/dashboardArtist', verifyToken, DashboardArtist)
 router.post('/uploadSong', verifyToken, upload.fields([{ name: 'coverImage', maxCount: 1 }, { name: 'audioFile', maxCount: 1 }]), UploadSong)
 router.get('/mySongs',verifyToken,GetSongs)
-router.delete('/deleteSong/:idSong',verifyToken,DeleteSong)
+router.put('/deleteSong/:idSong',verifyToken,DeleteSong)
 router.post('/logoutArtist', Logout)
 
 export default router
