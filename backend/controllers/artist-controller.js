@@ -7,7 +7,7 @@ import Dayjs from 'dayjs'
 
 export const RegisterArtist = async (req, res) => {
     try {
-        const { email, password, artistName, genre, bio } = req.body
+        const { email, password, artistName, genre, description } = req.body
         const profilePhoto = req.file.filename;
 
         const existingArtist = await Artist.findOne({ email })
@@ -18,14 +18,13 @@ export const RegisterArtist = async (req, res) => {
 
         const hashPassword = await bcrypt.hash(password, 10)
 
-        const newArtist = new Artist({ profilePhoto, email, password: hashPassword, artistName, genre, bio })
+        const newArtist = new Artist({ profilePhoto, email, password: hashPassword, artistName, genre, description })
 
         await newArtist.save()
 
         res.status(201).json({ message: "Usuario creado correctamente" });
 
-    }
-    catch (error) {
+    } catch (error) {
         return res.status(500).json({ message: "Error al registrar un artista" })
     }
 }

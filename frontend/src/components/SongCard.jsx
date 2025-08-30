@@ -8,7 +8,6 @@ const SongCard = ({ idSong, coverImage, artist, title, audioFile, duration, rele
 
   const audioRef = useRef(null)
   const [isPlaying, setIsPlaying] = useState(false)
-  const [correctDelete, setCorrectDelete] = useState("")
 
   const { deleteSong } = UseContextArtist()
 
@@ -38,7 +37,9 @@ const SongCard = ({ idSong, coverImage, artist, title, audioFile, duration, rele
       if (result.isConfirmed) {
         try {
           await deleteSong(idSong)
-          setCorrectDelete(true)
+          Swal.fire('¡Eliminado!', 'Canción eliminada con éxito.', 'success').then(() => {
+            window.location.reload()
+          })
         }
         catch (error) {
           if (error.response?.data?.message) {
@@ -50,17 +51,11 @@ const SongCard = ({ idSong, coverImage, artist, title, audioFile, duration, rele
 
   }
 
-  useEffect(() => {
-    if(correctDelete){
-      navigate('/misCanciones',{state:{successMessage:"Canción eliminada con éxito."}})
-    }
-  },[navigate,correctDelete])
-
   return (
 
     <div className="relative flex w-[380px] rounded-2xl bg-[#9032d8] shadow-[4px_4px_10px_rgba(0,0,0,0.5)] items-center gap-[10px] p-[20px] transform md:hover:scale-105 md:transition md:ease-in md:duration-300 2xl:w-[430px]">
 
-      <img className="w-[120px] h-[120px] 2xl:w-[140px] 2xl:h-[140px] border-2 border-purple-800 rounded-2xl bg-cover" src={coverImage} alt={title} />
+      <img className="w-[120px] h-[120px] 2xl:w-[160px] 2xl:h-[140px] border-2 border-purple-800 rounded-2xl bg-cover" src={coverImage} alt={title} />
 
       <button className="absolute right-[10px] top-[10px]"><i onClick={handleDeleteSong} className="bi bi-trash cursor-pointer text-[20px] text-white bg-red-500 rounded-3xl p-[5px] hover:bg-red-700"></i></button>
 

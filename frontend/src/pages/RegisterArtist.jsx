@@ -24,7 +24,7 @@ const RegisterArtist = () => {
       const formData = new FormData();
       formData.append("artistName", values.artistName);
       formData.append("email", values.email);
-      formData.append("bio", values.bio);
+      formData.append("description", values.description);
       formData.append("genre", values.genre);
       formData.append("password", values.password);
       if (file) {
@@ -89,9 +89,9 @@ const RegisterArtist = () => {
           </div>
 
           <div className="mt-5 flex flex-col">
-            <label className="text-white" htmlFor="bio">Biografía</label>
-            <textarea name="bio" id="bio" className="bg-white text-black p-[7px]" {...register("bio", { required: true })}></textarea>
-            {errors.bio && (
+            <label className="text-white" htmlFor="description">Biografía</label>
+            <textarea name="description" id="description" className="bg-white text-black p-[7px]" {...register("description", { required: true })}></textarea>
+            {errors.description && (
               <p className="text-white">La biografía es requerida</p>
             )}
           </div>

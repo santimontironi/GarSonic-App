@@ -29,12 +29,6 @@ const MySongs = () => {
     fetchSongs()
   }, [])
 
-  useEffect(() => {
-    if (location.state?.successMessage) {
-      toast.success(location.state.successMessage)
-    }
-  }, [location])
-
   return (
     <section className="w-full min-h-screen bg-gradient-to-b from-[#1e0333] to-[#1e0333] text-white pb-[50px]">
 
@@ -62,7 +56,7 @@ const MySongs = () => {
       </div>
       {songs.length === 0 && (
         <div className="flex justify-center items-center mt-[30px] mx-auto text-center">
-          <p className="text-gray-300 w-[400px] bg-purple-900/50 border border-purple-700 rounded-lg p-6 m-4 md:p-8 md:m-6 text-base md:text-lg lg:text-xl font-medium shadow-lg">
+          <p className="text-gray-300 w-[400px] md:w-[640px] bg-purple-900/50 border border-purple-700 rounded-lg p-6 m-4 md:p-8 md:m-6 text-base md:text-lg lg:text-xl font-medium shadow-lg">
             No tienes canciones subidas. Sube tu primera canción en el panel de artista.
           </p>
         </div>

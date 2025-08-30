@@ -21,7 +21,7 @@ const artistModel = new mongoose.Schema({
         type: String,
         required: true
     },
-    bio: {
+    description: {
         type: String,
         required: true
     }
