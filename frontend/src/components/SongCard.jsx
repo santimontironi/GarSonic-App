@@ -1,14 +1,18 @@
 import { Play, Pause } from "lucide-react";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { UseContextArtist } from "../context/UseContextArtist";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const SongCard = ({ idSong, coverImage, artist, title, audioFile, duration, releaseDate }) => {
 
   const audioRef = useRef(null)
   const [isPlaying, setIsPlaying] = useState(false)
+  const [correctDelete, setCorrectDelete] = useState("")
 
   const { deleteSong } = UseContextArtist()
+
+  const navigate = useNavigate()
 
   function handlePlay() {
     if (audioRef.current.paused) {
@@ -34,7 +38,7 @@ const SongCard = ({ idSong, coverImage, artist, title, audioFile, duration, rele
       if (result.isConfirmed) {
         try {
           await deleteSong(idSong)
-          window.location.reload()
+          setCorrectDelete(true)
         }
         catch (error) {
           if (error.response?.data?.message) {
@@ -45,6 +49,12 @@ const SongCard = ({ idSong, coverImage, artist, title, audioFile, duration, rele
     });
 
   }
+
+  useEffect(() => {
+    if(correctDelete){
+      navigate('/misCanciones',{state:{successMessage:"Canción eliminada con éxito."}})
+    }
+  },[navigate,correctDelete])
 
   return (
 

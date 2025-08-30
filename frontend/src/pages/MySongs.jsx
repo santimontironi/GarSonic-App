@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import SongCard from "../components/SongCard"
 import { UseContextArtist } from "../context/UseContextArtist.js";
 import BackButton from "../components/BackButton.jsx";
+import { ToastContainer, toast } from "react-toastify";
+import { useLocation } from "react-router-dom";
 
 const MySongs = () => {
 
@@ -9,11 +11,12 @@ const MySongs = () => {
   const [songs, setSongs] = useState([])
   const [errorGetSongs, setErrorGetSongs] = useState("")
 
+  const location = useLocation()
+
   useEffect(() => {
     async function fetchSongs() {
       try {
         const res = await mySongs()
-        console.log(res)
         setSongs(res)
       }
       catch (error) {
@@ -25,6 +28,12 @@ const MySongs = () => {
     }
     fetchSongs()
   }, [])
+
+  useEffect(() => {
+    if (location.state?.successMessage) {
+      toast.success(location.state.successMessage)
+    }
+  }, [location])
 
   return (
     <section className="w-full min-h-screen bg-gradient-to-b from-[#1e0333] to-[#1e0333] text-white pb-[50px]">
@@ -40,7 +49,7 @@ const MySongs = () => {
           <SongCard key={formattedSongs._id}
             idSong={formattedSongs._id}
             coverImage={`http://localhost:3000/uploads/${formattedSongs.coverImage}`}
-            artist={formattedSongs.artist.artistName} 
+            artist={formattedSongs.artist.artistName}
             audioFile={`http://localhost:3000/uploads/${formattedSongs.audioFile}`}
             title={formattedSongs.title}
             duration={formattedSongs.duration}
@@ -48,7 +57,16 @@ const MySongs = () => {
         ))}
 
         {errorGetSongs && <p>{errorGetSongs}</p>}
+
+        <ToastContainer />
       </div>
+      {songs.length === 0 && (
+        <div className="flex justify-center items-center mt-[30px] mx-auto text-center">
+          <p className="text-gray-300 w-[400px] bg-purple-900/50 border border-purple-700 rounded-lg p-6 m-4 md:p-8 md:m-6 text-base md:text-lg lg:text-xl font-medium shadow-lg">
+            No tienes canciones subidas. Sube tu primera canción en el panel de artista.
+          </p>
+        </div>
+      )}
     </section>
   )
 }
