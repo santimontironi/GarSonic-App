@@ -125,6 +125,24 @@ export const GetSongs = async (req, res) => {
     }
 }
 
+export const DeleteSong = async (req,res) => {
+    try{
+        const{idSong} = req.params
+        const artistId = req.artistId
+
+        const song = Song.findByIdAndDelete({_id:id,artist:artistId})
+
+        if(!song){
+            return res.status(404).json({message: "No se ha encontrado esta canción."})
+        }
+
+        return res.json({message:"Canción eliminada correctamente."})
+    }
+    catch(error){
+        return res.status(500).json({message: "Error al eliminar la canción."})
+    }
+}
+
 export const Logout = async (req, res) => {
     try {
         res.clearCookie("tokenArtist", {
