@@ -19,16 +19,16 @@ const SongCard = ({ coverImage, artist, title, audioFile, duration, releaseDate 
 
   return (
 
-    <div className="flex w-[380px] rounded-2xl bg-[#9032d8] shadow-[4px_4px_10px_rgba(0,0,0,0.5)] items-center gap-[10px] p-[20px] transform md:hover:scale-105 md:transition md:ease-in md:duration-300">
+    <div className="flex w-[380px] rounded-2xl bg-[#9032d8] shadow-[4px_4px_10px_rgba(0,0,0,0.5)] items-center gap-[10px] p-[20px] transform md:hover:scale-105 md:transition md:ease-in md:duration-300 2xl:w-[430px]">
 
-      <img className="w-[120px] h-[120px] border-2 border-purple-800 rounded-2xl bg-cover" src={coverImage} alt={title} />
+      <img className="w-[120px] h-[120px] 2xl:w-[140px] 2xl:h-[140px] border-2 border-purple-800 rounded-2xl bg-cover" src={coverImage} alt={title} />
       
 
       <div className="flex flex-col">
 
         <div className="flex flex-col gap-[7px]">
-          <span className="font-bold text-[20px]">{title}</span>
-          <span className="font-light text-gray-200">{artist}</span>
+          <span className="font-bold text-[20px] 2xl:text-[25px]">{title}</span>
+          <span className="font-light text-gray-200 2xl:text-[18px]">{artist}</span>
         </div>
         
         <div className="flex mt-[10px] gap-[15px]">
