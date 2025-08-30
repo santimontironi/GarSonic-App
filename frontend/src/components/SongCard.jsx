@@ -8,22 +8,21 @@ const SongCard = ({ coverImage, artist, title, audioFile, duration, releaseDate 
 
 
   function handlePlay(){
+    setIsPlaying(!isPlaying)
     if(isPlaying){
       audioRef.current.pause()
     }
     else{
       audioRef.current.play()
     }
-    setIsPlaying(!isPlaying)
   }
 
   return (
 
-    <div className="flex w-[380px] rounded-2xl bg-[#1e0333] items-center gap-[10px] p-[20px]">
+    <div className="flex w-[380px] rounded-2xl bg-[#9032d8] shadow-[4px_4px_10px_rgba(0,0,0,0.5)] items-center gap-[10px] p-[20px] transform md:hover:scale-105 md:transition md:ease-in md:duration-300">
 
-      <div>
-        <img className="w-[120px] h-[120px] border-2 border-purple-800 rounded-2xl" src={coverImage} alt={title} />
-      </div>
+      <img className="w-[120px] h-[120px] border-2 border-purple-800 rounded-2xl bg-cover" src={coverImage} alt={title} />
+      
 
       <div className="flex flex-col">
 
@@ -34,7 +33,7 @@ const SongCard = ({ coverImage, artist, title, audioFile, duration, releaseDate 
         
         <div className="flex mt-[10px] gap-[15px]">
 
-          <button className="bg-purple-500 text-white rounded-3xl flex items-center justify-center p-[10px]" onClick={handlePlay}>
+          <button className="bg-white text-black rounded-3xl flex items-center justify-center p-[10px] lg:cursor-pointer" onClick={handlePlay}>
             {isPlaying ? <Pause size={20} /> : <Play size={20} />}
           </button>
 
