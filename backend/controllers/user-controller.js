@@ -85,6 +85,31 @@ export const DashboardUser = async (req,res) => {
     }
 }
 
+export const CreatePlaylist = async (req, res) => {
+    try{
+
+        const userId = req.userId;
+
+        const { title, description } = req.body;
+
+        const coverImage = req.file ? req.file.filename : null;
+
+        const newPlaylist = new Playlist({
+            title,
+            description,
+            user: userId,
+            coverImage
+        });
+
+        await newPlaylist.save();
+
+        res.status(201).json({ message: "Lista de reproducción creada correctamente", playlist: newPlaylist });
+    }
+    catch(error){
+        return res.status(500).json({ message: "Error al crear la lista de reproducción" });
+    }
+}
+
 export const LogoutUser = (req, res) => {
     res.clearCookie("token", {
         httpOnly: true,
