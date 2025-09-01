@@ -8,7 +8,7 @@ const router = Router()
 router.post('/register', upload.single('profilePhoto'), RegisterUser)
 router.post('/login',LoginUser)
 router.post('/logout', LogoutUser)
-router.post('/createPlaylist', verifyToken, CreatePlaylist)
+router.post('/createPlaylist',upload.single('coverImage'), verifyToken, CreatePlaylist)
 router.get('/dashboardUser', verifyToken, DashboardUser)
 
 export default router

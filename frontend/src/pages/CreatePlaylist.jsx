@@ -3,32 +3,40 @@ import { useForm } from "react-hook-form"
 import BackButton from "../components/BackButton"
 import { motion } from "framer-motion"
 import Swal from "sweetalert2"
+import { useNavigate } from "react-router-dom"
 import { UseContextUser } from '../context/UseContextUser.js'
+import { useDropzone } from 'react-dropzone';
 
 const CreatePlaylist = () => {
 
   const [file, setFile] = useState(null)
   const [errorCreate, setErrorCreate] = useState(null)
 
+  const navigate = useNavigate()
+
   const { createPlaylist } = UseContextUser()
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm()
+
+  const { getRootProps, getInputProps } = useDropzone({
+    accept: { 'image/*': [] },
+    multiple: false,
+    onDrop: (acceptedFiles) => setFile(acceptedFiles[0])
+  });
 
   async function submitForm(values) {
     try {
       const formData = new FormData();
       formData.append("playlistName", values.playlistName);
       formData.append("description", values.description);
-      formData.append("coverImage", values.coverImage);
-  
+
       if (file) {
         formData.append("coverImage", file);
       }
 
       const res = await createPlaylist(formData);
-      console.log("ESTO ES RES DESDE CREATEPLAYLIST ", res)
 
-      Swal.fire('¡Subido!', 'Playlist creada con éxito.', 'success').then(() => {
+      Swal.fire('¡Subido!', res.data.message, 'success').then(() => {
         navigate('/usuario')
       })
 
@@ -38,7 +46,7 @@ const CreatePlaylist = () => {
     }
     catch (error) {
       if (error.response?.data?.message) {
-        console.log(error.response.data.message);
+        console.log(error.response.data.error);
         setErrorCreate(error.response.data.message);
       }
     }
@@ -62,19 +70,33 @@ const CreatePlaylist = () => {
         <form className="flex flex-col w-[350px] m-auto h-auto p-[20px] rounded-[10px] shadow-[5px_7px_10px_#000] md:w-[450px] border-2 border-white formCreatePlaylist" method="post" onSubmit={handleSubmit(submitForm)}>
 
           <div className="mt-5 flex flex-col gap-[6px]">
-            <label className="text-white" htmlFor="coverImage">Portada</label>
-            <input
-              className="w-full p-[7px] bg-white text-black cursor-pointer"
-              name="coverImage"
-              type="file"
-              accept="image/*"
-              {...register("coverImage", { required: true })}
-              onChange={(e) => setFile(e.target.files[0])}
-            />
+            <label className="text-white">Portada</label>
+
+            <div
+              {...getRootProps()}
+              className="flex items-center justify-center w-full p-6 border-2 border-dashed border-gray-400 rounded-lg cursor-pointer bg-white text-black hover:bg-gray-200"
+            >
+              <input {...getInputProps()} />
+              {file ? (
+                <span>{file.name}</span>
+              ) : (
+                <span>Arrastra tu imagen o haz clic aquí</span>
+              )}
+            </div>
+
             {errors.coverImage && (
               <p className="text-white">La imagen de portada es requerida</p>
             )}
+
+            {file && (
+              <img
+                src={URL.createObjectURL(file)}
+                alt="preview"
+                className="mt-3 w-32 h-32 object-cover rounded-lg shadow-[5px_10px_10px_#000] mx-auto"
+              />
+            )}
           </div>
+
 
           <div className="mt-5 flex flex-col gap-[6px]">
             <label className="text-white" htmlFor="playlistName">Nombre</label>

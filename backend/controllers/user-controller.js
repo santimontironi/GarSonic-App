@@ -90,14 +90,14 @@ export const CreatePlaylist = async (req, res) => {
 
         const userId = req.userId;
 
-        const { title, description } = req.body;
+        const { playlistName, description } = req.body;
 
         const coverImage = req.file ? req.file.filename : null;
 
         const newPlaylist = new Playlist({
-            title,
+            playlistName,
             description,
-            user: userId,
+            owner: userId,
             coverImage
         });
 
@@ -106,7 +106,7 @@ export const CreatePlaylist = async (req, res) => {
         res.status(201).json({ message: "Lista de reproducción creada correctamente", playlist: newPlaylist });
     }
     catch(error){
-        return res.status(500).json({ message: "Error al crear la lista de reproducción" });
+        return res.status(500).json({ message: "Error al crear la lista de reproducción", error });
     }
 }
 
