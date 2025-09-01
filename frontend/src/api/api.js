@@ -38,6 +38,15 @@ export function dashboardUser(){
     })
 }
 
+export function addPlaylist(formData){
+    return axios.post(`${URL_BACKEND}/createPlaylist`,formData,{
+        withCredentials:true,
+        headers:{
+            "Content-Type": "multipart/form-data"
+        }
+    })
+}
+
 export function loginArtistAxios(formData){
     return axios.post(`${URL_BACKEND}/loginArtist`,formData,{
         withCredentials:true

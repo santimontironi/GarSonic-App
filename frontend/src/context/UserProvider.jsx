@@ -1,4 +1,4 @@
-import { registerUserAxios, loginUserAxios, logoutUser, dashboardUser } from "../api/api.js";
+import { registerUserAxios, loginUserAxios, logoutUser, dashboardUser, addPlaylist } from "../api/api.js";
 import { useState, useEffect } from "react";
 import { ContextUser } from "./UserContext.jsx";
 
@@ -50,6 +50,12 @@ export const UserProvider = ({children}) => {
         fetchUser();
     }, []);
 
+    async function createPlaylist(formData) {
+        const res = await addPlaylist(formData);
+        console.log("ESTO ES RES DESDE EL PROVIDER: ", res)
+        return res
+    }
+
     return(
         <ContextUser.Provider value={{
             signUpUser,
@@ -57,7 +63,8 @@ export const UserProvider = ({children}) => {
             fetchUser,
             logout,
             user,
-            loading
+            loading,
+            createPlaylist
         }}>
             {children}
         </ContextUser.Provider>
