@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { UseContextArtist } from "../context/UseContextArtist.js";
 import BackButton from "../components/BackButton.jsx";
 import Swal from "sweetalert2"
+import { useDropzone } from 'react-dropzone';
 
 const UploadSong = () => {
 
@@ -15,6 +16,20 @@ const UploadSong = () => {
     const [errorUpload, setErrorUpload] = useState("")
 
     const [file, setFile] = useState(null)
+
+    const { getRootProps: getCoverProps, getInputProps: getCoverInputProps } = useDropzone({
+        accept: { 'image/*': [] },
+        multiple: false,
+        onDrop: (acceptedFiles) => setFile(acceptedFiles[0])
+    })
+
+    const { getRootProps: getAudioProps, getInputProps: getAudioInputProps } = useDropzone({
+        accept: { 'audio/*': [] },
+        multiple: false,
+        onDrop: (acceptedFiles) => {
+            console.log(acceptedFiles[0])
+        }
+    })
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm()
 
@@ -71,18 +86,25 @@ const UploadSong = () => {
                 <form className="flex flex-col w-[350px] m-auto h-auto p-[20px] rounded-[10px] shadow-[5px_7px_10px_#000] md:w-[450px] bg-gradient-to-b from-[#000] to-[#662d91]" method="post" onSubmit={handleSubmit(submitForm)}>
 
                     <div className="mt-5 flex flex-col gap-[6px]">
-                        <label className="text-white" htmlFor="coverImage">Portada</label>
-                        <input
-                            className="w-full p-[7px] bg-white text-black cursor-pointer"
-                            name="coverImage"
-                            type="file"
-                            accept="image/*"
-                            {...register("coverImage", { required: true })}
-                            onChange={(e) => setFile(e.target.files[0])}
-                        />
-                        {errors.coverImage && (
-                            <p className="text-white">La imagen de portada es requerida</p>
+                        <label className="text-white">Portada</label>
+
+                        <div
+                            {...getCoverProps()}
+                            className="flex items-center justify-center w-full p-6 border-2 border-dashed border-gray-400 rounded-lg cursor-pointer bg-white text-black hover:bg-gray-200"
+                        >
+                            <input {...getCoverInputProps()} />
+                            {file ? <span>{file.name}</span> : <span>Arrastra la portada o haz clic aquí</span>}
+                        </div>
+
+                        {file && (
+                            <img
+                                src={URL.createObjectURL(file)}
+                                alt="preview"
+                                className="mt-3 w-32 h-32 object-cover rounded-lg shadow-[5px_10px_10px_#000] mx-auto"
+                            />
                         )}
+
+                        {errors.coverImage && <p className="text-white">La imagen de portada es requerida</p>}
                     </div>
 
                     <div className="mt-5 flex flex-col gap-[6px]">
@@ -110,11 +132,17 @@ const UploadSong = () => {
                     </div>
 
                     <div className="mt-5 flex flex-col gap-[6px]">
-                        <label className="text-white" htmlFor="audio">Audio</label>
-                        <input className="w-full p-[7px] cursor-pointer bg-white text-black" type="file" {...register("audioFile", { required: true })} />
-                        {errors.audioFile && (
-                            <p className="text-white">El audio es requerido</p>
-                        )}
+                        <label className="text-white">Audio</label>
+
+                        <div
+                            {...getAudioProps()}
+                            className="flex items-center justify-center w-full p-6 border-2 border-dashed border-gray-400 rounded-lg cursor-pointer bg-white text-black hover:bg-gray-200"
+                        >
+                            <input {...getAudioInputProps()} />
+                            <span>Arrastra el archivo de audio o haz clic aquí</span>
+                        </div>
+
+                        {errors.audioFile && <p className="text-white">El audio es requerido</p>}
                     </div>
 
                     <div className="mt-5 flex flex-col gap-[6px]">

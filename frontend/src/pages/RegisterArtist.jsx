@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import BackButton from "../components/BackButton.jsx";
+import { useDropzone } from 'react-dropzone';
 
 const RegisterArtist = () => {
 
@@ -18,6 +19,12 @@ const RegisterArtist = () => {
   const { register, handleSubmit, reset, formState: { errors } } = useForm()
 
   const { signUpArtist } = UseContextArtist()
+
+  const { getRootProps, getInputProps } = useDropzone({
+    accept: { 'image/*': [] },
+    multiple: false,
+    onDrop: (acceptedFiles) => setFile(acceptedFiles[0])
+  });
 
   async function submitForm(values) {
     try {
@@ -47,7 +54,7 @@ const RegisterArtist = () => {
 
   useEffect(() => {
     if (correctRegister) {
-      navigate('/loginArtista',{state:{successMessage:"Artista registrado con éxito, inicia sesión."}})
+      navigate('/loginArtista', { state: { successMessage: "Artista registrado con éxito, inicia sesión." } })
     }
   }, [correctRegister, navigate])
 
@@ -69,15 +76,32 @@ const RegisterArtist = () => {
       >
         <form className="flex flex-col w-[350px] m-auto h-auto p-[20px] rounded-[10px] shadow-[5px_7px_10px_#000] md:w-[450px]" method="post" onSubmit={handleSubmit(submitForm)}>
 
-          <div className="mt-5 flex flex-col">
-            <label className="text-white" htmlFor="profilePhoto">Foto de perfil</label>
-            <input
-              className="w-full p-[7px] bg-white text-black cursor-pointer"
-              name="profilePhoto"
-              type="file"
-              accept="image/*"
-              onChange={(e) => setFile(e.target.files[0])}
-            />
+          <div className="mt-5 flex flex-col gap-[6px]">
+            <label className="text-white">Foto de perfil</label>
+
+            <div
+              {...getRootProps()}
+              className="flex items-center justify-center w-full p-6 border-2 border-dashed border-gray-400 rounded-lg cursor-pointer bg-white text-black hover:bg-gray-200"
+            >
+              <input {...getInputProps()} />
+              {file ? (
+                <span>{file.name}</span>
+              ) : (
+                <span>Arrastra tu imagen o haz clic aquí</span>
+              )}
+            </div>
+
+            {errors.profilePhoto && (
+              <p className="text-white">La foto de perfil es requerida</p>
+            )}
+
+            {file && (
+              <img
+                src={URL.createObjectURL(file)}
+                alt="preview"
+                className="mt-3 w-32 h-32 object-cover rounded-lg shadow-[5px_10px_10px_#000] mx-auto"
+              />
+            )}
           </div>
 
           <div className="mt-5 flex flex-col">
