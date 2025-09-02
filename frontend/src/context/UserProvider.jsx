@@ -1,4 +1,4 @@
-import { registerUserAxios, loginUserAxios, logoutUser, dashboardUser, addPlaylist } from "../api/api.js";
+import { registerUserAxios, loginUserAxios, logoutUser, dashboardUser, addPlaylist, getPlaylists } from "../api/api.js";
 import { useState, useEffect } from "react";
 import { ContextUser } from "./UserContext.jsx";
 
@@ -56,6 +56,11 @@ export const UserProvider = ({children}) => {
         return res
     }
 
+    async function getAllPlaylists() {
+        const res = await getPlaylists();
+        return res
+    }
+
     return(
         <ContextUser.Provider value={{
             signUpUser,
@@ -64,7 +69,8 @@ export const UserProvider = ({children}) => {
             logout,
             user,
             loading,
-            createPlaylist
+            createPlaylist,
+            getAllPlaylists
         }}>
             {children}
         </ContextUser.Provider>
