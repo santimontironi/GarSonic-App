@@ -1,7 +1,6 @@
 import { Play, Pause } from "lucide-react";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { UseContextArtist } from "../context/UseContextArtist";
-import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const SongCard = ({ idSong, coverImage, artist, title, audioFile, duration, releaseDate }) => {
@@ -10,8 +9,6 @@ const SongCard = ({ idSong, coverImage, artist, title, audioFile, duration, rele
   const [isPlaying, setIsPlaying] = useState(false)
 
   const { deleteSong } = UseContextArtist()
-
-  const navigate = useNavigate()
 
   function handlePlay() {
     if (audioRef.current.paused) {

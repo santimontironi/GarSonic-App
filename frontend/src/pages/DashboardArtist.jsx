@@ -46,10 +46,10 @@ const DashboardArtist = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: false, amount: 0.3 }}
-        className="relative flex flex-col items-center h-[700px] bg-black shadow-[17px_10px_20px_#000] justify-center gap-[15px] border-1 border-white rounded-[8px] p-[10px] w-[400px] mx-auto md:w-[90%]"
+        className="relative flex flex-col items-center h-[700px] bg-black shadow-[17px_10px_20px_#000] justify-center gap-[15px] border-1 border-white rounded-[8px] p-[10px] w-[360px] mx-auto md:w-[90%]"
       >
         <form className="absolute top-10" method="post">
-          <input className="bg-white p-2 w-[370px] md:w-[600px] md:p-3 text-purple-800 rounded-[8px] focus:outline-purple-900" type="text" placeholder="Buscar canciones..." />
+          <input className="bg-white p-2 w-[340px] md:w-[600px] md:p-3 text-purple-800 rounded-[8px] focus:outline-purple-900" type="text" placeholder="Buscar canciones..." />
         </form>
 
         <h1 className="text-white tituloDashboard text-[40px] border-b-2 border-purple-600 md:text-[60px]">Bienvenido <span>{artistData?.artistName}</span></h1>

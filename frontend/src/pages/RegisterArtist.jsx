@@ -60,7 +60,7 @@ const RegisterArtist = () => {
 
 
   return (
-    <main className="containerRegisterArtist min-h-screen w-full">
+    <main className="containerRegisterArtist min-h-screen w-full pb-[40px]">
 
       <BackButton to="/loginArtista" />
 
@@ -164,9 +164,7 @@ const RegisterArtist = () => {
       </motion.div>
 
 
-      <a href="/loginArtista" className="text-white mt-[16px] underline text-center flex items-center justify-center">Ya tengo cuenta</a>
-
-      <a href="/loginArtista" className="text-white mt-[16px] underline text-center flex items-center justify-center">Ingresa si ya tienes una cuenta</a>
+      <a href="/loginArtista" className="text-white mt-[25px] bg-[#924acc] w-[200px] mx-auto decoration-0 p-[10px] rounded-xl text-center flex items-center justify-center">Ya tengo cuenta</a>
 
       {errorRegister && (
         <p className="errorAuth text-center text-white bg-[#d81630] p-[8px] mt-[30px] shadow-[5px_10px_15px_#101010] w-[400px] lg:p-[10px] font-[900] m-auto lg:mt-[20px] lg:w-[700px]">Error al registrarse: {errorRegister}</p>
