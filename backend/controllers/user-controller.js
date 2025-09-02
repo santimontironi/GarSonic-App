@@ -3,6 +3,7 @@ import bcrypt from 'bcrypt'
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import Playlist from "../models/playlist-model.js";
+import Dayjs from 'dayjs'
 
 dotenv.config();
 
@@ -107,6 +108,24 @@ export const CreatePlaylist = async (req, res) => {
     }
     catch(error){
         return res.status(500).json({ message: "Error al crear la lista de reproducción", error });
+    }
+}
+
+export const GetPlaylists = async (req,res) => {
+    try{
+        const userId = req.userId;
+
+        const playlists = await Playlist.find({ owner: userId });
+
+        const playlistFormated = playlists.map(playlist => ({
+            ...playlist.toObject(),
+            createdAt: Dayjs(song.createdAt).format('DD/MM/YYYY')
+        }))
+
+        res.json(playlistFormated);
+    }
+    catch(error){
+        return res.status(500).json({ message: "Error al obtener las listas de reproducción", error });
     }
 }
 

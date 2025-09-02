@@ -108,10 +108,7 @@ export const GetSongs = async (req, res) => {
         // se obtienen todas las canciones cuyo campo 'artist' sea igual al id del artista logueado (req.artistId)
         const songs = await Song.find({ artist: artistId, active:true }).populate("artist", "artistName");
 
-        if (!songs) {
-            return res.status(404).json({ message: 'No hay canciones aún' })
-        }
-
+        // Formatear las fechas de lanzamiento
         const formattedSongs = songs.map(song => ({
             ...song.toObject(),
             releaseDate: Dayjs(song.releaseDate).format('DD/MM/YYYY')
