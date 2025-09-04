@@ -2,16 +2,13 @@ import { useEffect, useState } from "react";
 import SongCard from "../components/SongCard"
 import { UseContextArtist } from "../context/UseContextArtist.js";
 import BackButton from "../components/BackButton.jsx";
-import { ToastContainer, toast } from "react-toastify";
-import { useLocation } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
 const MySongs = () => {
 
   const { mySongs } = UseContextArtist()
   const [songs, setSongs] = useState([])
   const [errorGetSongs, setErrorGetSongs] = useState("")
-
-  const location = useLocation()
 
   useEffect(() => {
     async function fetchSongs() {

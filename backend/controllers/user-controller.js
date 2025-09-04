@@ -119,7 +119,7 @@ export const GetPlaylists = async (req,res) => {
 
         const playlistFormated = playlists.map(playlist => ({
             ...playlist.toObject(),
-            createdAt: Dayjs(song.createdAt).format('DD/MM/YYYY')
+            createdAt: Dayjs(playlist.createdAt).format('DD/MM/YYYY')
         }))
 
         res.json(playlistFormated);

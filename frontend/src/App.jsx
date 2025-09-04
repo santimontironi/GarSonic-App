@@ -13,6 +13,7 @@ import UploadSong from "./pages/UploadSong";
 import About from "./pages/About";
 import MySongs from "./pages/MySongs";
 import CreatePlaylist from "./pages/CreatePlaylist";
+import MyPlaylists from "./pages/MyPlaylists";
 
 const App = () => {
   return (
@@ -48,6 +49,11 @@ const App = () => {
         <Route path="/usuario/nuevaPlaylist" element={
           <SecurityRoutesUser>
             <CreatePlaylist/>
+          </SecurityRoutesUser>
+        } />
+        <Route path="/usuario/misPlaylists" element={
+          <SecurityRoutesUser>
+            <MyPlaylists/>
           </SecurityRoutesUser>
         } />
       </Routes>

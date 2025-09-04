@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { UseContextUser } from "../context/UseContextUser.js"
+import { motion } from "framer-motion"
 
 const DashboardUser = () => {
 
@@ -24,7 +25,13 @@ const DashboardUser = () => {
   return (
     <main className="w-full h-screen flex justify-center items-center bg-[#171717]">
 
-      <section className="relative flex flex-col items-center h-[700px] justify-center gap-[15px] border-2 border-purple-600 rounded-[8px] p-[10px] w-[360px] mx-auto md:w-[90%]">
+      <motion.section
+        initial={{ opacity: 0, y: 70 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: false, amount: 0.3 }}
+        className="relative flex flex-col items-center h-[700px] justify-center gap-[15px] border-2 border-purple-600 rounded-[8px] p-[10px] w-[360px] mx-auto md:w-[90%]"
+      >
         <form className="absolute top-10" method="post">
           <input className="bg-white p-2 w-[340px] md:w-[600px] md:p-3 text-purple-800 rounded-[8px] focus:outline-purple-900" type="text" placeholder="Buscar canciones..." />
         </form>
@@ -38,15 +45,18 @@ const DashboardUser = () => {
           />
         </figure>
         <div className="flex gap-[15px]">
-          <a href="/playlist" className="text-white p-[10px] bg-purple-600 rounded-[8px] hover:bg-purple-800">Mis Playlist</a>
+          <a href="/usuario/misPlaylists" className="text-white p-[10px] bg-purple-600 rounded-[8px] hover:bg-purple-800">Mis Playlist</a>
           <a href="/usuario/nuevaPlaylist" className="text-white p-[10px] bg-purple-600 rounded-[8px] hover:bg-purple-800">Nueva playlist</a>
         </div>
         <button
           className="absolute bottom-5 right-5 w-[150px] p-[10px] text-white font-bold rounded-2xl bg-red-500 cursor-pointer hover:bg-purple-700 hover:text-white"
           onClick={logout}>
           Cerrar sesión
-        </button>
-      </section>
+        </button>   
+
+      </motion.section>
+
+      
 
       {errorData && <p>{errorData}</p>}
 

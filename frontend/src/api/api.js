@@ -48,7 +48,7 @@ export function addPlaylist(formData){
 }
 
 export function getPlaylists(){
-    return axios.get(`${URL_BACKEND}/getPlaylists`,{
+    return axios.get(`${URL_BACKEND}/playlists`,{
         withCredentials: true
     })
 }
