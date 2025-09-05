@@ -57,7 +57,7 @@ const CreatePlaylist = () => {
 
       <BackButton to="/usuario" />
 
-      <div className="titleCreatePlaylist h-[160px] flex justify-center items-center">
+      <div className="title h-[160px] flex justify-center items-center">
         <h1 className="bg-[#662d91] w-[320px] text-white text-[27px] shadow-[7px_10px_15px_rgba(0,0,0,0.70)] p-[12px] md:text-[40px] md:w-[600px] text-center">Crear Playlist</h1>
       </div>
 

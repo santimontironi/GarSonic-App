@@ -31,7 +31,7 @@ const MySongs = () => {
 
       <BackButton to={"/artista"} />
 
-      <div className="titleMySongs h-[200px] flex justify-center items-center">
+      <div className="title h-[200px] flex justify-center items-center">
         <h1 className="bg-[#662d91] w-[320px] text-white text-[28px] shadow-[7px_10px_15px_rgba(0,0,0,0.70)] p-[12px] md:text-[40px] 2xl:text-[50px] md:w-[600px] text-center">Mis canciones</h1>
       </div>
 

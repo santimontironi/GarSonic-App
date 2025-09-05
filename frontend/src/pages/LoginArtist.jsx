@@ -54,7 +54,7 @@ const LoginArtist = () => {
 
       <BackButton to="/ingresar" />
 
-      <div className="titleLoginUser h-[200px] flex justify-center items-center">
+      <div className="title h-[200px] flex justify-center items-center">
         <h1 className="bg-black text-white text-[32px] shadow-[7px_10px_15px_rgba(0,0,0,0.70)] p-[12px] md:text-[40px] md:w-[600px] text-center">Ingreso de artista</h1>
       </div>
 
