@@ -164,7 +164,7 @@ export const SearchSongs = async (req, res) => {
         // se filtran solo las canciones que coinciden con título o artista
         const filteredSongs = songs.filter(song => 
             song.title.match(new RegExp(q, "i")) ||
-            (song.artist && song.artist.artistName.match(new RegExp(q, "i")))
+            (song.artist && song.artist.artistName.match(new RegExp(q, "i"))) // "i" es para hacer la búsqueda case-insensitive, y RegExp permite búsquedas parciales
         );
 
         res.json(filteredSongs);
