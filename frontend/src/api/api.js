@@ -86,6 +86,12 @@ export function deleteSongAxios(idSong){
     })
 }
 
+export function deletePlaylistAxios(playlistId){
+    return axios.delete(`${URL_BACKEND}/deletePlaylist/${playlistId}`,{
+        withCredentials: true
+    })
+}
+
 export function logoutArtist(){
     return axios.post(`${URL_BACKEND}/logoutArtist`, {}, {
         withCredentials:true
