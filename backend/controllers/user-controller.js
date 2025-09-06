@@ -153,28 +153,23 @@ export const DeletePlaylist = async (req, res) => {
 export const SearchSongs = async (req, res) => {
     try {
         const { q } = req.query;
-
-        const songs = await Song.find({
-            active: true,
-            $or: [
-                { title: { $regex: q, $options: "i" } },
-            ]
-        })
+        
+        // se buscan canciones activas que coincidan con el título o el nombre del artista
+        const songs = await Song.find({ active: true })
             .populate({
                 path: "artist",
                 select: "artistName",
-                match: { artistName: { $regex: q, $options: "i" } } //"i" significa insensitive (no distingue mayúsculas/minúsculas)
             });
 
-            //$regex es para hacer búsquedas parciales
-
-        // Filtrar canciones donde matchee el título o el nombre del artista
-        const filteredSongs = songs.filter(
-            song => song.title.match(new RegExp(q, "i")) || song.artist 
+        // se filtran solo las canciones que coinciden con título o artista
+        const filteredSongs = songs.filter(song => 
+            song.title.match(new RegExp(q, "i")) ||
+            (song.artist && song.artist.artistName.match(new RegExp(q, "i")))
         );
-        
+
         res.json(filteredSongs);
     } catch (error) {
+        console.error(error);
         res.status(500).json({ message: "Error buscando canciones." });
     }
 };
