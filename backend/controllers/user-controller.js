@@ -163,14 +163,16 @@ export const SearchSongs = async (req, res) => {
             .populate({
                 path: "artist",
                 select: "artistName",
-                match: { artistName: { $regex: q, $options: "i" } }
+                match: { artistName: { $regex: q, $options: "i" } } //"i" significa insensitive (no distingue mayúsculas/minúsculas)
             });
+
+            //$regex es para hacer búsquedas parciales
 
         // Filtrar canciones donde matchee el título o el nombre del artista
         const filteredSongs = songs.filter(
-            song => song.title.match(new RegExp(q, "i")) || song.artist
+            song => song.title.match(new RegExp(q, "i")) || song.artist 
         );
-
+        
         res.json(filteredSongs);
     } catch (error) {
         res.status(500).json({ message: "Error buscando canciones." });
