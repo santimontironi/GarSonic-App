@@ -4,6 +4,7 @@ import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import Playlist from "../models/playlist-model.js";
 import Dayjs from 'dayjs'
+import Song from "../models/song-model.js";
 
 dotenv.config();
 
@@ -148,6 +149,33 @@ export const DeletePlaylist = async (req, res) => {
         return res.status(500).json({ message: "Error al eliminar la lista de reproducción", error });
     }
 }
+
+export const SearchSongs = async (req, res) => {
+    try {
+        const { q } = req.query;
+
+        const songs = await Song.find({
+            active: true,
+            $or: [
+                { title: { $regex: q, $options: "i" } },
+            ]
+        })
+            .populate({
+                path: "artist",
+                select: "artistName",
+                match: { artistName: { $regex: q, $options: "i" } }
+            });
+
+        // Filtrar canciones donde matchee el título o el nombre del artista
+        const filteredSongs = songs.filter(
+            song => song.title.match(new RegExp(q, "i")) || song.artist
+        );
+
+        res.json(filteredSongs);
+    } catch (error) {
+        res.status(500).json({ message: "Error buscando canciones." });
+    }
+};
 
 export const LogoutUser = (req, res) => {
     res.clearCookie("token", {
