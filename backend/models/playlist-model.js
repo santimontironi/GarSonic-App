@@ -21,6 +21,10 @@ const playlistSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Song"
     }],
+    active:{
+        type: Boolean,
+        default: true
+    },
     createdAt: {
         type: Date,
         default: Date.now

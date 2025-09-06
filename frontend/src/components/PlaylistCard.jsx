@@ -15,7 +15,7 @@ const PlaylistCard = ({name,description,coverImage,date,songs}) => {
   return (
     <div className="relative flex flex-col w-[380px] rounded-2xl bg-[#9032d8] shadow-[4px_4px_10px_rgba(0,0,0,0.5)] items-center gap-[10px] p-[20px] transform md:hover:scale-105 md:transition md:ease-in md:duration-300 2xl:w-[430px] text-white">
 
-      <img className="w-[300px]" src={coverImage} alt={name} />
+      <img className="w-[300px] shadow-[8px_8px_15px_rgba(0,0,0,0.7)]" src={coverImage} alt={name} />
 
       <div>
         <i onClick={handleClick} class="absolute top-[10px] right-[10px] text-[30px] bi bi-three-dots-vertical cursor-pointer"></i>

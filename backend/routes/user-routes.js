@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { RegisterUser, LoginUser, DashboardUser, LogoutUser, CreatePlaylist, GetPlaylists } from "../controllers/user-controller.js";
+import { RegisterUser, LoginUser, DashboardUser, LogoutUser, CreatePlaylist, GetPlaylists, DeletePlaylist } from "../controllers/user-controller.js";
 import { verifyToken } from "../middlewares/verifyTokenUser.js";
 import { upload } from "../middlewares/upload.js";
 
@@ -10,6 +10,7 @@ router.post('/login',LoginUser)
 router.get('/dashboardUser', verifyToken, DashboardUser)
 router.post('/createPlaylist',upload.single('coverImage'), verifyToken, CreatePlaylist)
 router.get('/playlists',verifyToken,GetPlaylists)
+router.delete('/deletePlaylist/:playlistId',verifyToken,DeletePlaylist)
 router.post('/logout', LogoutUser)
 
 export default router
