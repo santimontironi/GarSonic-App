@@ -1,15 +1,46 @@
 import { useState } from "react";
+import { UseContextUser } from "../context/UseContextUser";
+import Swal from "sweetalert2";
 
-const PlaylistCard = ({name,description,coverImage,date,songs}) => {
+const PlaylistCard = ({ id, name, description, coverImage, date, songs }) => {
 
-  const[open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false)
+
+  const { deletePlaylist } = UseContextUser();
 
   function handleClick() {
-    if(open){
+    if (open) {
       setOpen(false)
-    }else{
+    } else {
       setOpen(true)
     }
+  }
+
+  function handleDeletePlaylist() {
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: "¡No podrás revertir esto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          await deletePlaylist(id)
+          Swal.fire('¡Eliminado!', 'Playlist eliminada con éxito.', 'success').then(() => {
+            window.location.reload()
+          })
+        }
+        catch (error) {
+          if (error.response?.data?.message) {
+            console.log(error.response.data.message)
+          }
+        }
+      }
+    });
   }
 
   return (
@@ -23,7 +54,7 @@ const PlaylistCard = ({name,description,coverImage,date,songs}) => {
 
       <div className={`flex gap-[10px] ${open ? "flex flex-col absolute top-[50px] right-[10px] bg-[#101010] text-white w-[200px] rounded-2xl p-[5px]" : "hidden"}`}>
         <button className="hover:bg-green-400 rounded-2xl hover:text-black">Agregar canción</button>
-        <button className="hover:bg-red-400 rounded-2xl hover:text-black">Eliminar playlist</button>
+        <button onClick={handleDeletePlaylist} className="hover:bg-red-400 rounded-2xl hover:text-black">Eliminar playlist</button>
       </div>
 
       <div className="flex flex-col gap-[7px] text-center">

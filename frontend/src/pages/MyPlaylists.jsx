@@ -46,6 +46,7 @@ const MyPlaylists = () => {
             description={playlist.description}
             date={playlist.createdAt}
             songs={playlist.songs}
+            id={playlist._id}
           />
         ))}
       </div>
