@@ -32,7 +32,7 @@ const DashboardUser = () => {
 
   useEffect(() => {
     async function handleSearch() {
-      if(inputSearch.trim() == ''){
+      if (inputSearch.trim() == '') {
         setSearchResults([])
         return
       }
@@ -40,22 +40,20 @@ const DashboardUser = () => {
         setSearching(true)
         const res = await search(inputSearch)
         setSearchResults(res.data)
+
+        if (res.data.length === 0) {
+          toast.error("No se encontraron resultados en la busqueda.", { toastId: "no-results", autoClose: 1800, hideProgressBar: true })
+        }
       }
       catch (error) {
         console.log(error)
       }
-      finally{
+      finally {
         setSearching(false)
       }
     }
     handleSearch()
   }, [inputSearch])
-
-  useEffect(() => {
-    if (searchResults.length == 0 && inputSearch.trim() !== '') {
-      toast.error("No se encontraron resultados en la busqueda.", { toastId: "no-results", autoClose: 1800, hideProgressBar:true })
-    }
-  }, [searchResults, inputSearch])
 
   return (
     <main className="w-full h-screen flex justify-center items-center bg-[#171717]">
@@ -71,9 +69,11 @@ const DashboardUser = () => {
         </form>
 
         {inputSearch.trim() !== '' && searchResults.length !== 0 ? (
-          searchResults.map((result) => (
-            <SongList coverImage={result.coverImage} artist={result.artist.artistName} title={result.title} audioFile={result.audioFile} duration={result.duration} releaseDate={result.releaseDate} key={result._id} />
-          ))
+          <div className="h-[450px] overflow-y-scroll flex flex-col items-center gap-[15px] mt-[100px] p-[20px]">
+            {searchResults.map((result) => (
+              <SongList coverImage={result.coverImage} artist={result.artist.artistName} title={result.title} audioFile={result.audioFile} duration={result.duration} releaseDate={result.releaseDate} key={result._id} />
+            ))}
+          </div>
         ) : (
           <>
             <h1 className="text-white tituloDashboard text-[40px] border-b-2 border-purple-600 md:text-[60px]">Bienvenido <span>{userData.name}</span></h1>

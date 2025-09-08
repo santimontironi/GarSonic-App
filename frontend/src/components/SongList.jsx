@@ -18,7 +18,7 @@ const SongList = ({ coverImage, artist, title, audioFile, duration, releaseDate 
     }
 
     return (
-        <div>
+        <div className="flex flex-col md:flex-row items-center gap-[15px] bg-white rounded-2xl p-[15px] shadow-[4px_4px_10px_rgba(0,0,0,0.5)] w-[300px] md:w-[500px] lg:w-[600px] 2xl:w-[700px]">
 
             <img src={coverImage} alt={title} />
 

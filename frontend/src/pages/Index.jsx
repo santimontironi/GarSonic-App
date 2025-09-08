@@ -14,7 +14,7 @@ const Index = () => {
             <h1 className="tituloIndex text-center text-[45px] xl:text-[60px] md:text-[50px] 2xl:text-[75px]">Te damos la bienvenida a GarSonic</h1>
             <p className="w-[320px] text-center xl:text-[15px] 2xl:text-[20px] lg:w-[850px] md:text-[18px] md:w-[600px]">Tu nueva forma de escuchar música está acá. Descubrí artistas, explorá géneros y disfrutá de tus canciones favoritas en un solo lugar. GarSonic es una experiencia musical simple, rápida y sin distracciones. ¿Listo para empezar? Dale play y sentí la música.</p>
             <div className="mt-3">
-              <a className="bg-white p-[10px] text-purple-700 hover:shadow-[4px_5px_6px_rgba(0,0,0,0.50)] rounded-[10px] lg:rounded-[12px] lg:text-[20px]" href="/ingresar">Comenzar</a>
+              <a className="bg-white p-[10px] inline-block hover:scale-110 hover:shadow-[5px_5px_10px_rgba(0,0,0,0.50)] transition duration-200 text-purple-700 rounded-[10px] lg:rounded-[12px] lg:text-[20px]" href="/ingresar">Comenzar</a>
             </div>
           </div>
         </motion.div>
