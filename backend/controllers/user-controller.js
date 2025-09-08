@@ -154,7 +154,7 @@ export const SearchSongs = async (req, res) => {
     try {
         const { q } = req.query;
         
-        // se buscan canciones activas que coincidan con el título o el nombre del artista
+        // se buscan todas las canciones activas
         const songs = await Song.find({ active: true })
             .populate({
                 path: "artist",

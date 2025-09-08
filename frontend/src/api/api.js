@@ -53,6 +53,13 @@ export function getPlaylists(){
     })
 }
 
+export function searchSongs(q){
+    return axios.get(`${URL_BACKEND}/searchSongs`,{
+        withCredentials: true,
+        params: { q }
+    })
+}
+
 export function loginArtistAxios(formData){
     return axios.post(`${URL_BACKEND}/loginArtist`,formData,{
         withCredentials:true
