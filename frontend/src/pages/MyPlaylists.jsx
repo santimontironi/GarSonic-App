@@ -16,7 +16,7 @@ const MyPlaylists = () => {
       try {
         const res = await getAllPlaylists()
         setPlaylists(res.data)
-        console.log("esto es playlists",res.data)
+        setErrorGetPlaylists(null)
       }
       catch (error) {
         if (error.response?.data?.message) {
@@ -53,6 +53,10 @@ const MyPlaylists = () => {
 
 
       {playlists.length === 0 && <p>No tienes playlists creadas.</p>}
+
+      {errorGetPlaylists && (
+        <p className="errorAuth text-center text-white bg-[#d81630] p-[8px] mt-[30px] shadow-[5px_10px_15px_#101010] w-[400px] lg:p-[10px] font-[900] m-auto lg:mt-[20px] lg:w-[700px]">Error al obtener playlists: {errorGetPlaylists}</p>
+      )}
 
     </main>
   )

@@ -1,13 +1,19 @@
 import { useState, useEffect } from "react"
 import { UseContextUser } from "../context/UseContextUser.js"
 import { motion } from "framer-motion"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const DashboardUser = () => {
 
   const [userData, setUserData] = useState({})
   const [errorData, setErrorData] = useState(null)
 
-  const { fetchUser, logout } = UseContextUser()
+  const [inputSearch, setInputSearch] = useState("")
+  const [searchResults, setSearchResults] = useState([])
+  const [searching,setSearching] = useState(false)
+
+  const { fetchUser, search ,logout } = UseContextUser()
 
   useEffect(() => {
     async function fetchUserData() {
@@ -21,6 +27,30 @@ const DashboardUser = () => {
     }
     fetchUserData()
   }, [])
+  
+
+  useEffect(() => {
+    async function handleSearch(){
+      try{
+        setSearching(true)
+        const res = await search(inputSearch)
+        setSearchResults(res.data)
+        console.log(res.data)
+        setSearching(false)
+      }
+      catch(error){
+        setSearching(false)
+        console.log(error)
+      }
+    }
+    handleSearch()
+  },[inputSearch])
+
+  useEffect(() => {
+    if(searchResults.length === 0 && inputSearch.trim() != ''){
+      toast.error("No se encontraron resultados en la busqueda.",{ toastId: "no-results" })
+    }
+  },[searchResults, inputSearch])
 
   return (
     <main className="w-full h-screen flex justify-center items-center bg-[#171717]">
@@ -32,8 +62,8 @@ const DashboardUser = () => {
         viewport={{ once: false, amount: 0.3 }}
         className="relative flex flex-col items-center h-[700px] justify-center gap-[15px] border-2 border-purple-600 rounded-[8px] p-[10px] w-[360px] mx-auto md:w-[90%]"
       >
-        <form className="absolute top-10" method="post">
-          <input className="bg-white p-2 w-[340px] md:w-[600px] md:p-3 text-purple-800 rounded-[8px] focus:outline-purple-900" type="text" placeholder="Buscar canciones..." />
+        <form className="absolute top-10" method="post" onSubmit={(e) => e.preventDefault()}>
+          <input className="bg-white p-2 w-[340px] md:w-[600px] md:p-3 text-purple-800 rounded-[8px] focus:outline-purple-900" type="text" placeholder="Buscar canciones..." onChange={(e) => setInputSearch(e.target.value)} />
         </form>
         <h1 className="text-white tituloDashboard text-[40px] border-b-2 border-purple-600 md:text-[60px]">Bienvenido <span>{userData.name}</span></h1>
         <p className="text-white text-[16px] md:text-[19px] w-[300px] md:w-[600px] text-center">Aqui puedes encontrar tus canciones favoritas y hacer tus playlist a tu gusto.</p>
@@ -56,9 +86,7 @@ const DashboardUser = () => {
 
       </motion.section>
 
-      
-
-      {errorData && <p>{errorData}</p>}
+      <ToastContainer/>
 
     </main>
 

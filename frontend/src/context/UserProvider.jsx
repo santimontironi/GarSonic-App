@@ -66,7 +66,7 @@ export const UserProvider = ({children}) => {
         return res;
     }
 
-    async function searchSongs(q) {
+    async function search(q) {
         const res = await searchSongs(q);
         return res;
     }
@@ -81,6 +81,7 @@ export const UserProvider = ({children}) => {
             loading,
             createPlaylist,
             getAllPlaylists,
+            search,
             deletePlaylist
         }}>
             {children}
