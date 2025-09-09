@@ -15,7 +15,6 @@ const DashboardUser = () => {
 
   const [inputSearch, setInputSearch] = useState("")
   const [searchResults, setSearchResults] = useState([])
-  const [searching, setSearching] = useState(false)
 
   const { fetchUser, search, logout } = UseContextUser()
 
@@ -41,7 +40,6 @@ const DashboardUser = () => {
         return
       }
       try {
-        setSearching(true)
         const res = await search(inputSearch)
         setSearchResults(res.data)
         console.log(res.data)
@@ -52,9 +50,6 @@ const DashboardUser = () => {
       }
       catch (error) {
         console.log(error)
-      }
-      finally {
-        setSearching(false)
       }
     }
     handleSearch()
@@ -73,7 +68,7 @@ const DashboardUser = () => {
           <input className="bg-white p-2 w-[340px] md:w-[600px] md:p-3 text-purple-800 rounded-[8px] focus:outline-purple-900" type="text" placeholder="Buscar canciones..." onChange={(e) => setInputSearch(e.target.value)} />
         </form>
 
-        {inputSearch.trim() !== '' && searchResults.length !== 0 ? (
+        {searchResults.length !== 0 ? (
           <Scrollbar
             style={{ height: 450, marginTop: "100px", padding: "15px", width: "100%" }}
             trackYProps={{style: {background: "#1e1e1e", borderRadius: "8px", width: "10px"}}}
