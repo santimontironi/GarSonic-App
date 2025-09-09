@@ -4,6 +4,10 @@ import { motion } from "framer-motion"
 import { ToastContainer, toast } from 'react-toastify';
 import SongList from "../components/SongList.jsx";
 import 'react-toastify/dist/ReactToastify.css';
+import { Scrollbar } from "react-scrollbars-custom";
+
+
+
 const DashboardUser = () => {
 
   const [userData, setUserData] = useState({})
@@ -70,17 +74,29 @@ const DashboardUser = () => {
         </form>
 
         {inputSearch.trim() !== '' && searchResults.length !== 0 ? (
-          <div className="h-[450px] overflow-y-scroll flex flex-col items-center gap-[15px] mt-[100px] p-[15px]">
-            {searchResults.map((result) => (
-              <SongList 
-              coverImage={`http://localhost:3000/uploads/${result.coverImage}`} 
-              artist={result.artist.artistName} 
-              title={result.title} 
-              audioFile={`http://localhost:3000/uploads/${result.audioFile}`} 
-              duration={result.duration} 
-              releaseDate={result.releaseDate} key={result._id} />
-            ))}
-          </div>
+          <Scrollbar
+            style={{ height: 450, marginTop: "100px", padding: "15px", width: "100%" }}
+            trackYProps={{style: {background: "#1e1e1e", borderRadius: "8px", width: "10px"}}}
+            thumbYProps={{style: {background: "#9333ea", borderRadius: "8px"}}}
+          >
+            <div className="flex flex-col items-center gap-[15px]">
+              <h2 className="text-white tituloDashboard text-[18px] text-center border-b-2 border-purple-600 md:text-[40px]">
+                Resultados de la busqueda
+              </h2>
+
+              {searchResults.map((result) => (
+                <SongList
+                  key={result._id}
+                  coverImage={`http://localhost:3000/uploads/${result.coverImage}`}
+                  artist={result.artist.artistName}
+                  title={result.title}
+                  audioFile={`http://localhost:3000/uploads/${result.audioFile}`}
+                  duration={result.duration}
+                  releaseDate={result.releaseDate}
+                />
+              ))}
+            </div>
+          </Scrollbar>
         ) : (
           <>
             <h1 className="text-white tituloDashboard text-[40px] border-b-2 border-purple-600 md:text-[60px]">Bienvenido <span>{userData.name}</span></h1>

@@ -21,9 +21,13 @@
     "react-dropzone": "^14.3.8",
     "react-hook-form": "^7.61.1",
     "react-hot-toast": "^2.6.0",
+    "react-perfect-scrollbar": "^1.5.8",
     "react-router-dom": "^7.7.0",
+    "react-scrollbars-custom": "^4.1.1",
     "react-spinners": "^0.17.0",
     "react-toastify": "^11.0.5",
+    "simplebar": "^6.3.2",
+    "simplebar-react": "^3.3.2",
     "sweetalert2": "^11.22.5",
     "tailwindcss": "^4.1.11"
   },

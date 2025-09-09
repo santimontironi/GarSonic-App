@@ -16,7 +16,7 @@ const SongList = ({ coverImage, artist, title, audioFile, duration, releaseDate 
     }
 
     return (
-        <div className="flex flex-col md:flex-row items-center gap-6 bg-gradient-to-r from-purple-900 via-purple-800 to-black text-white rounded-2xl p-5 shadow-lg w-[320px] md:w-[500px] lg:w-[600px] 2xl:w-[700px] transition transform hover:scale-[1.02] hover:shadow-purple-900/50">
+        <div className="flex flex-col md:flex-row items-center gap-6 bg-gradient-to-r from-purple-900 via-purple-800 to-black text-white rounded-2xl p-5 shadow-lg w-[280px] md:w-[500px] lg:w-[600px] 2xl:w-[700px] transition transform hover:scale-[1.02] hover:shadow-purple-900/50">
 
             <img
                 className="w-[180px] h-[140px] object-cover rounded-xl shadow-md"
