@@ -70,9 +70,10 @@ const DashboardUser = () => {
         </form>
 
         {inputSearch.trim() !== '' && searchResults.length !== 0 ? (
-          <div className="h-[450px] overflow-y-scroll flex flex-col items-center gap-[15px] mt-[100px] p-[20px]">
+          <div className="h-[450px] overflow-y-scroll flex flex-col items-center gap-[15px] mt-[100px] p-[15px]">
             {searchResults.map((result) => (
-              <SongList coverImage={`http://localhost:3000/uploads/${result.coverImage}`} 
+              <SongList 
+              coverImage={`http://localhost:3000/uploads/${result.coverImage}`} 
               artist={result.artist.artistName} 
               title={result.title} 
               audioFile={`http://localhost:3000/uploads/${result.audioFile}`} 

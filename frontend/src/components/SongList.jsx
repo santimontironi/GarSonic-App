@@ -1,52 +1,55 @@
 import { Play, Pause } from "lucide-react";
 import { useState, useRef } from "react";
-import { UseContextArtist } from "../context/UseContextArtist";
 
 const SongList = ({ coverImage, artist, title, audioFile, duration, releaseDate }) => {
-
-    const audioRef = useRef(null)
-    const [isPlaying, setIsPlaying] = useState(false)
+    const audioRef = useRef(null);
+    const [isPlaying, setIsPlaying] = useState(false);
 
     function handlePlay() {
         if (audioRef.current.paused) {
-            audioRef.current.play()
-            setIsPlaying(true)
+            audioRef.current.play();
+            setIsPlaying(true);
         } else {
-            audioRef.current.pause()
-            setIsPlaying(false)
+            audioRef.current.pause();
+            setIsPlaying(false);
         }
     }
 
     return (
-        <div className="flex flex-col md:flex-row items-center gap-[15px] bg-white rounded-2xl p-[15px] shadow-[4px_4px_10px_rgba(0,0,0,0.5)] w-[300px] md:w-[500px] lg:w-[600px] 2xl:w-[700px]">
+        <div className="flex flex-col md:flex-row items-center gap-6 bg-gradient-to-r from-purple-900 via-purple-800 to-black text-white rounded-2xl p-5 shadow-lg w-[320px] md:w-[500px] lg:w-[600px] 2xl:w-[700px] transition transform hover:scale-[1.02] hover:shadow-purple-900/50">
 
-            <img src={coverImage} alt={title} />
+            <img
+                className="w-[180px] h-[140px] object-cover rounded-xl shadow-md"
+                src={coverImage}
+                alt={title}
+            />
 
-            <div>
+          
+            <div className="flex flex-col justify-between w-full">
 
-                <div>
-                    <span>{title}</span>
-                    <span>{artist}</span>
+                <div className="flex flex-col mb-3">
+                    <span className="text-lg font-bold">{title}</span>
+                    <span className="text-sm text-gray-300">{artist}</span>
                 </div>
 
-                <div>
-
-                    <button onClick={handlePlay}>
-                        {isPlaying ? <Pause size={20} /> : <Play size={20} />}
+                <div className="flex items-center gap-4">
+                    
+                    <button
+                        onClick={handlePlay}
+                        className="p-3 bg-purple-600 rounded-full hover:bg-purple-700 transition"
+                    >
+                        {isPlaying ? <Pause size={22} /> : <Play size={22} />}
                     </button>
 
-                    <div>
-                        <audio src={audioFile} ref={audioRef} onEnded={() => setIsPlaying(false)}></audio>
-                        <span>Duración: {duration}</span>
-                        <span>Lanzamiento: {releaseDate}</span>
+                    <div className="flex flex-col text-sm text-gray-300">
+                        <audio src={audioFile} ref={audioRef} onEnded={() => setIsPlaying(false)} />
+                        <span className="font-medium">Duración: {duration}</span>
+                        <span>Lanzamiento: {new Date(releaseDate).toLocaleDateString()}</span>
                     </div>
-
                 </div>
-
             </div>
-
         </div>
-    )
-}
+    );
+};
 
-export default SongList
+export default SongList;
