@@ -40,6 +40,7 @@ const DashboardUser = () => {
         setSearching(true)
         const res = await search(inputSearch)
         setSearchResults(res.data)
+        console.log(res.data)
 
         if (res.data.length === 0) {
           toast.error("No se encontraron resultados en la busqueda.", { toastId: "no-results", autoClose: 1800, hideProgressBar: true })
@@ -71,7 +72,12 @@ const DashboardUser = () => {
         {inputSearch.trim() !== '' && searchResults.length !== 0 ? (
           <div className="h-[450px] overflow-y-scroll flex flex-col items-center gap-[15px] mt-[100px] p-[20px]">
             {searchResults.map((result) => (
-              <SongList coverImage={result.coverImage} artist={result.artist.artistName} title={result.title} audioFile={result.audioFile} duration={result.duration} releaseDate={result.releaseDate} key={result._id} />
+              <SongList coverImage={`http://localhost:3000/uploads/${result.coverImage}`} 
+              artist={result.artist.artistName} 
+              title={result.title} 
+              audioFile={`http://localhost:3000/uploads/${result.audioFile}`} 
+              duration={result.duration} 
+              releaseDate={result.releaseDate} key={result._id} />
             ))}
           </div>
         ) : (
