@@ -30,6 +30,7 @@ const artistModel = new mongoose.Schema({
         default: false
     },
     verificationToken: { type: String }
+    
 })
 
 export default mongoose.model("Artist", artistModel);
