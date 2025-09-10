@@ -31,7 +31,7 @@ export const RegisterArtist = async (req, res) => {
 
         // Configuración del transporte de nodemailer para enviar el mail
         const transporter = nodemailer.createTransport({
-            service: "gmail", // o tu SMTP
+            service: "gmail",
             auth: {
                 user: process.env.EMAIL_USER,
                 pass: process.env.EMAIL_PASS

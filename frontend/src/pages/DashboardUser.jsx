@@ -5,7 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import SongList from "../components/SongList.jsx";
 import 'react-toastify/dist/ReactToastify.css';
 import { Scrollbar } from "react-scrollbars-custom";
-
+import { Link } from "react-router-dom";
 
 
 const DashboardUser = () => {
@@ -104,8 +104,8 @@ const DashboardUser = () => {
               />
             </figure>
             <div className="flex gap-[15px]">
-              <a href="/usuario/misPlaylists" className="text-white p-[10px] bg-purple-600 rounded-[8px] hover:bg-purple-800">Mis Playlist</a>
-              <a href="/usuario/nuevaPlaylist" className="text-white p-[10px] bg-purple-600 rounded-[8px] hover:bg-purple-800">Nueva playlist</a>
+              <Link to="/usuario/misPlaylists" className="text-white p-[10px] bg-purple-600 rounded-[8px] hover:bg-purple-800">Mis Playlist</Link>
+              <Link to="/usuario/nuevaPlaylist" className="text-white p-[10px] bg-purple-600 rounded-[8px] hover:bg-purple-800">Nueva playlist</Link>
             </div>
             <button
               className="absolute bottom-5 right-5 w-[150px] p-[10px] text-white font-bold rounded-2xl bg-red-500 cursor-pointer hover:bg-purple-700 hover:text-white"

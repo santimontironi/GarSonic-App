@@ -3,6 +3,7 @@ import { UseContextArtist } from "../context/UseContextArtist.js"
 import { motion } from "framer-motion"
 import { useLocation, useNavigate } from "react-router-dom"
 import { ToastContainer, toast } from 'react-toastify';
+import { Link } from "react-router-dom";
 
 const DashboardArtist = () => {
 
@@ -69,8 +70,8 @@ const DashboardArtist = () => {
         </p>
 
         <div className="flex gap-[15px]">
-          <a href="/artista/misCanciones" className="text-white p-[10px] bg-purple-600 rounded-[8px] hover:bg-white hover:text-black">Mis Canciones</a>
-          <a href="/artista/subirCancion" className="text-white p-[10px] bg-purple-600 rounded-[8px] hover:bg-white hover:text-black">Agregar canción</a>
+          <Link to="/artista/misCanciones" className="text-white p-[10px] bg-purple-600 rounded-[8px] hover:bg-white hover:text-black">Mis Canciones</Link>
+          <Link to="/artista/subirCancion" className="text-white p-[10px] bg-purple-600 rounded-[8px] hover:bg-white hover:text-black">Agregar canción</Link>
         </div>
 
         <button
