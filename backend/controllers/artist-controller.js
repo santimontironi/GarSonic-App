@@ -35,6 +35,9 @@ export const RegisterArtist = async (req, res) => {
             auth: {
                 user: process.env.EMAIL_USER,
                 pass: process.env.EMAIL_PASS
+            },
+            tls: {
+                rejectUnauthorized: false
             }
         });
 
@@ -42,7 +45,7 @@ export const RegisterArtist = async (req, res) => {
         const verifyUrl = `${process.env.FRONTEND_URL}/verify/${verificationToken}`;
 
         // Envío del correo de verificación
-        try{
+        try {
             await transporter.sendMail({
                 from: `"GarSonic" <${process.env.EMAIL_USER}>`,
                 to: email,
