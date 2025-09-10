@@ -24,7 +24,12 @@ const artistModel = new mongoose.Schema({
     description: {
         type: String,
         required: true
-    }
+    },
+    isVerified: {
+        type: Boolean,
+        default: false
+    },
+    verificationToken: { type: String }
 })
 
 export default mongoose.model("Artist", artistModel);
