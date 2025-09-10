@@ -3,7 +3,11 @@ import Song from "../models/song-model.js";
 import bcrypt from 'bcrypt'
 import jwt from "jsonwebtoken";
 import Dayjs from 'dayjs'
+import nodemailer from "nodemailer";
+import crypto from "crypto";
+import dotenv from "dotenv";
 
+dotenv.config();
 
 export const RegisterArtist = async (req, res) => {
     try {
@@ -18,11 +22,36 @@ export const RegisterArtist = async (req, res) => {
 
         const hashPassword = await bcrypt.hash(password, 10)
 
-        const newArtist = new Artist({ profilePhoto, email, password: hashPassword, artistName, genre, description })
+        // se genera un token de verificación único
+        const verificationToken = crypto.randomBytes(32).toString("hex");
+
+        const newArtist = new Artist({ profilePhoto, email, password: hashPassword, artistName, genre, description, verificationToken, isVerified: false })
 
         await newArtist.save()
 
-        res.status(201).json({ message: "Usuario creado correctamente" });
+        // Configuración del transporte de nodemailer para enviar el mail
+        const transporter = nodemailer.createTransport({
+            service: "gmail", // o tu SMTP
+            auth: {
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_PASS
+            }
+        });
+
+        // URL de verificación
+        const verifyUrl = `${process.env.FRONTEND_URL}/verify/${verificationToken}`;
+
+        // Envío del correo de verificación
+        await transporter.sendMail({
+            from: `"GarSonic" <${process.env.EMAIL_USER}>`,
+            to: email,
+            subject: "Confirma tu cuenta de artista",
+            html: `<p>Hola ${artistName},</p>
+                   <p>Por favor confirma tu cuenta haciendo clic en el siguiente enlace:</p>
+                   <a href="${verifyUrl}">${verifyUrl}</a>`
+        });
+
+        res.status(201).json({ message: "Registro exitoso. Revisa tu correo para confirmar la cuenta." });
 
     } catch (error) {
         return res.status(500).json({ message: "Error al registrar un artista" })
@@ -106,7 +135,7 @@ export const GetSongs = async (req, res) => {
         const artistId = req.artistId
 
         // se obtienen todas las canciones cuyo campo 'artist' sea igual al id del artista logueado (req.artistId)
-        const songs = await Song.find({ artist: artistId, active:true }).populate("artist", "artistName");
+        const songs = await Song.find({ artist: artistId, active: true }).populate("artist", "artistName");
 
         // Formatear las fechas de lanzamiento
         const formattedSongs = songs.map(song => ({
