@@ -81,6 +81,10 @@ export function registerArtistAxios(formData){
     })
 }
 
+export function verifyArtistAxios(token) {
+    return axios.get(`${URL_BACKEND}/verify/${token}`);
+}
+
 export function dashboardArtistAxios(){
     return axios.get(`${URL_BACKEND}/dashboardArtist`,{
         withCredentials: true

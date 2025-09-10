@@ -14,6 +14,7 @@ import About from "./pages/About";
 import MySongs from "./pages/MySongs";
 import CreatePlaylist from "./pages/CreatePlaylist";
 import MyPlaylists from "./pages/MyPlaylists";
+import VerifyArtist from "./pages/VerifyArtist";
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
         <Route path="/registroUsuario" element={<RegisterUser/>} />
         <Route path="/loginArtista" element={<LoginArtist/>} />
         <Route path="/registroArtista" element={<RegisterArtist/>} />
+        <Route path="/verify/:token" element={<VerifyArtist />} />
         <Route path="/usuario" element={
           <SecurityRoutesUser>
             <DashboardUser/>

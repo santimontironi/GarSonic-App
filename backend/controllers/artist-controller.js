@@ -42,19 +42,55 @@ export const RegisterArtist = async (req, res) => {
         const verifyUrl = `${process.env.FRONTEND_URL}/verify/${verificationToken}`;
 
         // Envío del correo de verificación
-        await transporter.sendMail({
-            from: `"GarSonic" <${process.env.EMAIL_USER}>`,
-            to: email,
-            subject: "Confirma tu cuenta de artista",
-            html: `<p>Hola ${artistName},</p>
-                   <p>Por favor confirma tu cuenta haciendo clic en el siguiente enlace:</p>
-                   <a href="${verifyUrl}">${verifyUrl}</a>`
-        });
+        try{
+            await transporter.sendMail({
+                from: `"GarSonic" <${process.env.EMAIL_USER}>`,
+                to: email,
+                subject: "Confirma tu cuenta de artista",
+                html: `<p>Hola ${artistName},</p>
+                       <p>Por favor confirma tu cuenta haciendo clic en el siguiente enlace:</p>
+                       <a href="${verifyUrl}">${verifyUrl}</a>`
+            });
 
-        res.status(201).json({ message: "Registro exitoso. Revisa tu correo para confirmar la cuenta." });
+        } catch (error) {
+            console.error("Error al enviar el correo de verificación:", error);
+        }
+
+        res.status(201).json({
+            message: "Registro exitoso. Revisa tu correo para confirmar la cuenta.",
+            artist: {
+                email: newArtist.email,
+                artistName: newArtist.artistName,
+                isVerified: newArtist.isVerified
+            }
+        });
 
     } catch (error) {
         return res.status(500).json({ message: "Error al registrar un artista" })
+    }
+}
+
+export const VerifyArtist = async (req, res) => {
+    try {
+        const { token } = req.params;
+
+        // Buscar artista con ese token
+        const artist = await Artist.findOne({ verificationToken: token });
+
+        if (!artist) {
+            return res.status(400).json({ message: "Token inválido o expirado." });
+        }
+
+        // Marcar como verificado
+        artist.isVerified = true;
+        artist.verificationToken = undefined; // opcional: limpiar token
+        await artist.save();
+
+        res.json({ message: "Cuenta verificada correctamente. Ya puedes iniciar sesión." });
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Error al verificar la cuenta." });
     }
 }
 

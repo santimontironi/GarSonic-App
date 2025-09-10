@@ -64,8 +64,8 @@ const RegisterArtist = () => {
 
       <BackButton to="/loginArtista" />
 
-      <div className="title h-[140px] flex justify-center items-center">
-        <h1 className="bg-[#662d91] w-[350px] text-white tex text-[29px] shadow-[7px_10px_15px_rgba(0,0,0,0.70)] p-[8px] md:p-[12px] md:text-[40px] md:w-[600px] text-center">Registro de Artista</h1>
+      <div className="title h-[170px] flex justify-center items-center">
+        <h1 className="bg-[#662d91] w-[270px] text-white tex text-[29px] shadow-[7px_10px_15px_rgba(0,0,0,0.70)] p-[8px] md:p-[12px] md:text-[40px] md:w-[600px] text-center">Registro de Artista</h1>
       </div>
 
       <motion.div
