@@ -174,6 +174,27 @@ export const SearchSongs = async (req, res) => {
     }
 };
 
+export const AddSongToPlaylist = async (req, res) => {
+    try {
+        const { playlistId, songId } = req.body;
+        const userId = req.userId;
+
+        const playlist = await Playlist.findOne({ _id: playlistId, owner: userId, active: true });
+
+        if (playlist.songs.includes(songId)) {
+            return res.status(400).json({ message: "La canción ya está en la playlist." });
+        }
+
+        playlist.songs.push(songId);
+        await playlist.save();
+
+        res.json({ message: "Canción agregada correctamente", playlist });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Error al agregar canción a playlist." });
+    }
+};
+
 export const LogoutUser = (req, res) => {
     res.clearCookie("token", {
         httpOnly: true,
