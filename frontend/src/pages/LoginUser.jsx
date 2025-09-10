@@ -66,7 +66,7 @@ const LoginUser = () => {
             >
                 <div className="contentLogin flex justify-center items-center flex-col w-full h-[300px]">
 
-                    <form className="flex flex-col w-[350px] h-[300px] p-[20px] rounded-[10px] shadow-[5px_7px_10px_#000] md:w-[450px] md:h-[350px]" method="post" onSubmit={handleSubmit(submitForm)}>
+                    <form className="flex flex-col w-[370px] h-[340px] p-[20px] rounded-[10px] shadow-[5px_7px_10px_#000] md:w-[450px] md:h-[350px]" method="post" onSubmit={handleSubmit(submitForm)}>
 
                         <div className="mt-5 flex flex-col">
                             <label className="text-white text-[15px]" htmlFor="identifier">Correo electrónico o nombre de usuario</label>
