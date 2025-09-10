@@ -60,6 +60,12 @@ export function searchSongs(q){
     })
 }
 
+export function addSongToPlaylist(playlistId, songId){
+    return axios.post(`${URL_BACKEND}/addSongToPlaylist`, { playlistId, songId }, {
+        withCredentials: true
+    })
+}
+
 export function loginArtistAxios(formData){
     return axios.post(`${URL_BACKEND}/loginArtist`,formData,{
         withCredentials:true
