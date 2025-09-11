@@ -50,11 +50,19 @@ export const RegisterArtist = async (req, res) => {
                 from: `"GarSonic" <${process.env.EMAIL_USER}>`,
                 to: email,
                 subject: "Confirma tu cuenta de artista",
-                html: `<p>Hola ${artistName},</p>
-                       <p>Por favor confirma tu cuenta haciendo clic en el siguiente enlace:</p>
-                       <a href="${verifyUrl}">${verifyUrl}</a>`
+                html: 
+                `
+                    <div style="background-color: #6a0dad; color: #fff; padding: 40px; font-family: Arial, sans-serif; text-align: center; border-radius: 10px;">
+                        <h1 style="color: #fff;">¡Hola ${artistName}!</h1>
+                        <p style="font-size: 16px;">Gracias por registrarte en GarSonic. Para activar tu cuenta, por favor confirma haciendo clic en el botón de abajo:</p>
+                        <a href="${verifyUrl}" 
+                        style="display: inline-block; padding: 15px 25px; margin-top: 20px; background-color: #8a2be2; color: #fff; text-decoration: none; font-weight: bold; border-radius: 5px;">
+                        Confirmar Cuenta
+                        </a>
+                        <p style="margin-top: 30px; font-size: 12px; color: #eee;">Si no te registraste, ignora este correo.</p>
+                    </div>
+                `
             });
-
         } catch (error) {
             console.error("Error al enviar el correo de verificación:", error);
         }
@@ -200,7 +208,7 @@ export const GetSongs = async (req, res) => {
             return res.status(404).json({ message: "Artista no encontrado." });
         }
 
-        if(!artist.isVerified){
+        if (!artist.isVerified) {
             return res.status(403).json({ message: "Tu cuenta no está verificada. No puedes subir canciones." });
         }
 

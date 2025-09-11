@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import BackButton from "../components/BackButton.jsx";
 import { useDropzone } from 'react-dropzone';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const RegisterArtist = () => {
 
@@ -27,6 +29,7 @@ const RegisterArtist = () => {
   });
 
   async function submitForm(values) {
+    toast.loading("Registrando artista...", { autoClose: 1000, theme: "dark" });
     try {
       const formData = new FormData();
       formData.append("artistName", values.artistName);
@@ -169,6 +172,8 @@ const RegisterArtist = () => {
       {errorRegister && (
         <p className="errorAuth text-center text-white bg-[#d81630] p-[8px] mt-[30px] shadow-[5px_10px_15px_#101010] w-[400px] lg:p-[10px] font-[900] m-auto lg:mt-[20px] lg:w-[700px]">Error al registrarse: {errorRegister}</p>
       )}
+
+      <ToastContainer />
     </main>
   )
 }
