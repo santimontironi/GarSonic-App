@@ -1,6 +1,6 @@
 import { ArtistContext } from "./ArtistContext"
 import { useEffect, useState } from "react"
-import { loginArtistAxios, registerArtistAxios, dashboardArtistAxios, uploadSongAxios, mySongsAxios, deleteSongAxios, logoutArtist} from "../api/api.js"
+import { loginArtistAxios, registerArtistAxios, dashboardArtistAxios, uploadSongAxios, mySongsAxios, deleteSongAxios, logoutArtist, verifyArtistAxios} from "../api/api.js"
 
 const ArtistProvider = ({children}) => {
 
@@ -11,6 +11,12 @@ const ArtistProvider = ({children}) => {
     async function signUpArtist(artist){
         const res = await registerArtistAxios(artist)
         setArtist(res.data.artist)
+        return res.data
+    }
+
+    async function verifyArtist(token){
+        const res = await verifyArtistAxios(token)
+        setArtist(res.data)
         return res.data
     }
     
@@ -65,7 +71,7 @@ const ArtistProvider = ({children}) => {
     }
 
     return (
-        <ArtistContext.Provider value={{artist,signInArtist,signUpArtist,fetchArtist,logout,loading,uploadSong,deleteSong,mySongs}}>
+        <ArtistContext.Provider value={{artist,signInArtist,signUpArtist,fetchArtist,logout,loading,uploadSong,deleteSong,mySongs, verifyArtist}}>
             {children}
         </ArtistContext.Provider>
     )

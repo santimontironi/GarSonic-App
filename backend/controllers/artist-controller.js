@@ -23,9 +23,9 @@ export const RegisterArtist = async (req, res) => {
         const hashPassword = await bcrypt.hash(password, 10)
 
         // se genera un token de verificación único
-        const verificationToken = crypto.randomBytes(32).toString("hex");
+        const token = crypto.randomBytes(32).toString("hex");
 
-        const newArtist = new Artist({ profilePhoto, email, password: hashPassword, artistName, genre, description, verificationToken, isVerified: false })
+        const newArtist = new Artist({ profilePhoto, email, password: hashPassword, artistName, genre, description, verificationToken: token, isVerified: false })
 
         await newArtist.save()
 
@@ -42,7 +42,7 @@ export const RegisterArtist = async (req, res) => {
         });
 
         // URL de verificación
-        const verifyUrl = `${process.env.FRONTEND_URL}/verify/${verificationToken}`;
+        const verifyUrl = `${process.env.FRONTEND_URL}/verify/${token}`;
 
         // Envío del correo de verificación
         try {
@@ -86,10 +86,9 @@ export const VerifyArtist = async (req, res) => {
 
         // Marcar como verificado
         artist.isVerified = true;
-        artist.verificationToken = undefined; // opcional: limpiar token
         await artist.save();
 
-        res.json({ message: "Cuenta verificada correctamente. Ya puedes iniciar sesión." });
+        res.json({ message: "Cuenta verificada correctamente. Ya puedes iniciar sesión.", artist });
 
     } catch (error) {
         console.error(error);
@@ -102,11 +101,15 @@ export const LoginArtist = async (req, res) => {
         const { identifier, password } = req.body
 
         const artist = await Artist.findOne({
-            $or: [{ email: identifier }, { artistName: identifier }]
+            $or: [{ email: identifier }, { artistName: identifier }],
         });
 
         if (!artist) {
             return res.status(404).json({ message: "Artista no encontrado." })
+        }
+
+        if (!artist.isVerified) {
+            return res.status(403).json({ message: "Cuenta no verificada. Revisa tu correo para verificar tu cuenta." });
         }
 
         const validPassword = await bcrypt.compare(password, artist.password)

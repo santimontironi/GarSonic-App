@@ -4,22 +4,22 @@ import { UseContextArtist } from "../context/UseContextArtist";
 
 const VerifyArtist = () => {
     const { token } = useParams();
-    const [status, setStatus] = useState("loading"); // loading | success | error
+    const [errorVerify, setErrorVerify] = useState(false);
     const [message, setMessage] = useState("");
 
     const { verifyArtist } = UseContextArtist();
+
+    console.log(token);
 
     useEffect(() => {
         async function verify() {
             try {
                 const res = await verifyArtist(token);
-                setStatus("success");
-                setMessage(res.data.message);
+                setErrorVerify(false);
+                setMessage(res.message);
             } catch (error) {
-                setStatus("error");
-                setMessage(
-                    error.response?.data?.message || "Hubo un error al verificar la cuenta."
-                );
+                setErrorVerify(true);
+                setMessage(error.response?.data?.message);
             }
         }
         verify();
@@ -28,14 +28,13 @@ const VerifyArtist = () => {
     return (
         <main className="w-full h-screen flex items-center justify-center bg-gradient-to-b from-purple-900 to-black text-white">
             <div className="p-6 rounded-2xl shadow-lg bg-purple-800 max-w-md w-full text-center">
-                {status === "loading" && <p>Verificando tu cuenta...</p>}
-                {status === "success" && (
+                {errorVerify == false && (
                     <>
                         <h1 className="text-xl font-bold mb-2">🎉 ¡Cuenta verificada!</h1>
                         <p>{message}</p>
                     </>
                 )}
-                {status === "error" && (
+                {errorVerify && (
                     <>
                         <h1 className="text-xl font-bold mb-2">⚠️ Error</h1>
                         <p>{message}</p>
