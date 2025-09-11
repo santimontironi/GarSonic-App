@@ -9,8 +9,6 @@ const VerifyArtist = () => {
 
     const { verifyArtist } = UseContextArtist();
 
-    console.log(token);
-
     useEffect(() => {
         async function verify() {
             try {

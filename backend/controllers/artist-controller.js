@@ -143,6 +143,14 @@ export const DashboardArtist = async (req, res) => {
         const artist = await Artist.findById(artistId);
 
         if (!artist) {
+            return res.status(404).json({ message: "Artista no encontrado." });
+        }
+
+        if (!artist.isVerified) {
+            return res.status(403).json({ message: "Tu cuenta no está verificada. No puedes subir canciones." });
+        }
+
+        if (!artist) {
             return res.status(404).json({ message: "Artista no encontrado" });
         }
 
@@ -157,6 +165,16 @@ export const UploadSong = async (req, res) => {
     try {
         const artistId = req.artistId
         const { title, genre, releaseDate, duration } = req.body
+
+        const artist = await Artist.findById(artistId)
+
+        if (!artist) {
+            return res.status(404).json({ message: "Artista no encontrado." });
+        }
+
+        if (!artist.isVerified) {
+            return res.status(403).json({ message: "Tu cuenta no está verificada. No puedes subir canciones." });
+        }
 
         const coverImage = req.files.coverImage[0].filename;
         const audioFile = req.files.audioFile[0].filename;
@@ -175,6 +193,16 @@ export const UploadSong = async (req, res) => {
 export const GetSongs = async (req, res) => {
     try {
         const artistId = req.artistId
+
+        const artist = await Artist.findById(artistId)
+
+        if (!artist) {
+            return res.status(404).json({ message: "Artista no encontrado." });
+        }
+
+        if(!artist.isVerified){
+            return res.status(403).json({ message: "Tu cuenta no está verificada. No puedes subir canciones." });
+        }
 
         // se obtienen todas las canciones cuyo campo 'artist' sea igual al id del artista logueado (req.artistId)
         const songs = await Song.find({ artist: artistId, active: true }).populate("artist", "artistName");
@@ -196,6 +224,16 @@ export const DeleteSong = async (req, res) => {
     try {
         const { idSong } = req.params;
         const artistId = req.artistId;
+
+        const artist = await Artist.findById(artistId)
+
+        if (!artist) {
+            return res.status(404).json({ message: "Artista no encontrado." });
+        }
+
+        if (!artist.isVerified) {
+            return res.status(403).json({ message: "Tu cuenta no está verificada. No puedes subir canciones." });
+        }
 
         const song = await Song.findOneAndUpdate(
             { _id: idSong, artist: artistId },
