@@ -1,10 +1,8 @@
 import { useForm } from "react-hook-form";
 import { UseContextArtist } from "../context/UseContextArtist.js";
 import { useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion"
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import BackButton from "../components/BackButton.jsx";
 
 const LoginArtist = () => {
@@ -12,8 +10,6 @@ const LoginArtist = () => {
   const navigate = useNavigate()
 
   const [correctLoginArtist, setCorrectLoginArtist] = useState(false)
-
-  const location = useLocation()
 
   const [errorLoginArtist, setErrorLoginArtist] = useState("")
 
@@ -41,13 +37,6 @@ const LoginArtist = () => {
       navigate('/artista')
     }
   }, [correctLoginArtist, navigate])
-
-
-  useEffect(() => {
-    if(location.state?.successMessage){
-      toast.success(location.state.successMessage)
-    }
-  },[location])
 
   return (
     <main className="containerLoginArtist w-full h-screen">
@@ -97,7 +86,6 @@ const LoginArtist = () => {
         <p className="errorAuth text-center text-white bg-[#d81630] p-[8px] mt-[30px] shadow-[5px_10px_15px_#101010] w-[260px] lg:p-[10px] font-[900] m-auto lg:mt-[20px] lg:w-[700px]">Error al iniciar sesión: {errorLoginArtist}</p>
       )}
 
-      <ToastContainer />
 
     </main>
   )

@@ -10,10 +10,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const RegisterArtist = () => {
 
-  const navigate = useNavigate()
-
-  const [correctRegister, setCorrectRegister] = useState(false)
-
   const [errorRegister, setErrorRegister] = useState("")
 
   const [file, setFile] = useState(null)
@@ -43,7 +39,12 @@ const RegisterArtist = () => {
 
       await signUpArtist(formData);
 
-      setCorrectRegister(true);
+      toast.dismiss();
+
+      toast.success("Registro exitoso. Revisa tu correo para confirmar tu cuenta.", {
+        autoClose: 2000
+      });
+
       setErrorRegister("");
       setFile(null);
       reset();
@@ -54,13 +55,6 @@ const RegisterArtist = () => {
       }
     }
   }
-
-  useEffect(() => {
-    if (correctRegister) {
-      navigate('/loginArtista', { state: { successMessage: "Artista registrado con éxito, inicia sesión." } })
-    }
-  }, [correctRegister, navigate])
-
 
   return (
     <main className="containerRegisterArtist min-h-screen w-full pb-[40px]">
