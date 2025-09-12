@@ -37,10 +37,10 @@ const VerifyArtist = () => {
                         <p className="text-purple-100 leading-relaxed">{message}</p>
                         <div className="mt-6">
                             <a
-                                href="/"
+                                href="/loginArtista"
                                 className="inline-block px-6 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 transition-all shadow-lg font-medium text-white"
                             >
-                                Ir al inicio
+                                Ir a iniciar sesión
                             </a>
                         </div>
                     </>
@@ -53,12 +53,13 @@ const VerifyArtist = () => {
                             Error en la verificación
                         </h1>
                         <p className="text-purple-100 leading-relaxed">{message}</p>
+                        
                         <div className="mt-6">
                             <a
-                                href="/loginArtista"
+                                href="/"
                                 className="inline-block px-6 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 transition-all shadow-lg font-medium text-white"
                             >
-                                Ir a iniciar sesión
+                                Ir al inicio
                             </a>
                         </div>
                     </>
