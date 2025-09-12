@@ -54,7 +54,7 @@ export const RegisterArtist = async (req, res) => {
                 `
                     <div style="background-color: #6a0dad; color: #fff; padding: 40px; font-family: Arial, sans-serif; text-align: center; border-radius: 10px;">
                         <h1 style="color: #fff;">¡Hola ${artistName}!</h1>
-                        <p style="font-size: 16px;">Gracias por registrarte en GarSonic. Para activar tu cuenta, por favor confirma haciendo clic en el botón de abajo:</p>
+                        <p style="font-size: 16px; color: #fff;">Gracias por registrarte en GarSonic. Para activar tu cuenta, por favor confirma haciendo clic en el botón de abajo:</p>
                         <a href="${verifyUrl}" 
                         style="display: inline-block; padding: 15px 25px; margin-top: 20px; background-color: #8a2be2; color: #fff; text-decoration: none; font-weight: bold; border-radius: 5px;">
                         Confirmar Cuenta
