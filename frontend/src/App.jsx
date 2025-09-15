@@ -10,7 +10,6 @@ import RegisterArtist from "./pages/RegisterArtist";
 import DashboardArtist from "./pages/DashboardArtist";
 import SecurityRoutesArtist from "./components/SecurityRoutesArtist";
 import UploadSong from "./pages/UploadSong";
-import About from "./pages/About";
 import MySongs from "./pages/MySongs";
 import CreatePlaylist from "./pages/CreatePlaylist";
 import MyPlaylists from "./pages/MyPlaylists";
@@ -21,7 +20,6 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Landing/>}/>
-        <Route path="/nosotros" element={<About/>}/>
         <Route path="/ingresar" element={<LoginOptionPage/>} />
         <Route path="/loginUsuario" element={<LoginUser/>} />
         <Route path="/registroUsuario" element={<RegisterUser/>} />

@@ -4,12 +4,12 @@ const LoginOption = ({icono,rol}) => {
   return (
     <motion.div
       initial={{ opacity: 0, y:50 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      viewport={{ once: true }}
+      viewport={{ once: true, amount: 0.3 }}
     >
       <div className="w-[270px] h-auto p-[5px] flex flex-col bg-gradient-to-t rounded-2xl from-purple-900 to-purple-700 hover:border-2 hover:border-white">
-          <div className="w-full h-[180px] flex items-center justify-center">
+          <div className="w-[120px] h-[120px] flex items-center justify-center rounded-full bg-purple-500 mx-auto mt-[15px] p-[15px]">
             <i className={`${icono} text-[100px] text-white`} aria-hidden="true"></i>
           </div>
           <div className="flex flex-col justify-center items-center">

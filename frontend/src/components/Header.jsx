@@ -4,18 +4,18 @@ import { useState } from "react"
 
 const Header = () => {
 
-    const[openNav,setOpenNav] = useState(false)
+    const [openNav, setOpenNav] = useState(false)
 
-    function handleOpenNav(){
+    function handleOpenNav() {
         setOpenNav(true)
     }
 
-    function handleCloseNav(){
+    function handleCloseNav() {
         setOpenNav(false)
     }
 
-return (
-    <header className="sticky top-0 w-full z-50 h-[100px] md:h-[150px] lg:h-[120px] flex justify-between bg-black items-center lg:pl-[50px] lg:pr-[50px] pl-[20px] pr-[20px] shadow-[10px_25px_25px_rgba(0,0,0,0.50)]">
+    return (
+        <header className="sticky top-0 w-full z-50 h-[100px] md:h-[150px] lg:h-[120px] flex justify-between bg-black items-center lg:pl-[50px] lg:pr-[50px] pl-[20px] pr-[20px] shadow-[10px_25px_25px_rgba(0,0,0,0.50)]">
             <div>
                 <a href="/"><img className="w-[100px] md:w-[150px]" src={logo} alt="logo" /></a>
             </div>
@@ -30,18 +30,18 @@ return (
             lg:static lg:flex lg:flex-row lg:gap-[30px] lg:transition-none lg:opacity-100 lg:h-auto lg:w-auto lg:bg-transparent lg:translate-x-0`}>
 
                 <ul className="flex flex-col justify-center items-center mt-[150px] gap-[20px] lg:flex-row lg:mt-[0px]">
-                        <button className="lg:hidden border-none bg-purple-500 w-[50px] h-[50px] flex justify-center items-center rounded-[10px]" onClick={handleCloseNav}>
-                                <i className="bi bi-x-lg text-white text-[25px]"></i>
-                        </button>
-                        <li ><a href="#inicio" className="text-[13px] lg:text-[16px] md:text-[18px] p-[8px] hvr-bounce-to-bottom">Inicio</a></li>
-                        <li ><a href="#nosotros" className="text-[13px] lg:text-[16px] md:text-[18px] p-[8px] hvr-bounce-to-bottom">¿Qué es GarSonic?</a ></li>
-                        <li ><Link className="text-[13px] lg:text-[16px] md:text-[18px] p-[8px] hvr-bounce-to-bottom" to="/rols">Roles</Link></li>
-                        <li ><Link className="text-[13px] lg:text-[16px] md:text-[18px] p-[8px] bg-white text-black rounded-xl" to="/ingresar">Ingresar</Link></li>
+                    <button className="lg:hidden border-none bg-purple-500 w-[50px] h-[50px] flex justify-center items-center rounded-[10px]" onClick={handleCloseNav}>
+                        <i className="bi bi-x-lg text-white text-[25px]"></i>
+                    </button>
+                    <li ><a href="#inicio" className="text-[13px] lg:text-[16px] md:text-[18px] p-[8px] hvr-bounce-to-bottom">Inicio</a></li>
+                    <li ><a href="#nosotros" className="text-[13px] lg:text-[16px] md:text-[18px] p-[8px] hvr-bounce-to-bottom">¿Qué es GarSonic?</a ></li>
+                    <li ><Link className="text-[13px] lg:text-[16px] md:text-[18px] p-[8px] hvr-bounce-to-bottom" to="/rols">Roles</Link></li>
+                    <li ><Link className="text-[13px] lg:text-[16px] md:text-[18px] p-[8px] bg-white text-black rounded-xl" to="/ingresar">Ingresar</Link></li>
                 </ul>
 
             </nav>
-    </header>
-)
+        </header>
+    )
 }
 
 export default Header
