@@ -194,7 +194,7 @@ export const UploadSong = async (req, res) => {
         res.status(201).json({ message: "Canción agregada correctamente" });
     }
     catch (error) {
-        return res.status(500).json({ message: "Error al subir la canción" })
+        return res.status(500).json({ message: "Error al subir la canción", error })
     }
 }
 

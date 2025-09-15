@@ -16,6 +16,7 @@ const UploadSong = () => {
     const [errorUpload, setErrorUpload] = useState("")
 
     const [file, setFile] = useState(null)
+    const [audioFile, setAudioFile] = useState(null)
 
     const { getRootProps: getCoverProps, getInputProps: getCoverInputProps } = useDropzone({
         accept: { 'image/*': [] },
@@ -27,7 +28,7 @@ const UploadSong = () => {
         accept: { 'audio/*': [] },
         multiple: false,
         onDrop: (acceptedFiles) => {
-            console.log(acceptedFiles[0])
+            setAudioFile(acceptedFiles[0])
         }
     })
 
@@ -46,8 +47,8 @@ const UploadSong = () => {
                 formData.append("coverImage", file);
             }
 
-            if (values.audioFile?.[0]) {
-                formData.append("audioFile", values.audioFile[0]);
+            if (audioFile) {
+                formData.append("audioFile", audioFile);
             }
 
             await uploadSong(formData);
@@ -69,7 +70,7 @@ const UploadSong = () => {
     }
 
     return (
-        <main className="containerUploadSong min-h-screen w-full">
+        <main className="containerUploadSong min-h-screen w-full pb-[20px]">
 
             <BackButton to="/artista" />
 
@@ -140,6 +141,7 @@ const UploadSong = () => {
                         >
                             <input {...getAudioInputProps()} />
                             <span>Arrastra el archivo de audio o haz clic aquí</span>
+                            {audioFile && <span className="ml-2">{audioFile.name}</span>}
                         </div>
 
                         {errors.audioFile && <p className="text-white">El audio es requerido</p>}
