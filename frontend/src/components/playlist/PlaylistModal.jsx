@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { UseContextUser } from "../context/UseContextUser"
+import { UseContextUser } from "../../context/user/UseContextUser"
 
 const PlaylistModal = ({closeModal}) => {
   const [playlists, setPlaylists] = useState([])
