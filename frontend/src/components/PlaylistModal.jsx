@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { UseContextUser } from "../context/UseContextUser"
 
-const PlaylistModal = () => {
+const PlaylistModal = ({closeModal}) => {
   const [playlists, setPlaylists] = useState([])
   const [errorGetPlaylists, setErrorGetPlaylists] = useState(null)
   const { getAllPlaylists } = UseContextUser()
@@ -23,48 +23,22 @@ const PlaylistModal = () => {
   }, [])
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
-      {/* Modal */}
-      <div className="bg-white rounded-2xl shadow-xl w-[90%] sm:w-[500px] lg:w-[700px] 2xl:w-[900px] max-h-[85vh] overflow-hidden flex flex-col">
-        
-        {/* Header */}
-        <div className="flex justify-between items-center px-4 sm:px-6 py-3 border-b">
-          <h2 className="text-base sm:text-lg md:text-xl font-semibold text-gray-800">
-            Tus Playlists
-          </h2>
+    <div className="fixed w-full h-screen inset-0 backdrop-blur-md z-50 flex justify-center items-center">
+      <div className="xl:w-[850px] w-[400px] md:w-[650px] bg-gradient-to-br from-purple-800 to-purple-600 xl:p-[40px] md:p-[20px] p-[25px] rounded-2xl">
+
+        <div className="mb-[20px] flex justify-between items-center">
+          <h2 className="text-white text-[25px]">Tus playlists</h2>
+          <button onClick={closeModal}><i className="bi bi-x-lg text-white cursor-pointer"></i></button>
         </div>
 
-        {/* Body */}
-        <div className="flex-1 overflow-y-auto p-4 sm:p-6">
-          {errorGetPlaylists ? (
-            <p className="text-red-500 text-sm sm:text-base">
-              {errorGetPlaylists}
-            </p>
-          ) : playlists.length > 0 ? (
-            <ul className="space-y-3">
-              {playlists.map((pl) => (
-                <li
-                  key={pl.id}
-                  className="p-3 sm:p-4 rounded-lg border hover:bg-gray-50 cursor-pointer transition"
-                >
-                  <h3 className="text-sm sm:text-base md:text-lg font-medium text-gray-900">
-                    {pl.name}
-                  </h3>
-                  {pl.description && (
-                    <p className="text-xs sm:text-sm text-gray-600 mt-1">
-                      {pl.description}
-                    </p>
-                  )}
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p className="text-gray-600 text-sm sm:text-base">
-              No tenés playlists creadas todavía.
-            </p>
-          )}
-        </div>
-
+        <ul className="flex flex-col gap-[20px]">
+          {playlists.map((pl) => (
+            <li key={pl._id} className="flex items-center gap-[10px] md:gap-[20px] bg-purple-600 shadow-[4px_8px_10px_#000] cursor-pointer transform transition-all hover:scale-105">
+              <img className="w-[120px] md:w-[170px]" src={`http://localhost:3000/uploads/${pl.coverImage}`} alt={pl.name} />
+              <h3 className="text-white font-bold text-[14px] md:text-[17px]">{pl.playlistName}</h3>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   )

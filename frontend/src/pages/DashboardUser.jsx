@@ -6,6 +6,7 @@ import SongList from "../components/SongList.jsx";
 import 'react-toastify/dist/ReactToastify.css';
 import { Scrollbar } from "react-scrollbars-custom";
 import { Link } from "react-router-dom";
+import PlaylistModal from "../components/PlaylistModal.jsx";
 
 
 const DashboardUser = () => {
@@ -15,6 +16,7 @@ const DashboardUser = () => {
 
   const [inputSearch, setInputSearch] = useState("")
   const [searchResults, setSearchResults] = useState([])
+  const [openModal, setOpenModal] = useState(false)
 
   const { fetchUser, search, logout } = UseContextUser()
 
@@ -42,8 +44,7 @@ const DashboardUser = () => {
       try {
         const res = await search(inputSearch)
         setSearchResults(res.data)
-        console.log(res.data)
-
+    
         if (res.data.length === 0) {
           toast.error("No se encontraron resultados en la busqueda.", { toastId: "no-results", autoClose: 1800, hideProgressBar: true })
         }
@@ -54,6 +55,14 @@ const DashboardUser = () => {
     }
     handleSearch()
   }, [inputSearch])
+
+  function btnAddPlaylist() {
+    if(openModal === false) {
+      setOpenModal(true)
+    }else{
+      setOpenModal(false)
+    }
+  }
 
   return (
     <main className="w-full h-screen flex justify-center items-center bg-[#171717]">
@@ -83,11 +92,12 @@ const DashboardUser = () => {
                 <SongList
                   key={result._id}
                   coverImage={`http://localhost:3000/uploads/${result.coverImage}`}
-                  artist={result.artist?.artistName}
+                  artist={result.artist.artistName}
                   title={result.title}
                   audioFile={`http://localhost:3000/uploads/${result.audioFile}`}
                   duration={result.duration}
                   releaseDate={result.releaseDate}
+                  btnAddPlaylist={btnAddPlaylist}
                 />
               ))}
             </div>
@@ -114,6 +124,8 @@ const DashboardUser = () => {
             </button>
           </>
         )}
+
+        {openModal && <PlaylistModal closeModal={() => setOpenModal(false)}/>}
       </motion.section>
 
       <ToastContainer />
