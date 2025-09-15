@@ -29,7 +29,9 @@ const artistModel = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-    verificationToken: { type: String }
+    verificationToken: { 
+        type: String 
+    }
     
 })
 

@@ -1,7 +1,7 @@
 import { Play, Pause } from "lucide-react";
 import { useState, useRef } from "react";
 
-const SongList = ({ coverImage, artist, title, audioFile, duration, releaseDate }) => {
+const SongList = ({ coverImage, artist, title, audioFile, duration, releaseDate, btnAddPlaylist }) => {
     const audioRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
 
@@ -24,7 +24,7 @@ const SongList = ({ coverImage, artist, title, audioFile, duration, releaseDate 
                 alt={title}
             />
 
-          
+
             <div className="flex flex-col justify-between w-full">
 
                 <div className="flex flex-col mb-3">
@@ -33,7 +33,7 @@ const SongList = ({ coverImage, artist, title, audioFile, duration, releaseDate 
                 </div>
 
                 <div className="flex items-center gap-4">
-                    
+
                     <button
                         onClick={handlePlay}
                         className="p-3 bg-purple-600 rounded-full hover:bg-purple-700 transition"
@@ -46,6 +46,10 @@ const SongList = ({ coverImage, artist, title, audioFile, duration, releaseDate 
                         <span className="font-medium">Duración: {duration}</span>
                         <span>Lanzamiento: {new Date(releaseDate).toLocaleDateString()}</span>
                     </div>
+
+                </div>
+                <div className="mt-3">
+                    <button className="p-4 bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-full shadow-lg hover:from-purple-700 hover:to-purple-900 transition-transform transform hover:scale-105 cursor-pointer" onClick={btnAddPlaylist}> Agregar a playlist</button>
                 </div>
             </div>
         </div>

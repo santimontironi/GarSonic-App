@@ -158,7 +158,7 @@ export const SearchSongs = async (req, res) => {
         const songs = await Song.find({ active: true })
             .populate({
                 path: "artist",
-                match: { active: true },
+                match: { isVerified: true },
                 select: "artistName",
             });
 
