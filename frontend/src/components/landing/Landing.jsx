@@ -1,6 +1,6 @@
-import Index from "../pages/Index"
-import About from "../pages/About"
-import Header from "../components/Header";
+import Index from "../../pages/templates/Index"
+import About from "../../pages/templates/About"
+import Header from "../layout/Header"
 
 const Landing = () => {
   return (

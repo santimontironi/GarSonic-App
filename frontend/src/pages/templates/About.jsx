@@ -1,5 +1,5 @@
 import { motion } from "framer-motion"
-import photoNosotros from "../static/img/nosotros.jpg"
+import photoNosotros from "../../static/img/nosotros.jpg"
 
 const About = () => {
   return (
@@ -34,15 +34,15 @@ const About = () => {
           <span className="text-[20px] font-bold mt-[30px]">En nuestra aplicación podrás:</span>
           <ul className="mt-[20px] list-none flex flex-col gap-[15px] lg:flex-row lg:gap-[30px] lg:mt-[40px]">
             <li className="flex items-center gap-2 bg-purple-600 text-white p-[10px] rounded-[10px]">
-              <i class="bi bi-music-note text-[30px]"></i>
+              <i className="bi bi-music-note text-[30px]"></i>
               Explorar miles de géneros musicales
             </li>
             <li className="flex items-center gap-2 bg-purple-600 text-white p-[10px] rounded-[10px]">
-              <i class="bi bi-person-circle text-[30px]"></i>
+              <i className="bi bi-person-circle text-[30px]"></i>
               Conectar con tus artistas favoritos
             </li>
             <li className="flex items-center gap-2 bg-purple-600 text-white p-[10px] rounded-[10px]">
-              <i class="bi bi-earbuds text-[30px]"></i>
+              <i className="bi bi-earbuds text-[30px]"></i>
               Crear playlists personalizadas
             </li>
           </ul>

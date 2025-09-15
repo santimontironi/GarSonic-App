@@ -1,5 +1,5 @@
-import Loader from "./Loader"
-import { UseContextArtist } from "../context/UseContextArtist"
+import Loader from "../layout/Loader.jsx";
+import { UseContextArtist } from "../../context/artist/UseContextArtist.js"
 import { Navigate } from "react-router-dom"
 
 const SecurityRoutesArtist = ({children}) => {

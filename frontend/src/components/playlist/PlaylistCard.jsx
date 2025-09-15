@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { UseContextUser } from "../context/UseContextUser";
+import { UseContextUser } from "../../context/user/UseContextUser";
 import Swal from "sweetalert2";
 
 const PlaylistCard = ({ id, name, description, coverImage, date, songs }) => {

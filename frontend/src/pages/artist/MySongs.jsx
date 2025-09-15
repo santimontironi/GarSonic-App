@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import SongCard from "../components/SongCard"
-import { UseContextArtist } from "../context/UseContextArtist.js";
-import BackButton from "../components/BackButton.jsx";
+import SongCard from "../../components/song/SongCard.jsx";
+import { UseContextArtist } from "../../context/artist/UseContextArtist.js";
+import BackButton from "../../components/layout/BackButton.jsx";
 import { ToastContainer } from "react-toastify";
 
 const MySongs = () => {

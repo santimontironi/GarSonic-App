@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import logo from "../static/img/logo.png"
+import logo from "../../static/img/logo.png"
 import { useState } from "react"
 
 const Header = () => {

@@ -1,6 +1,6 @@
-import LoginOption from "../components/LoginOption"
+import LoginOption from "../../components/layout/LoginOption"
 import { motion } from "framer-motion"
-import BackButton from "../components/BackButton"
+import BackButton from "../../components/layout/BackButton"
 import { Link } from "react-router-dom"
 
 const LoginOptionPage = () => {

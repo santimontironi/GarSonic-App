@@ -1,7 +1,7 @@
-import PlaylistCard from "../components/PlaylistCard";
-import { UseContextUser } from "../context/UseContextUser";
+import PlaylistCard from "../../components/playlist/PlaylistCard.jsx"
+import { UseContextUser } from "../../context/user/UseContextUser.js";
 import { useState, useEffect } from "react";
-import BackButton from "../components/BackButton";
+import BackButton from "../../components/layout/BackButton.jsx";
 
 const MyPlaylists = () => {
 

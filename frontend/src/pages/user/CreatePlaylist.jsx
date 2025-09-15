@@ -1,10 +1,10 @@
 import { useState } from "react"
 import { useForm } from "react-hook-form"
-import BackButton from "../components/BackButton"
+import BackButton from "../../components/layout/BackButton.jsx"
 import { motion } from "framer-motion"
 import Swal from "sweetalert2"
 import { useNavigate } from "react-router-dom"
-import { UseContextUser } from '../context/UseContextUser.js'
+import { UseContextUser } from "../../context/user/UseContextUser.js"
 import { useDropzone } from 'react-dropzone';
 
 const CreatePlaylist = () => {

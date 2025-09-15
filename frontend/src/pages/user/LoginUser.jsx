@@ -1,11 +1,11 @@
 import { useForm } from "react-hook-form";
-import { UseContextUser } from "../context/UseContextUser";
+import { UseContextUser } from "../../context/user/UseContextUser.js"
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion"
 import { useLocation } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
-import BackButton from "../components/BackButton";
+import BackButton from "../../components/layout/BackButton";
 import 'react-toastify/dist/ReactToastify.css';
 
 const LoginUser = () => {

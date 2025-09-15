@@ -1,19 +1,19 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Landing from "./components/Landing";
-import LoginOptionPage from "./pages/LoginOptionPage";
-import LoginUser from "./pages/LoginUser";
-import RegisterUser from "./pages/RegisterUser";
-import DashboardUser from "./pages/DashboardUser";
-import SecurityRoutesUser from "./components/SecurityRoutesUser";
-import LoginArtist from "./pages/LoginArtist";
-import RegisterArtist from "./pages/RegisterArtist";
-import DashboardArtist from "./pages/DashboardArtist";
-import SecurityRoutesArtist from "./components/SecurityRoutesArtist";
-import UploadSong from "./pages/UploadSong";
-import MySongs from "./pages/MySongs";
-import CreatePlaylist from "./pages/CreatePlaylist";
-import MyPlaylists from "./pages/MyPlaylists";
-import VerifyArtist from "./pages/VerifyArtist";
+import Landing from "./components/landing/Landing";
+import LoginOptionPage from "./pages/templates/LoginOptionPage";
+import LoginUser from "./pages/user/LoginUser";
+import RegisterUser from "./pages/user/RegisterUser";
+import DashboardUser from "./pages/user/DashboardUser";
+import SecurityRoutesUser from "./components/auth/SecurityRoutesUser";
+import LoginArtist from "./pages/artist/LoginArtist";
+import RegisterArtist from "./pages/artist/RegisterArtist";
+import DashboardArtist from "./pages/artist/DashboardArtist";
+import SecurityRoutesArtist from "./components/auth/SecurityRoutesArtist";
+import UploadSong from "./pages/artist/UploadSong";
+import MySongs from "./pages/artist/MySongs";
+import CreatePlaylist from "./pages/user/CreatePlaylist";
+import MyPlaylists from "./pages/user/MyPlaylists";
+import VerifyArtist from "./pages/artist/VerifyArtist";
 
 const App = () => {
   return (

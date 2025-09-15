@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react"
-import { UseContextUser } from "../context/user/UseContextUser.js"
+import { UseContextUser } from "../../context/user/UseContextUser.js"
 import { motion } from "framer-motion"
 import { ToastContainer, toast } from 'react-toastify';
-import SongList from "../components/SongList.jsx";
+import SongList from "../../components/song/SongList.jsx";
 import 'react-toastify/dist/ReactToastify.css';
 import { Scrollbar } from "react-scrollbars-custom";
 import { Link } from "react-router-dom";
-import PlaylistModal from "../components/playlist/PlaylistModal.jsx";
+import PlaylistModal from "../../components/playlist/PlaylistModal.jsx";
 
 
 const DashboardUser = () => {

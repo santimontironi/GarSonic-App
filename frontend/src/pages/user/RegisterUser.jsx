@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form";
-import { UseContextUser } from "../context/UseContextUser.js";
+import { UseContextUser } from "../../context/user/UseContextUser.js"
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion"
-import BackButton from "../components/BackButton.jsx";
+import BackButton from "../../components/layout/BackButton.jsx";
 import { useDropzone } from 'react-dropzone';
 
 const RegisterUser = () => {

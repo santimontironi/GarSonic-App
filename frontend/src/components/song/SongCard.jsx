@@ -1,6 +1,6 @@
 import { Play, Pause } from "lucide-react";
 import { useState, useRef } from "react";
-import { UseContextArtist } from "../context/UseContextArtist";
+import { UseContextArtist } from "../../context/artist/UseContextArtist";
 import Swal from "sweetalert2";
 
 const SongCard = ({ idSong, coverImage, artist, title, audioFile, duration, releaseDate }) => {

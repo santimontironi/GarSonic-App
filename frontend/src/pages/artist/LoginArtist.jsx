@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form";
-import { UseContextArtist } from "../context/UseContextArtist.js";
+import { UseContextArtist } from "../../context/artist/UseContextArtist.js";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion"
-import BackButton from "../components/BackButton.jsx";
+import BackButton from "../../components/layout/BackButton.jsx";
 
 const LoginArtist = () => {
 

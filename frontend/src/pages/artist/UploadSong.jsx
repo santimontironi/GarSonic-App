@@ -2,8 +2,8 @@ import { useForm } from "react-hook-form"
 import { motion } from "framer-motion"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { UseContextArtist } from "../context/UseContextArtist.js";
-import BackButton from "../components/BackButton.jsx";
+import { UseContextArtist } from "../../context/artist/UseContextArtist.js";
+import BackButton from "../../components/layout/BackButton.jsx";
 import Swal from "sweetalert2"
 import { useDropzone } from 'react-dropzone';
 

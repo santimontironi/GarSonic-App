@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { UseContextArtist } from "../context/UseContextArtist";
+import { UseContextArtist } from "../../context/artist/UseContextArtist";
 
 const VerifyArtist = () => {
     const { token } = useParams();

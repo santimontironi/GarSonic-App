@@ -1,6 +1,6 @@
-import { UseContextUser } from "../context/UseContextUser.js";
+import { UseContextUser } from "../../context/user/UseContextUser.js"
 import { Navigate } from "react-router-dom";
-import Loader from "./Loader.jsx";
+import Loader from "../layout/Loader.jsx";
 
 const SecurityRoutesUser = ({children}) => {
 

@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react"
-import { UseContextArtist } from "../context/UseContextArtist.js"
 import { motion } from "framer-motion"
 import { useLocation, useNavigate } from "react-router-dom"
 import { ToastContainer, toast } from 'react-toastify';
 import { Link } from "react-router-dom";
+import { UseContextArtist } from "../../context/artist/UseContextArtist"
 
 const DashboardArtist = () => {
 
