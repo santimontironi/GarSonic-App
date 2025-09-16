@@ -1,7 +1,7 @@
 import { Play, Pause } from "lucide-react";
 import { useState, useRef } from "react";
 
-const SongList = ({ songId, coverImage, artist, title, audioFile, duration, releaseDate, btnAddPlaylist }) => {
+const SongList = ({ songId, coverImage, artist, title, audioFile, duration, releaseDate, btnAddPlaylist, genre }) => {
     const audioRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
 
@@ -45,6 +45,7 @@ const SongList = ({ songId, coverImage, artist, title, audioFile, duration, rele
                         <audio src={audioFile} ref={audioRef} onEnded={() => setIsPlaying(false)} />
                         <span className="font-medium">Duración: {duration}</span>
                         <span>Lanzamiento: {new Date(releaseDate).toLocaleDateString()}</span>
+                        <span>Género: {genre}</span>
                     </div>
 
                 </div>

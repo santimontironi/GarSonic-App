@@ -96,6 +96,7 @@ const DashboardUser = () => {
                   audioFile={`http://localhost:3000/uploads/${result.audioFile}`}
                   duration={result.duration}
                   releaseDate={result.releaseDate}
+                  genre={result.genre}
                   btnAddPlaylist={btnAddPlaylist}
                 />
               ))}

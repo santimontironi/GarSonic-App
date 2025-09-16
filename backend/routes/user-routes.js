@@ -13,6 +13,6 @@ router.get('/playlists',verifyToken,GetPlaylists)
 router.delete('/deletePlaylist/:playlistId',verifyToken,DeletePlaylist)
 router.post('/logout', LogoutUser)
 router.get('/searchSongs', verifyToken, SearchSongs)
-router.post('/addSongToPlaylist', verifyToken, AddSongToPlaylist)
+router.post('/addSongToPlaylist/:playlistId/:songId', verifyToken, AddSongToPlaylist)
 
 export default router

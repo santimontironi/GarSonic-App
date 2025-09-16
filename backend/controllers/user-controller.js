@@ -180,13 +180,18 @@ export const SearchSongs = async (req, res) => {
 
 export const AddSongToPlaylist = async (req, res) => {
     try {
-        const { playlistId, songId } = req.body;
+        const { playlistId, songId } = req.params;
         const userId = req.userId;
 
         const playlist = await Playlist.findOne({ _id: playlistId, owner: userId, active: true });
 
+        if (!playlist) {
+            return res.status(404).json({ message: "Playlist no encontrada" });
+        }
+
+
         if (playlist.songs.includes(songId)) {
-            return res.status(400).json({ message: "La canción ya está en la playlist." });
+            return res.status(400).json({ message: "La canción ya está en la playlist" });
         }
 
         playlist.songs.push(songId);
@@ -194,8 +199,8 @@ export const AddSongToPlaylist = async (req, res) => {
 
         res.json({ message: "Canción agregada correctamente", playlist });
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: "Error al agregar canción a playlist." });
+        console.error("Error en AddSongToPlaylist:", error);
+        res.status(500).json({ message: "Error al agregar canción a playlist.", error: error.message });
     }
 };
 

@@ -61,7 +61,7 @@ export function searchSongs(q){
 }
 
 export function addSongToPlaylist(playlistId, songId){
-    return axios.post(`${URL_BACKEND}/addSongToPlaylist`, { playlistId, songId }, {
+    return axios.post(`${URL_BACKEND}/addSongToPlaylist/${playlistId}/${songId}`, {}, {
         withCredentials: true
     })
 }
