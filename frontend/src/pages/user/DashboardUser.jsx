@@ -17,6 +17,7 @@ const DashboardUser = () => {
   const [inputSearch, setInputSearch] = useState("")
   const [searchResults, setSearchResults] = useState([])
   const [openModal, setOpenModal] = useState(false)
+  const [selectedSongId, setSelectedSongId] = useState(null)
 
   const { fetchUser, search, logout } = UseContextUser()
 
@@ -44,7 +45,7 @@ const DashboardUser = () => {
       try {
         const res = await search(inputSearch)
         setSearchResults(res.data)
-    
+
         if (res.data.length === 0) {
           toast.error("No se encontraron resultados en la busqueda.", { toastId: "no-results", autoClose: 1800, hideProgressBar: true })
         }
@@ -56,12 +57,9 @@ const DashboardUser = () => {
     handleSearch()
   }, [inputSearch])
 
-  function btnAddPlaylist() {
-    if(openModal === false) {
-      setOpenModal(true)
-    }else{
-      setOpenModal(false)
-    }
+  function btnAddPlaylist(songId) {
+    setSelectedSongId(songId); 
+    setOpenModal(true);       
   }
 
   return (
@@ -80,8 +78,8 @@ const DashboardUser = () => {
         {searchResults.length !== 0 ? (
           <Scrollbar
             style={{ height: 450, marginTop: "100px", padding: "15px", width: "100%" }}
-            trackYProps={{style: {background: "#1e1e1e", borderRadius: "8px", width: "10px"}}}
-            thumbYProps={{style: {background: "#9333ea", borderRadius: "8px"}}}
+            trackYProps={{ style: { background: "#1e1e1e", borderRadius: "8px", width: "10px" } }}
+            thumbYProps={{ style: { background: "#9333ea", borderRadius: "8px" } }}
           >
             <div className="flex flex-col items-center gap-[15px]">
               <h2 className="text-white tituloDashboard text-[18px] text-center border-b-2 border-purple-600 md:text-[40px]">
@@ -91,6 +89,7 @@ const DashboardUser = () => {
               {searchResults.map((result) => (
                 <SongList
                   key={result._id}
+                  songId={result._id}
                   coverImage={`http://localhost:3000/uploads/${result.coverImage}`}
                   artist={result.artist.artistName}
                   title={result.title}
@@ -125,7 +124,7 @@ const DashboardUser = () => {
           </>
         )}
 
-        {openModal && <PlaylistModal closeModal={() => setOpenModal(false)}/>}
+        {openModal && <PlaylistModal closeModal={() => setOpenModal(false)} songId={selectedSongId} />}
       </motion.section>
 
       <ToastContainer />

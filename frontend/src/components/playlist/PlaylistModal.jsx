@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react"
 import { UseContextUser } from "../../context/user/UseContextUser"
 
-const PlaylistModal = ({closeModal}) => {
+const PlaylistModal = ({closeModal, songId}) => {
   const [playlists, setPlaylists] = useState([])
   const [errorGetPlaylists, setErrorGetPlaylists] = useState(null)
-  const { getAllPlaylists } = UseContextUser()
+
+  const { getAllPlaylists, addToPlaylist } = UseContextUser()
 
   useEffect(() => {
     async function fetchPlaylists() {
@@ -22,6 +23,15 @@ const PlaylistModal = ({closeModal}) => {
     fetchPlaylists()
   }, [])
 
+  const handleAddToPlaylist = async (playlistId,songId) => {
+    try {
+      await addToPlaylist(playlistId,songId)
+      closeModal()
+    } catch (error) {
+      console.error("Error adding to playlist:", error)
+    }
+  }
+
   return (
     <div className="fixed w-full h-screen inset-0 backdrop-blur-md z-50 flex justify-center items-center">
       <div className="xl:w-[850px] w-[400px] md:w-[650px] bg-gradient-to-br from-purple-800 to-purple-600 xl:p-[40px] md:p-[20px] p-[25px] rounded-2xl">
@@ -33,7 +43,7 @@ const PlaylistModal = ({closeModal}) => {
 
         <ul className="flex flex-col gap-[20px]">
           {playlists.map((pl) => (
-            <li key={pl._id} className="flex items-center gap-[10px] md:gap-[20px] bg-purple-600 shadow-[4px_8px_10px_#000] cursor-pointer transform transition-all hover:scale-105">
+            <li onClick={() => handleAddToPlaylist(pl._id,songId)} key={pl._id} className="flex items-center gap-[10px] md:gap-[20px] bg-purple-600 shadow-[4px_8px_10px_#000] cursor-pointer transform transition-all hover:scale-105">
               <img className="w-[120px] md:w-[170px]" src={`http://localhost:3000/uploads/${pl.coverImage}`} alt={pl.name} />
               <h3 className="text-white font-bold text-[14px] md:text-[17px]">{pl.playlistName}</h3>
             </li>
