@@ -44,7 +44,7 @@ const PlaylistModal = ({ closeModal, songId }) => {
         Swal.fire('¡Agregado!', 'La canción se ha agregado a la playlist.', 'success');
       } catch (error) {
         console.error("Error adding to playlist:", error);
-        Swal.fire('Error', 'No se pudo agregar la canción.', 'error');
+        Swal.fire({ title: 'Error', text: error.response?.data?.message || 'Inténtalo de nuevo más tarde.', icon: 'error' });
       }
     }
   }

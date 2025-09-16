@@ -157,9 +157,9 @@ export const SearchSongs = async (req, res) => {
         // se buscan canciones activas y solo con artistas activos
         const songs = await Song.find({ active: true })
             .populate({
-                path: "artist",
-                match: { isVerified: true },
-                select: "artistName",
+                path: "artist", // campo que referencia a otro modelo
+                match: { isVerified: true }, // condición extra: solo artistas verificados
+                select: "artistName", // qué campos traer del artista (solo artistName)
             });
 
         // se filtran las canciones que sí tienen artista válido
@@ -189,7 +189,6 @@ export const AddSongToPlaylist = async (req, res) => {
             return res.status(404).json({ message: "Playlist no encontrada" });
         }
 
-
         if (playlist.songs.includes(songId)) {
             return res.status(400).json({ message: "La canción ya está en la playlist" });
         }
@@ -199,10 +198,32 @@ export const AddSongToPlaylist = async (req, res) => {
 
         res.json({ message: "Canción agregada correctamente", playlist });
     } catch (error) {
-        console.error("Error en AddSongToPlaylist:", error);
         res.status(500).json({ message: "Error al agregar canción a playlist.", error: error.message });
     }
 };
+
+export const SongsInPlaylist = async (req, res) => {
+    try {
+        const { playlistId } = req.params
+        const userId = req.userId
+
+        const playlist = await Playlist.findOne({
+            _id: playlistId,
+            owner: userId,
+            active: true
+        }).populate("songs")
+
+        const playlistFormated = playlist.map(playlist => ({
+            ...playlist.toObject(),
+            createdAt: Dayjs(playlist.createdAt).format('DD/MM/YYYY')
+        }))
+
+        res.json({playlistFormated})
+    }
+    catch (error) {
+        res.status(500).json({ message: "Error al obtener canciones de la playlist.", error: error.message });
+    }
+}
 
 export const LogoutUser = (req, res) => {
     res.clearCookie("token", {
