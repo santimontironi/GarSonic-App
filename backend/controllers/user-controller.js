@@ -116,7 +116,7 @@ export const GetPlaylists = async (req, res) => {
     try {
         const userId = req.userId;
 
-        const playlists = await Playlist.find({ owner: userId, active: true }).populate({path: "songs", populate: {path: "artist"}});
+        const playlists = await Playlist.find({ owner: userId, active: true }).populate({ path: "songs", populate: { path: "artist" } });
 
         const playlistFormated = playlists.map(playlist => ({
             ...playlist.toObject(),
@@ -218,11 +218,16 @@ export const DeleteSongPlaylist = async (req, res) => {
         if (!song) {
             return res.status(404).json({ message: "Canción no encontrada" });
         }
-        
+
         playlist.songs.pull(songId);
         await playlist.save();
+
+        res.json({
+            message: "Canción eliminada de la playlist.",
+            playlist
+        });
     }
-    catch(error){
+    catch (error) {
         res.status(500).json({ message: "Error al eliminar la cancion de la playlist.", error: error.message });
     }
 }

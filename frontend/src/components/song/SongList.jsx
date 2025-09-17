@@ -3,7 +3,7 @@ import { useState, useRef } from "react";
 import { UseContextUser } from "../../context/user/UseContextUser";
 import Swal from "sweetalert2";
 
-const SongList = ({ songId, coverImage, artist, title, audioFile, duration, releaseDate, btnAddPlaylist, genre, btnVisible, btnDelete, playlistId }) => {
+const SongList = ({ songId, coverImage, artist, title, audioFile, duration, releaseDate, btnAddPlaylist, genre, btnVisible, btnDelete, playlistId, removeSongFromList }) => {
     const audioRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
 
@@ -34,6 +34,7 @@ const SongList = ({ songId, coverImage, artist, title, audioFile, duration, rele
         if (result.isConfirmed) {
             try {
                 await deleteSongPlaylist(playlistId, songId);
+                removeSongFromList(songId)
                 Swal.fire('¡Eliminada!', 'La canción se ha eliminado de la playlist.', 'info');
             } catch (error) {
                 console.error("Error delete song from playlist:", error);

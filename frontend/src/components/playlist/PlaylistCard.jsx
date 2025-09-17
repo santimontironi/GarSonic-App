@@ -2,12 +2,15 @@ import { useState } from "react";
 import { UseContextUser } from "../../context/user/UseContextUser";
 import Swal from "sweetalert2";
 import SongList from "../song/SongList";
+import { Link } from "react-router-dom";
 
 const PlaylistCard = ({ id, name, description, coverImage, date, songs }) => {
 
   const [open, setOpen] = useState(false)
 
   const [openSongs, setOpenSongs] = useState(false)
+
+  const [playlistSongs, setPlaylistSongs] = useState(songs)
 
   const { deletePlaylist } = UseContextUser();
 
@@ -56,8 +59,10 @@ const PlaylistCard = ({ id, name, description, coverImage, date, songs }) => {
       </div>
 
       <div className={`flex gap-[10px] ${open ? "flex flex-col absolute top-[50px] right-[10px] bg-[#101010] text-white w-[200px] rounded-2xl p-[5px]" : "hidden"}`}>
-        <button className="hover:bg-green-400 rounded-2xl hover:text-black">Agregar canción</button>
-        <button onClick={handleDeletePlaylist} className="hover:bg-red-400 rounded-2xl hover:text-black">Eliminar playlist</button>
+        <Link to='/usuario' className="hover:bg-green-400 rounded-2xl hover:text-black text-center">
+          Agregar canción
+        </Link>
+        <button onClick={handleDeletePlaylist} className="hover:bg-red-400 rounded-2xl hover:text-black cursor-pointer">Eliminar playlist</button>
       </div>
 
       <div className="flex flex-col gap-[7px] text-center">
@@ -66,20 +71,20 @@ const PlaylistCard = ({ id, name, description, coverImage, date, songs }) => {
         <span className="font-bold text-[15px] xl:text-[17px]">Fecha de creación: <span className="font-light">{date}</span></span>
       </div>
 
-      {songs.length == 0 ? (
+      {playlistSongs.length == 0 ? (
         <div>
           <span className="text-red-600 font-bold bg-white p-[6px]">Aún no tienes canciones agregadas</span>
         </div>
       ) : (
-        <button onClick={() => setOpenSongs(true)} className="cursor-pointer bg-white text-black rounded-2xl p-[10px]">Ver canciones ({(songs.length)})</button>
+        <button onClick={() => setOpenSongs(true)} className="cursor-pointer bg-white text-black rounded-2xl p-[10px]">Ver canciones ({(playlistSongs.length)})</button>
       )}
 
       {openSongs && (
         <div className="fixed inset-0 z-50 flex justify-center items-center m-auto bg-black/50 backdrop-blur-md">
           <div className="bg-gradient-to-r from-black to-purple-900 p-6 rounded-2xl 2xl:w-[1000px] m-auto max-h-[80vh] overflow-y-auto flex justify-center items-center flex-col gap-6">
-            {songs.map((song) => (
+            {playlistSongs.map((song) => (
               <SongList
-                key={song._id} 
+                key={song._id}
                 coverImage={`http://localhost:3000/uploads/${song.coverImage}`}
                 artist={song.artist.artistName}
                 title={song.title}
@@ -90,7 +95,12 @@ const PlaylistCard = ({ id, name, description, coverImage, date, songs }) => {
                 btnAddPlaylist={false}
                 btnDelete={true}
                 playlistId={id}
+                btnVisible={false}
                 songId={song._id}
+                removeSongFromList={(songId) => {
+                  setPlaylistSongs(prev => prev.filter(song => song._id.toString() !== songId.toString()))
+                  setOpenSongs(false)
+                }}
               />
             ))}
 
