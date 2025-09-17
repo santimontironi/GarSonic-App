@@ -6,6 +6,8 @@ const PlaylistCard = ({ id, name, description, coverImage, date, songs }) => {
 
   const [open, setOpen] = useState(false)
 
+  const[openSongs, setOpenSongs] = useState(false)
+
   const { deletePlaylist } = UseContextUser();
 
   function handleClick() {
@@ -68,8 +70,10 @@ const PlaylistCard = ({ id, name, description, coverImage, date, songs }) => {
           <span className="text-red-600 font-bold bg-white p-[6px]">Aún no tienes canciones agregadas</span>
         </div>
       ) : (
-        <button>Ver canciones {(songs.length)}</button>
+        <button onClick={() => setOpenSongs(true)} className="cursor-pointer bg-white text-black rounded-2xl p-[5px]">Ver canciones {(songs.length)}</button>
       )}
+
+      
     </div>
   )
 }
