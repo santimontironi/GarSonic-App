@@ -202,6 +202,23 @@ export const AddSongToPlaylist = async (req, res) => {
     }
 };
 
+export const DeleteSongPlaylist = async (req, res) => {
+    try {
+        const { playlistId, songId } = req.params;
+        const userId = req.userId;
+
+        const playlist = await Playlist.findOne({ _id: playlistId, owner: userId, active: true });
+
+        const song = await Song.findById(songId);
+        
+        playlist.songs.pull(songId);
+        await playlist.save();
+    }
+    catch(error){
+        res.status(500).json({ message: "Error al eliminar la cancion de la playlist.", error: error.message });
+    }
+}
+
 export const LogoutUser = (req, res) => {
     res.clearCookie("token", {
         httpOnly: true,

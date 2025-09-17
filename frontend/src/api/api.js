@@ -66,6 +66,13 @@ export function addSongToPlaylist(playlistId, songId){
     })
 }
 
+export function deleteSongPlaylistAxios(playlistId, songId){
+    return axios.delete(`${URL_BACKEND}/deleteSongPlaylist/${playlistId}/${songId}`, {
+        withCredentials: true
+    })
+}
+
+
 export function loginArtistAxios(formData){
     return axios.post(`${URL_BACKEND}/loginArtist`,formData,{
         withCredentials:true
