@@ -1,4 +1,4 @@
-import { registerUserAxios, loginUserAxios, logoutUser, dashboardUser, addPlaylist, getPlaylists, deletePlaylistAxios, searchSongs, addSongToPlaylist, deleteSongPlaylist } from "../../api/api.js";
+import { registerUserAxios, loginUserAxios, logoutUser, dashboardUser, addPlaylist, getPlaylists, deletePlaylistAxios, searchSongs, addSongToPlaylist, deleteSongPlaylistAxios } from "../../api/api.js";
 import { useState, useEffect } from "react";
 import { ContextUser } from "./UserContext.jsx";
 
@@ -76,8 +76,8 @@ export const UserProvider = ({children}) => {
         return res;
     }
 
-    async function deleteSongPlaylistAxios(playlistId, songId) {
-        const res = await deleteSongPlaylist(playlistId, songId);
+    async function deleteSongPlaylist(playlistId, songId) {
+        const res = await deleteSongPlaylistAxios(playlistId, songId);
         return res;
     }
 

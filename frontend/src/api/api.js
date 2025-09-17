@@ -72,7 +72,6 @@ export function deleteSongPlaylistAxios(playlistId, songId){
     })
 }
 
-
 export function loginArtistAxios(formData){
     return axios.post(`${URL_BACKEND}/loginArtist`,formData,{
         withCredentials:true

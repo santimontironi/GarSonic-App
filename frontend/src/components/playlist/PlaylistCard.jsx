@@ -76,7 +76,7 @@ const PlaylistCard = ({ id, name, description, coverImage, date, songs }) => {
 
       {openSongs && (
         <div className="fixed inset-0 z-50 flex justify-center items-center m-auto bg-black/50 backdrop-blur-md">
-          <div className="bg-[#101010] p-6 rounded-2xl 2xl:w-[1000px] m-auto max-h-[80vh] overflow-y-auto flex justify-center items-center flex-col gap-6">
+          <div className="bg-gradient-to-r from-black to-purple-900 p-6 rounded-2xl 2xl:w-[1000px] m-auto max-h-[80vh] overflow-y-auto flex justify-center items-center flex-col gap-6">
             {songs.map((song) => (
               <SongList
                 key={song._id} 
@@ -87,10 +87,12 @@ const PlaylistCard = ({ id, name, description, coverImage, date, songs }) => {
                 duration={song.duration}
                 releaseDate={song.releaseDate}
                 genre={song.genre}
+                btnAddPlaylist={false}
+                btnDelete={true}
               />
             ))}
 
-            <button onClick={() => setOpenSongs(false)}className="mt-4 self-center bg-red-500 text-white px-4 py-2 rounded-2xl hover:bg-red-600 transition cursor-pointer">Cerrar</button>
+            <button onClick={() => setOpenSongs(false)} className="mt-4 self-center bg-red-500 text-white px-4 py-2 rounded-2xl hover:bg-red-600 transition cursor-pointer">Cerrar</button>
           </div>
         </div>
       )}

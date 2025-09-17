@@ -99,6 +99,7 @@ const DashboardUser = () => {
                   genre={result.genre}
                   btnVisible={true}
                   btnAddPlaylist={btnAddPlaylist}
+                  btnDelete={false}
                 />
               ))}
             </div>
