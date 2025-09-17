@@ -116,7 +116,7 @@ export const GetPlaylists = async (req, res) => {
     try {
         const userId = req.userId;
 
-        const playlists = await Playlist.find({ owner: userId });
+        const playlists = await Playlist.find({ owner: userId, active: true }).populate({path: "songs", populate: {path: "artist"}});
 
         const playlistFormated = playlists.map(playlist => ({
             ...playlist.toObject(),
@@ -201,29 +201,6 @@ export const AddSongToPlaylist = async (req, res) => {
         res.status(500).json({ message: "Error al agregar canción a playlist.", error: error.message });
     }
 };
-
-export const SongsInPlaylist = async (req, res) => {
-    try {
-        const { playlistId } = req.params
-        const userId = req.userId
-
-        const playlist = await Playlist.findOne({
-            _id: playlistId,
-            owner: userId,
-            active: true
-        }).populate("songs")
-
-        const playlistFormated = playlist.map(playlist => ({
-            ...playlist.toObject(),
-            createdAt: Dayjs(playlist.createdAt).format('DD/MM/YYYY')
-        }))
-
-        res.json({playlistFormated})
-    }
-    catch (error) {
-        res.status(500).json({ message: "Error al obtener canciones de la playlist.", error: error.message });
-    }
-}
 
 export const LogoutUser = (req, res) => {
     res.clearCookie("token", {

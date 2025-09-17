@@ -17,6 +17,7 @@ const MyPlaylists = () => {
         const res = await getAllPlaylists()
         setPlaylists(res.data)
         setErrorGetPlaylists(null)
+        console.log(res.data)
       }
       catch (error) {
         if (error.response?.data?.message) {

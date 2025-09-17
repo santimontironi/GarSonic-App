@@ -1,4 +1,4 @@
-import { registerUserAxios, loginUserAxios, logoutUser, dashboardUser, addPlaylist, getPlaylists, deletePlaylistAxios, searchSongs, addSongToPlaylist, songsInPlaylist } from "../../api/api.js";
+import { registerUserAxios, loginUserAxios, logoutUser, dashboardUser, addPlaylist, getPlaylists, deletePlaylistAxios, searchSongs, addSongToPlaylist } from "../../api/api.js";
 import { useState, useEffect } from "react";
 import { ContextUser } from "./UserContext.jsx";
 
@@ -76,10 +76,6 @@ export const UserProvider = ({children}) => {
         return res;
     }
 
-    async function getSongsPlaylist(playlistId) {
-        const res = await songsInPlaylist(playlistId);
-        return res;
-    }
 
     return(
         <ContextUser.Provider value={{
@@ -93,8 +89,7 @@ export const UserProvider = ({children}) => {
             getAllPlaylists,
             search,
             deletePlaylist,
-            addToPlaylist,
-            getSongsPlaylist
+            addToPlaylist
         }}>
             {children}
         </ContextUser.Provider>

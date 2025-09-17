@@ -97,6 +97,7 @@ const DashboardUser = () => {
                   duration={result.duration}
                   releaseDate={result.releaseDate}
                   genre={result.genre}
+                  btnVisible={true}
                   btnAddPlaylist={btnAddPlaylist}
                 />
               ))}

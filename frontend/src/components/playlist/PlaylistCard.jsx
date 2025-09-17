@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { UseContextUser } from "../../context/user/UseContextUser";
 import Swal from "sweetalert2";
+import SongList from "../song/SongList";
 
 const PlaylistCard = ({ id, name, description, coverImage, date, songs }) => {
 
   const [open, setOpen] = useState(false)
 
-  const[openSongs, setOpenSongs] = useState(false)
+  const [openSongs, setOpenSongs] = useState(false)
 
   const { deletePlaylist } = UseContextUser();
 
@@ -46,12 +47,12 @@ const PlaylistCard = ({ id, name, description, coverImage, date, songs }) => {
   }
 
   return (
-    <div className="relative flex flex-col w-[380px] rounded-2xl bg-[#9032d8] shadow-[4px_4px_10px_rgba(0,0,0,0.5)] items-center gap-[10px] p-[20px] transform md:hover:scale-105 md:transition md:ease-in md:duration-300 2xl:w-[430px] text-white">
+    <div className="relative flex flex-col w-[380px] rounded-2xl bg-[#9032d8] shadow-[4px_4px_10px_rgba(0,0,0,0.5)] items-center gap-[10px] p-[20px] hover:outline-2 hover:outline-white 2xl:w-[430px] text-white">
 
-      <img className="w-[300px] shadow-[8px_8px_15px_rgba(0,0,0,0.7)]" src={coverImage} alt={name} />
+      <img className="w-[280px] shadow-[8px_8px_15px_rgba(0,0,0,0.7)]" src={coverImage} alt={name} />
 
       <div>
-        <i onClick={handleClick} class="absolute top-[10px] right-[10px] text-[30px] bi bi-three-dots-vertical cursor-pointer"></i>
+        <i onClick={handleClick} className="absolute top-[10px] right-[10px] text-[30px] bi bi-three-dots-vertical cursor-pointer"></i>
       </div>
 
       <div className={`flex gap-[10px] ${open ? "flex flex-col absolute top-[50px] right-[10px] bg-[#101010] text-white w-[200px] rounded-2xl p-[5px]" : "hidden"}`}>
@@ -70,10 +71,29 @@ const PlaylistCard = ({ id, name, description, coverImage, date, songs }) => {
           <span className="text-red-600 font-bold bg-white p-[6px]">Aún no tienes canciones agregadas</span>
         </div>
       ) : (
-        <button onClick={() => setOpenSongs(true)} className="cursor-pointer bg-white text-black rounded-2xl p-[5px]">Ver canciones {(songs.length)}</button>
+        <button onClick={() => setOpenSongs(true)} className="cursor-pointer bg-white text-black rounded-2xl p-[10px]">Ver canciones ({(songs.length)})</button>
       )}
 
-      
+      {openSongs && (
+        <div className="fixed inset-0 z-50 flex justify-center items-center m-auto bg-black/50 backdrop-blur-md">
+          <div className="bg-[#101010] p-6 rounded-2xl 2xl:w-[1000px] m-auto max-h-[80vh] overflow-y-auto flex justify-center items-center flex-col gap-6">
+            {songs.map((song) => (
+              <SongList
+                key={song._id} 
+                coverImage={`http://localhost:3000/uploads/${song.coverImage}`}
+                artist={song.artist.artistName}
+                title={song.title}
+                audioFile={`http://localhost:3000/uploads/${song.audioFile}`}
+                duration={song.duration}
+                releaseDate={song.releaseDate}
+                genre={song.genre}
+              />
+            ))}
+
+            <button onClick={() => setOpenSongs(false)}className="mt-4 self-center bg-red-500 text-white px-4 py-2 rounded-2xl hover:bg-red-600 transition cursor-pointer">Cerrar</button>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

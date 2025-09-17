@@ -66,12 +66,6 @@ export function addSongToPlaylist(playlistId, songId){
     })
 }
 
-export function songsInPlaylist(playlistId){
-    return axios.get(`${URL_BACKEND}/songsInPlaylist/${playlistId}`,{
-        withCredentials: true
-    })
-}
-
 export function loginArtistAxios(formData){
     return axios.post(`${URL_BACKEND}/loginArtist`,formData,{
         withCredentials:true

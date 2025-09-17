@@ -1,7 +1,7 @@
 import { Play, Pause } from "lucide-react";
 import { useState, useRef } from "react";
 
-const SongList = ({ songId, coverImage, artist, title, audioFile, duration, releaseDate, btnAddPlaylist, genre }) => {
+const SongList = ({ songId, coverImage, artist, title, audioFile, duration, releaseDate, btnAddPlaylist, genre, btnVisible }) => {
     const audioRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
 
@@ -49,9 +49,11 @@ const SongList = ({ songId, coverImage, artist, title, audioFile, duration, rele
                     </div>
 
                 </div>
-                <div className="mt-3">
-                    <button className="p-4 bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-full shadow-lg hover:from-purple-700 hover:to-purple-900 transition-transform transform hover:scale-105 cursor-pointer" onClick={() => btnAddPlaylist(songId)}> Agregar a playlist</button>
-                </div>
+                {btnVisible && (
+                    <div className="mt-3">
+                        <button className="p-4 bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-full shadow-lg hover:from-purple-700 hover:to-purple-900 transition-transform transform hover:scale-105 cursor-pointer" onClick={() => btnAddPlaylist(songId)}> Agregar a playlist</button>
+                    </div>
+                )}
             </div>
         </div>
     );
