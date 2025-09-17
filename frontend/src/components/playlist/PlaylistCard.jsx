@@ -89,6 +89,8 @@ const PlaylistCard = ({ id, name, description, coverImage, date, songs }) => {
                 genre={song.genre}
                 btnAddPlaylist={false}
                 btnDelete={true}
+                playlistId={id}
+                songId={song._id}
               />
             ))}
 

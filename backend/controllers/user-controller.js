@@ -210,6 +210,14 @@ export const DeleteSongPlaylist = async (req, res) => {
         const playlist = await Playlist.findOne({ _id: playlistId, owner: userId, active: true });
 
         const song = await Song.findById(songId);
+
+        if (!playlist) {
+            return res.status(404).json({ message: "Playlist no encontrada" });
+        }
+
+        if (!song) {
+            return res.status(404).json({ message: "Canción no encontrada" });
+        }
         
         playlist.songs.pull(songId);
         await playlist.save();

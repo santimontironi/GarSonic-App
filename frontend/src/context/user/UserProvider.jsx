@@ -94,7 +94,7 @@ export const UserProvider = ({children}) => {
             search,
             deletePlaylist,
             addToPlaylist,
-            deleteSongPlaylistAxios
+            deleteSongPlaylist
         }}>
             {children}
         </ContextUser.Provider>

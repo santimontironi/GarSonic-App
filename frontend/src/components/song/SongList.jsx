@@ -1,7 +1,9 @@
 import { Play, Pause } from "lucide-react";
 import { useState, useRef } from "react";
+import { UseContextUser } from "../../context/user/UseContextUser";
+import Swal from "sweetalert2";
 
-const SongList = ({ songId, coverImage, artist, title, audioFile, duration, releaseDate, btnAddPlaylist, genre, btnVisible, btnDelete }) => {
+const SongList = ({ songId, coverImage, artist, title, audioFile, duration, releaseDate, btnAddPlaylist, genre, btnVisible, btnDelete, playlistId }) => {
     const audioRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
 
@@ -14,6 +16,32 @@ const SongList = ({ songId, coverImage, artist, title, audioFile, duration, rele
             setIsPlaying(false);
         }
     }
+
+    const { deleteSongPlaylist } = UseContextUser()
+
+    async function handleDeleteSongPlaylist(playlistId, songId) {
+        const result = await Swal.fire({
+            title: '¿Estás seguro de eliminar esta canción de la playlist?',
+            text: "¡No podrás revertir esto!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Sí, eliminar',
+            cancelButtonText: 'Cancelar'
+        });
+
+        if (result.isConfirmed) {
+            try {
+                await deleteSongPlaylist(playlistId, songId);
+                Swal.fire('¡Eliminada!', 'La canción se ha eliminado de la playlist.', 'info');
+            } catch (error) {
+                console.error("Error delete song from playlist:", error);
+                Swal.fire({ title: 'Error', text: error.response?.data?.message || 'Inténtalo de nuevo más tarde.', icon: 'error' });
+            }
+        }
+    }
+
 
     return (
         <div className="flex flex-col md:flex-row items-center gap-6 bg-gradient-to-r from-purple-900 via-purple-800 to-black text-white rounded-2xl p-5 shadow-lg w-[280px] md:w-[500px] lg:w-[600px] 2xl:w-[700px] transition transform hover:scale-[1.02] hover:shadow-purple-900/50">
@@ -58,7 +86,7 @@ const SongList = ({ songId, coverImage, artist, title, audioFile, duration, rele
 
                 {btnDelete && (
                     <div className="mt-3">
-                        <button className="bi bi-trash float-right self-center bg-red-500 text-white px-4 py-2 rounded-2xl hover:bg-red-600 transition cursor-pointer"></button>
+                        <button onClick={() => handleDeleteSongPlaylist(playlistId, songId)} className="bi bi-trash float-right self-center bg-red-500 text-white px-4 py-2 rounded-2xl hover:bg-red-600 transition cursor-pointer"></button>
                     </div>
                 )}
             </div>
