@@ -11,9 +11,6 @@ const DashboardUser = () => {
   const [userData, setUserData] = useState({});
   const [errorData, setErrorData] = useState(null);
 
-  const [openModal, setOpenModal] = useState(false);
-  const [selectedSongId, setSelectedSongId] = useState(null);
-
   const [searched, setSearched] = useState(false);
 
   const { fetchUser, search, logout } = UseContextUser();
@@ -31,11 +28,6 @@ const DashboardUser = () => {
     fetchUserData();
   }, []);
 
-  function btnAddPlaylist(songId) {
-    setSelectedSongId(songId);
-    setOpenModal(true);
-  }
-
   return (
     <main className="w-full h-screen flex justify-center items-center bg-[#171717]">
       <motion.section
@@ -43,16 +35,14 @@ const DashboardUser = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: false, amount: 0.3 }}
-        className="relative flex flex-col items-center h-[700px] justify-center gap-[15px] border-2 border-purple-600 rounded-[8px] p-[10px] w-[360px] mx-auto md:w-[90%]"
+        className="relative flex flex-col items-center h-[700px] gap-[15px] border-2 border-purple-600 rounded-[8px] p-[10px] w-[360px] mx-auto md:w-[90%]"
       >
      
         <SongSearch
           setSearched={setSearched}
           search={search}
-          btnAddPlaylist={btnAddPlaylist}
         />
 
-      
         {!searched && (
           <div className="mt-8 text-center">
             <h1 className="text-white tituloDashboard text-[40px] border-b-2 border-purple-600 md:text-[60px]">
@@ -92,16 +82,7 @@ const DashboardUser = () => {
         >
           Cerrar sesión
         </button>
-
-       
-        {openModal && (
-          <PlaylistModal
-            closeModal={() => setOpenModal(false)}
-            songId={selectedSongId}
-          />
-        )}
-
-        
+ 
         {errorData && <p className="text-red-500">{errorData}</p>}
       </motion.section>
 

@@ -52,7 +52,6 @@ export const UserProvider = ({children}) => {
 
     async function createPlaylist(formData) {
         const res = await addPlaylist(formData);
-        console.log("ESTO ES RES DESDE EL PROVIDER: ", res)
         return res
     }
 
