@@ -2,10 +2,15 @@ import { Play, Pause } from "lucide-react";
 import { useState, useRef } from "react";
 import { UseContextUser } from "../../context/user/UseContextUser";
 import Swal from "sweetalert2";
+import PlaylistModal from "../playlist/PlaylistModal.jsx";
 
 const SongList = ({ songId, coverImage, artist, title, audioFile, duration, releaseDate, btnAddPlaylist, genre, btnVisible, btnDelete, playlistId, removeSongFromList }) => {
     const audioRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
+
+    const [selectedSongId, setSelectedSongId] = useState(null);
+
+    const [openModal, setOpenModal] = useState(false);
 
     function handlePlay() {
         if (audioRef.current.paused) {
@@ -44,8 +49,13 @@ const SongList = ({ songId, coverImage, artist, title, audioFile, duration, rele
     }
 
 
+    function btnAddPlaylist(songId) {
+        setOpenModal(true)
+        setSelectedSongId(songId)
+    }
+
     return (
-        <div className="flex flex-col md:flex-row items-center gap-6 bg-gradient-to-r from-purple-900 via-purple-800 to-black text-white rounded-2xl p-5 shadow-lg w-[280px] md:w-[500px] lg:w-[600px] 2xl:w-[700px] transition transform hover:scale-[1.02] hover:shadow-purple-900/50">
+        <div className="flex flex-col md:flex-row items-center gap-6 bg-gradient-to-r from-purple-900 via-purple-800 to-black text-white rounded-2xl p-5 shadow-lg w-[280px] md:w-[500px] lg:w-[600px] 2xl:w-[700px] hover:shadow-purple-900/50">
 
             <img
                 className="w-[180px] h-[140px] object-cover rounded-xl shadow-md"
@@ -89,6 +99,13 @@ const SongList = ({ songId, coverImage, artist, title, audioFile, duration, rele
                     <div className="mt-3">
                         <button onClick={() => handleDeleteSongPlaylist(playlistId, songId)} className="bi bi-trash float-right self-center bg-red-500 text-white px-4 py-2 rounded-2xl hover:bg-red-600 transition cursor-pointer"></button>
                     </div>
+                )}
+
+                {openModal && (
+                    <PlaylistModal
+                        closeModal={() => setOpenModal(false)}
+                        songId={selectedSongId}
+                    />
                 )}
             </div>
         </div>

@@ -2,15 +2,10 @@ import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { Scrollbar } from "react-scrollbars-custom";
 import SongList from "./SongList.jsx";
-import PlaylistModal from "../playlist/PlaylistModal.jsx";
 
 const SongSearch = ({ search, setSearched }) => {
   const [inputSearch, setInputSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-
-  const [selectedSongId, setSelectedSongId] = useState(null);
-
-  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     async function handleSearch() {
@@ -37,11 +32,6 @@ const SongSearch = ({ search, setSearched }) => {
     }
     handleSearch();
   }, [inputSearch]);
-
-  function btnAddPlaylist(songId){
-    setOpenModal(true)
-    setSelectedSongId(songId)
-  }
 
   return (
     <div className="w-full flex flex-col items-center">
@@ -89,12 +79,6 @@ const SongSearch = ({ search, setSearched }) => {
         </Scrollbar>
       )}
 
-      {openModal && (
-        <PlaylistModal
-          closeModal={() => setOpenModal(false)}
-          songId={selectedSongId}
-        />
-      )}
     </div>
   );
 };
