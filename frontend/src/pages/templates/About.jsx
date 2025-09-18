@@ -4,21 +4,21 @@ import photoNosotros from "../../static/img/nosotros.jpg"
 const About = () => {
   return (
 
-    <section className="h-screen lg:h-[120vh] xl:h-[90vh] 2xl:h-[85vh]w-full pb-[50px] md:pb-[0px] lg:mb-[100px] xl:mb-[0px]" id="nosotros">
+    <section className="h-[120vh] md:h-[100vh] lg:h-[95vh] xl:h-[90vh] 2xl:h-[85vh]w-full pb-[50px] md:pb-[0px] lg:mb-[100px] xl:mb-[0px] overflow-y-hidden" id="nosotros">
       <motion.div
         initial={{ opacity: 0, y: 70 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        viewport={{ once: false, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.3 }}
       >
 
-        <div className="flex flex-col items-center justify-center h-[760px] md:flex-row md:h-[500px] lg:h-[600px] lg:w-[1000px] lg:justify-between lg:mx-auto lg:gap-[25px]">
+        <div className="flex flex-col items-center justify-center md:flex-row md:h-[500px] mt-[40px] lg:h-[600px] lg:w-[1000px] lg:justify-between lg:mx-auto lg:gap-[25px]">
           <figure className="w-[320px] h-[400px] md:w-[280px] md:h-[400px] bg-purple-800 relative p-4 shadow-[8px_6px_10px_rgba(0,0,0,0.70)] rounded-[8px] lg:w-[450px] lg:h-[480px]">
             <img className="w-[300px] object-cover absolute left-[-10px] rounded-[8px] lg:w-[400px] lg:left-[-20px]" src={photoNosotros} alt="Persona escuchando música" />
           </figure>
           <div className="flex flex-col items-center p-[10px]">
             <h2 className="text-[30px] font-bold text-center mt-6 lg:text-[50px]">Nuestra misión</h2>
-            <p className="mt-4 text-center max-w-[400px] lg:max-w-[600px] md:text-[14px] lg:text-[17px]">
+            <p className="mt-4 text-center max-w-[320px] lg:max-w-[600px] md:text-[14px] lg:text-[17px]">
               En <span className="font-semibold text-purple-600">GarSonic</span> buscamos conectar a las personas con la música que aman.
               Nuestro objetivo es ofrecer un espacio donde artistas emergentes y consolidados
               puedan compartir su arte, y donde los usuarios encuentren playlists personalizadas,
