@@ -3,7 +3,6 @@ import { UseContextUser } from "../../context/user/UseContextUser.js";
 import { motion } from "framer-motion";
 import { ToastContainer } from "react-toastify";
 import { Link } from "react-router-dom";
-import PlaylistModal from "../../components/playlist/PlaylistModal.jsx";
 import SongSearch from "../../components/song/SongSearch.jsx";
 import "react-toastify/dist/ReactToastify.css";
 
