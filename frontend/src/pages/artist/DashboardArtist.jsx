@@ -59,7 +59,7 @@ const DashboardArtist = () => {
           <figure className="w-[150px] md:w-[200px] md:h-[200px] h-[150px] bg-purple-600 rounded-full flex items-center justify-center">
             <img
               className="w-[145px] h-[145px] md:w-[185px] md:h-[185px] rounded-full object-cover"
-              src={`http://localhost:3000/uploads/${artistData?.profilePhoto}`}
+              src={`${import.meta.env.VITE_BACKEND}/uploads/${artistData?.profilePhoto}`}
               alt={`foto de perfil de ${artistData?.artistName}`}
             />
           </figure>

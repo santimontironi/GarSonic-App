@@ -39,9 +39,9 @@ const MySongs = () => {
         {songs.map((formattedSongs) => (
           <SongCard key={formattedSongs._id}
             idSong={formattedSongs._id}
-            coverImage={`http://localhost:3000/uploads/${formattedSongs.coverImage}`}
+            coverImage={`${import.meta.env.VITE_BACKEND}/uploads/${formattedSongs.coverImage}`}
             artist={formattedSongs.artist.artistName}
-            audioFile={`http://localhost:3000/uploads/${formattedSongs.audioFile}`}
+            audioFile={`${import.meta.env.VITE_BACKEND}/uploads/${formattedSongs.audioFile}`}
             title={formattedSongs.title}
             duration={formattedSongs.duration}
             releaseDate={formattedSongs.releaseDate} />

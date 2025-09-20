@@ -63,10 +63,10 @@ const SongSearch = ({ search, setSearched }) => {
               <SongList
                 key={result._id}
                 songId={result._id}
-                coverImage={`http://localhost:3000/uploads/${result.coverImage}`}
+                coverImage={`${import.meta.env.VITE_BACKEND}/uploads/${result.coverImage}`}
                 artist={result.artist.artistName}
                 title={result.title}
-                audioFile={`http://localhost:3000/uploads/${result.audioFile}`}
+                audioFile={`${import.meta.env.VITE_BACKEND}/uploads/${result.audioFile}`}
                 duration={result.duration}
                 releaseDate={result.releaseDate}
                 genre={result.genre}

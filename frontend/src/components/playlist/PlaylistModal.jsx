@@ -61,7 +61,7 @@ const PlaylistModal = ({ closeModal, songId }) => {
         <ul className="flex flex-col gap-[20px]">
           {playlists.map((pl) => (
             <li onClick={() => handleAddToPlaylist(pl._id, songId)} key={pl._id} className="flex items-center gap-[10px] md:gap-[20px] bg-purple-600 shadow-[4px_8px_10px_#000] cursor-pointer transform transition-all hover:scale-105">
-              <img className="w-[120px] md:w-[170px]" src={`http://localhost:3000/uploads/${pl.coverImage}`} alt={pl.name} />
+              <img className="w-[120px] md:w-[170px]" src={`${import.meta.env.VITE_BACKEND}/uploads/${pl.coverImage}`} alt={pl.name} />
               <h3 className="text-white font-bold text-[14px] md:text-[17px]">{pl.playlistName}</h3>
             </li>
           ))}

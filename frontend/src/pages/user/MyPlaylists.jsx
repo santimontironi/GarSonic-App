@@ -42,7 +42,7 @@ const MyPlaylists = () => {
         {playlists.map((playlist) => (
           <PlaylistCard
             key={playlist._id}
-            coverImage={`http://localhost:3000/uploads/${playlist.coverImage}`}
+            coverImage={`${import.meta.env.VITE_BACKEND}/uploads/${playlist.coverImage}`}
             name={playlist.playlistName}
             description={playlist.description}
             date={playlist.createdAt}
