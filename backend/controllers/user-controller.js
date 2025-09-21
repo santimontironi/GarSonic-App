@@ -59,9 +59,10 @@ export const LoginUser = async (req, res) => {
         )
 
         res.cookie("token", token, {
-            httpOnly: true,         // no accesible desde JS del frontend
-            sameSite: "Lax",      // más permisivo para desarrollo local
-            maxAge: 86400000      // 1 día
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+            sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+            maxAge: 86400000
         })
 
         res.json({ message: "Login exitoso", user })

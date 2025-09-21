@@ -50,8 +50,8 @@ export const RegisterArtist = async (req, res) => {
                 from: `"GarSonic" <${process.env.EMAIL_USER}>`,
                 to: email,
                 subject: "Confirma tu cuenta de artista",
-                html: 
-                `
+                html:
+                    `
                     <div style="background-color: #6a0dad; color: #fff; padding: 40px; font-family: Arial, sans-serif; text-align: center; border-radius: 10px;">
                         <h1 style="color: #fff;">¡Hola ${artistName}!</h1>
                         <p style="font-size: 16px; color: #fff;">Gracias por registrarte en GarSonic. Para activar tu cuenta, por favor confirma haciendo clic en el botón de abajo:</p>
@@ -132,10 +132,11 @@ export const LoginArtist = async (req, res) => {
             { expiresIn: "1d" }
         )
 
-        res.cookie("tokenArtist", token, {
-            httpOnly: true,         // no accesible desde JS del frontend
-            sameSite: "Lax",      // más permisivo para desarrollo local
-            maxAge: 86400000      // 1 día
+        res.cookie("token", token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production", // solo true en producción
+            sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+            maxAge: 86400000
         })
 
         res.json({ message: "Login exitoso", artist })
