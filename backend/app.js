@@ -11,19 +11,31 @@ const __dirname = path.dirname(__filename)
 
 const app = express()
 
-app.use(cors({
+const allowedOrigins = [
+    'https://garsonic.netlify.app',
+    'http://localhost:3000' // para desarrollo
+];
+
+const corsOptions = {
     origin: function (origin, callback) {
-        // permitir requests sin origin (ej: Postman)
+        // Permitir requests sin origin (como mobile apps o curl)
         if (!origin) return callback(null, true);
-        if (allowedOrigins.includes(origin)) {
-            return callback(null, true);
+
+        if (allowedOrigins.indexOf(origin) !== -1) {
+            callback(null, true);
         } else {
-            return callback(new Error("CORS not allowed"), false);
+            callback(new Error('Not allowed by CORS'));
         }
     },
+    credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    credentials: true
-}));
+    allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"]
+};
+
+app.use(cors(corsOptions));
+
+// Manejar preflight requests
+app.options('*', cors(corsOptions));
 
 app.use(express.json())
 app.use(cookieParser())
