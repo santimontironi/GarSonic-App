@@ -60,10 +60,13 @@ export const LoginUser = async (req, res) => {
 
         res.cookie("token", token, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === "production",
-            sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
-            maxAge: 86400000
-        })
+            secure: true, // FORZAR a true en producción
+            sameSite: "none", // Necesario para cross-origin
+            maxAge: 86400000,
+            domain: process.env.NODE_ENV === "production" ?
+                ".vercel.app" : undefined // O el dominio de tu backend
+        });
+        
 
         res.json({ message: "Login exitoso", user })
     }
