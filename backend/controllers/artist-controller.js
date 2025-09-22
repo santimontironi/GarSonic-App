@@ -134,10 +134,10 @@ export const LoginArtist = async (req, res) => {
 
         res.cookie("token", token, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === "production", // solo true en producción
-            sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+            secure: true,         
+            sameSite: "none", 
             maxAge: 86400000
-        })
+        });
 
         res.json({ message: "Login exitoso", artist })
     }
