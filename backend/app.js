@@ -1,15 +1,15 @@
-import express from 'express';
-import cors from 'cors';
-import cookieParser from 'cookie-parser';
-import userRoutes from './routes/user-routes.js';
-import artistRouter from './routes/artist-routes.js';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import express from 'express'
+import cors from 'cors'
+import cookieParser from 'cookie-parser'
+import userRoutes from './routes/user-routes.js'
+import artistRouter from './routes/artist-routes.js'
+import path from 'path'
+import { fileURLToPath } from 'url'
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
-const app = express();
+const app = express()
 
 app.use(cors({
   origin: "https://garsonic.netlify.app",
@@ -18,19 +18,18 @@ app.use(cors({
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
-// manejar preflight
 app.options("*", cors({
   origin: "https://garsonic.netlify.app",
   credentials: true
 }));
 
-app.use(express.json());
-app.use(cookieParser());
+app.use(express.json())
+app.use(cookieParser())
 
-// servir archivos estáticos
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+// Configurar middleware para servir archivos estáticos desde la carpeta 'uploads'
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
 
-app.use(userRoutes);
-app.use(artistRouter);
+app.use(userRoutes)
+app.use(artistRouter)
 
-export default app;
+export default app
