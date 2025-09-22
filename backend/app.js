@@ -32,7 +32,7 @@ app.use(cookieParser())
 // Configurar middleware para servir archivos estáticos desde la carpeta 'uploads'
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
 
-app.use("/", userRoutes);
-app.use("/",artistRouter)
+app.use("/api", userRoutes);
+app.use("/api",artistRouter)
 
 export default app
