@@ -16,10 +16,10 @@ const app = express()
 
 app.use(cors({
   origin: process.env.FRONTEND_URL,
-  credentials: true,
+  credentials: true
 }));
 
-console.log("ESTA ES LA URL DEL FRONTEND: " + process.env.FRONTEND_URL)
+console.log(process.env.FRONTEND_URL)
 
 app.use(express.json())
 app.use(cookieParser())
