@@ -1,10 +1,11 @@
 import { Router } from "express";
-import { RegisterUser, LoginUser, DashboardUser, LogoutUser, CreatePlaylist, GetPlaylists, DeletePlaylist, SearchSongs, AddSongToPlaylist, DeleteSongPlaylist } from "../controllers/user-controller.js";
+import { helloWorld, RegisterUser, LoginUser, DashboardUser, LogoutUser, CreatePlaylist, GetPlaylists, DeletePlaylist, SearchSongs, AddSongToPlaylist, DeleteSongPlaylist } from "../controllers/user-controller.js";
 import { verifyToken } from "../middlewares/verifyTokenUser.js";
 import { upload } from "../middlewares/upload.js";
 
 const router = Router()
 
+router.get('/',helloWorld)
 router.post('/register', upload.single('profilePhoto'), RegisterUser)
 router.post('/login',LoginUser)
 router.get('/dashboardUser', verifyToken, DashboardUser)

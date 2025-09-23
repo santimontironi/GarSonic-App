@@ -8,6 +8,15 @@ import Song from "../models/song-model.js";
 
 dotenv.config();
 
+export const helloWorld = async (req,res) => {
+    try{
+        return res.json({message: "HOLA MUNDO"})
+    }
+    catch(error){
+        return res.status(500).json({ message: "Error al ingresar", error })
+    }
+}
+
 export const RegisterUser = async (req, res) => {
     try {
         const { name, surname, email, username, password } = req.body
