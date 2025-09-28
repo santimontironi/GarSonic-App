@@ -59,12 +59,12 @@ const RegisterUser = () => {
   }, [correctRegister])
 
   return (
-    <main className="containerRegisterUser min-h-screen w-full">
+    <main className="containerRegisterUser min-h-screen w-full md:pb-[50px]">
 
       <BackButton to="/loginUsuario" />
 
       <div className="title h-[160px] flex justify-center items-center">
-        <h1 className="bg-[#662d91] w-[320px] text-white text-[27px] shadow-[7px_10px_15px_rgba(0,0,0,0.70)] p-[12px] md:text-[40px] md:w-[600px] text-center">Registro de usuario</h1>
+        <h1 className="bg-[#662d91] w-[300px] text-white text-[27px] shadow-[7px_10px_15px_rgba(0,0,0,0.70)] p-[12px] md:text-[40px] md:w-[600px] text-center">Registro de usuario</h1>
       </div>
 
       <motion.div

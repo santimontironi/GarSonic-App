@@ -13,7 +13,7 @@ export const helloWorld = async (req,res) => {
         return res.json({message: "HOLA MUNDO"})
     }
     catch(error){
-        return res.status(500).json({ message: "Error al ingresar", error })
+        return res.status(500).json({ message: "Error al ingresar", error:error.message })
     }
 }
 
@@ -39,7 +39,7 @@ export const RegisterUser = async (req, res) => {
         res.status(201).json({ message: "Usuario creado correctamente" });
     }
     catch (error) {
-        return res.status(500).json({ message: "Error en registrar el usuario." })
+        return res.status(500).json({ message: "Error en registrar el usuario.", error: error.message })
     }
 }
 
@@ -77,7 +77,7 @@ export const LoginUser = async (req, res) => {
         res.json({ message: "Login exitoso", user })
     }
     catch (error) {
-        return res.status(500).json({ message: "Error al ingresar como usuario." })
+        return res.status(500).json({ message: "Error al ingresar como usuario.", error: error.message })
     }
 }
 
@@ -87,13 +87,13 @@ export const DashboardUser = async (req, res) => {
         const user = await User.findById(userId);
 
         if (!user) {
-            return res.status(404).json({ message: "Usuario no encontrado" });
+            return res.status(404).json({ message: "Usuario no encontrado",error: error.message });
         }
 
         res.json({ authenticated: true, user });
     } catch (error) {
         console.error("Error en DashboardUser:", error);
-        return res.status(500).json({ message: "Error al obtener datos del usuario" });
+        return res.status(500).json({ message: "Error al obtener datos del usuario",error: error.message });
     }
 }
 
@@ -118,7 +118,7 @@ export const CreatePlaylist = async (req, res) => {
         res.status(201).json({ message: "Lista de reproducción creada correctamente", playlist: newPlaylist });
     }
     catch (error) {
-        return res.status(500).json({ message: "Error al crear la lista de reproducción", error });
+        return res.status(500).json({ message: "Error al crear la lista de reproducción", error: error.message });
     }
 }
 
@@ -136,7 +136,7 @@ export const GetPlaylists = async (req, res) => {
         res.json(playlistFormated);
     }
     catch (error) {
-        return res.status(500).json({ message: "Error al obtener las listas de reproducción", error });
+        return res.status(500).json({ message: "Error al obtener las listas de reproducción", error: error.message });
     }
 }
 
@@ -156,7 +156,7 @@ export const DeletePlaylist = async (req, res) => {
         res.json({ message: "Lista de reproducción eliminada correctamente", playlist });
     }
     catch (error) {
-        return res.status(500).json({ message: "Error al eliminar la lista de reproducción", error });
+        return res.status(500).json({ message: "Error al eliminar la lista de reproducción", error: error.message });
     }
 }
 
