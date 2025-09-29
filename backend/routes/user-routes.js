@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { helloWorld, RegisterUser, LoginUser, DashboardUser, LogoutUser, CreatePlaylist, GetPlaylists, DeletePlaylist, SearchSongs, AddSongToPlaylist, DeleteSongPlaylist } from "../controllers/user-controller.js";
+import { RegisterUser, LoginUser, DashboardUser, LogoutUser, CreatePlaylist, GetPlaylists, DeletePlaylist, SearchSongs, AddSongToPlaylist, DeleteSongPlaylist } from "../controllers/user-controller.js";
 import { verifyToken } from "../middlewares/verifyTokenUser.js";
 import { upload } from "../middlewares/upload.js";
 
