@@ -5,7 +5,6 @@ import { upload } from "../middlewares/upload.js";
 
 const router = Router()
 
-router.get('/',helloWorld)
 router.post('/register', upload.single('profilePhoto'), RegisterUser)
 router.post('/login',LoginUser)
 router.get('/dashboardUser', verifyToken, DashboardUser)
