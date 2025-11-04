@@ -96,7 +96,7 @@ export const CreatePlaylist = async (req, res) => {
 
         const { playlistName, description } = req.body;
 
-        const coverImage = req.file ? req.file.filename : null;
+        const coverImage = req.file ? req.file.path : null;
 
         const newPlaylist = new Playlist({
             playlistName,

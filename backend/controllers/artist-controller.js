@@ -12,7 +12,7 @@ dotenv.config();
 export const RegisterArtist = async (req, res) => {
     try {
         const { email, password, artistName, genre, description } = req.body
-        const profilePhoto = req.file.filename;
+        const profilePhoto = req.file.path;
 
         const existingArtist = await Artist.findOne({ email })
 
@@ -185,8 +185,8 @@ export const UploadSong = async (req, res) => {
             return res.status(403).json({ message: "Tu cuenta no está verificada. No puedes subir canciones." });
         }
 
-        const coverImage = req.files.coverImage[0].filename;
-        const audioFile = req.files.audioFile[0].filename;
+        const coverImage = req.files.coverImage[0].path;
+        const audioFile = req.files.audioFile[0].path;
 
         const newSong = new Song({ title, coverImage, genre, audioFile, releaseDate, duration, artist: artistId })
 
