@@ -5,6 +5,7 @@ import userRoutes from './routes/user-routes.js'
 import artistRouter from './routes/artist-routes.js'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import { connect } from "./db.js";
 
 import dotenv from "dotenv";
 dotenv.config();
@@ -13,6 +14,8 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 const app = express()
+
+connect()
 
 app.use(cors({
   origin: process.env.FRONTEND_URL,
