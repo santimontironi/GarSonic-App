@@ -15,7 +15,18 @@ const __dirname = path.dirname(__filename)
 
 const app = express()
 
-connect()
+app.use(async (req, res, next) => {
+  try {
+    await connect();
+    next();
+  } catch (error) {
+    console.error('Error de conexión DB:', error);
+    return res.status(500).json({ 
+      error: 'Error de conexión a base de datos',
+      details: error.message 
+    });
+  }
+});
 
 app.use(cors({
   origin: process.env.FRONTEND_URL,

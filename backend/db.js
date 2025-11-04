@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+mongoose.set('bufferCommands', false);
 
 export const connect = async () => {
     try{
