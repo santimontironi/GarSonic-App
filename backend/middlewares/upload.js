@@ -5,7 +5,7 @@ import cloudinary from "../config/cloudinary.js";
 const storage = new CloudinaryStorage({
   cloudinary,
   params: {
-    folder: "mi_proyecto",
+    folder: "uploads",
     allowed_formats: ["jpg", "png", "jpeg"],
   },
 });

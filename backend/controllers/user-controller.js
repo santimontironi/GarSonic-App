@@ -12,6 +12,9 @@ export const RegisterUser = async (req, res) => {
     try {
         const { name, surname, email, username, password } = req.body
 
+        console.log("🧩 Body recibido:", req.body);
+        console.log("🖼️ Archivo recibido:", req.file);
+
         const existingUser = await User.findOne({
             $or: [{ username }, { email }]
         });
@@ -61,8 +64,8 @@ export const LoginUser = async (req, res) => {
 
         res.cookie("token", token, {
             httpOnly: true,
-            secure: true,        
-            sameSite: "none", 
+            secure: true,
+            sameSite: "none",
             maxAge: 86400000
         });
 
@@ -80,13 +83,13 @@ export const DashboardUser = async (req, res) => {
         const user = await User.findById(userId);
 
         if (!user) {
-            return res.status(404).json({ message: "Usuario no encontrado",error: error.message });
+            return res.status(404).json({ message: "Usuario no encontrado", error: error.message });
         }
 
         res.json({ authenticated: true, user });
     } catch (error) {
         console.error("Error en DashboardUser:", error);
-        return res.status(500).json({ message: "Error al obtener datos del usuario",error: error.message });
+        return res.status(500).json({ message: "Error al obtener datos del usuario", error: error.message });
     }
 }
 
