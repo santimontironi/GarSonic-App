@@ -68,6 +68,7 @@ export const LoginUser = async (req, res) => {
         res.json({ message: "Login exitoso", user })
     }
     catch (error) {
+        console.error("Error en LoginUser:", error);
         return res.status(500).json({ message: "Error al ingresar como usuario.", error: error.message })
     }
 }

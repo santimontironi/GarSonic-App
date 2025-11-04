@@ -10,6 +10,6 @@ export const connect = async () => {
         console.log("Successfully connection to database.")
     }
     catch(error){
-        console.log("Error in database connection: ",error)
+        console.log("Error in database connection: ",error.message)
     }
 }
