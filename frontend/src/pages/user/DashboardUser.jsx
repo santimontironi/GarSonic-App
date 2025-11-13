@@ -13,7 +13,7 @@ const DashboardUser = () => {
 
   const [searched, setSearched] = useState(false);
 
-  const { user, loadingDashboardUser, search} = UseContextUser();
+  const { user, loadingDashboardUser, search, logout} = UseContextUser();
 
   return (
     <main className="w-full h-screen flex justify-center items-center bg-[#171717]">

@@ -9,24 +9,10 @@ const DashboardArtist = () => {
 
   const location = useLocation()
   const navigate = useNavigate()
-
-  const [artistData, setArtistData] = useState({})
+  
   const [errorData, setErrorData] = useState(null)
 
   const { artist, logout, loadingDashboardArtist } = UseContextArtist()
-
-  useEffect(() => {
-    async function fetchArtistData() {
-      try {
-        const res = await fetchArtist()
-        setArtistData(res.data.artist)
-      }
-      catch (error) {
-        setErrorData(error.message)
-      }
-    }
-    fetchArtistData()
-  }, [])
 
   useEffect(() => {
     if (location.state?.successMessage) {
