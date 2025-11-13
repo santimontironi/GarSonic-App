@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import Playlist from "../models/playlist-model.js";
 import Dayjs from 'dayjs'
 import Song from "../models/song-model.js";
+import cloudinary from "./cloudinary.js";
 
 dotenv.config();
 
@@ -100,7 +101,13 @@ export const CreatePlaylist = async (req, res) => {
 
         const { playlistName, description } = req.body;
 
-        const coverImage = req.file ? req.file.path : null;
+        const fileBase64 = `data:${req.file.mimetype};base64,${req.file.buffer.toString("base64")}`;
+
+        const result = await cloudinary.uploader.upload(fileBase64, {
+            folder: "playlists_covers",
+        });
+
+        const coverImage = result.secure_url;
 
         const newPlaylist = new Playlist({
             playlistName,

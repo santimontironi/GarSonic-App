@@ -6,6 +6,7 @@ import Dayjs from 'dayjs'
 import nodemailer from "nodemailer";
 import crypto from "crypto";
 import dotenv from "dotenv";
+import cloudinary from "./cloudinary.js";
 
 dotenv.config();
 
@@ -185,7 +186,14 @@ export const UploadSong = async (req, res) => {
             return res.status(403).json({ message: "Tu cuenta no está verificada. No puedes subir canciones." });
         }
 
-        const coverImage = req.files.coverImage[0].path;
+        const fileBase64Cover = `data:${req.files.coverImage[0].mimetype};base64,${req.files.coverImage[0].buffer.toString("base64")}`;
+
+        const resultCover = await cloudinary.uploader.upload(fileBase64Cover, {
+            folder: "songs_covers",
+        });
+
+        const coverImage = resultCover.secure_url
+        
         const audioFile = req.files.audioFile[0].path;
 
         const newSong = new Song({ title, coverImage, genre, audioFile, releaseDate, duration, artist: artistId })
