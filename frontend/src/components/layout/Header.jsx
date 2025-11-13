@@ -35,7 +35,7 @@ const Header = () => {
                     </button>
                     <li ><a href="#inicio" className="text-[13px] lg:text-[16px] md:text-[18px] p-[8px] hvr-bounce-to-bottom">Inicio</a></li>
                     <li ><a href="#nosotros" className="text-[13px] lg:text-[16px] md:text-[18px] p-[8px] hvr-bounce-to-bottom">¿Qué es GarSonic?</a ></li>
-                    <li ><Link className="text-[13px] lg:text-[16px] md:text-[18px] p-[8px] hvr-bounce-to-bottom" to="/rols">Roles</Link></li>
+                    <li ><a href="#rols" className="text-[13px] lg:text-[16px] md:text-[18px] p-[8px] hvr-bounce-to-bottom">Roles</a></li>
                     <li ><Link className="text-[13px] lg:text-[16px] md:text-[18px] p-[8px] bg-white text-black rounded-xl" to="/ingresar">Ingresar</Link></li>
                 </ul>
 

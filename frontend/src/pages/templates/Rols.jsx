@@ -2,7 +2,7 @@ import RolCard from "../../components/layout/RolCard";
 
 const Rols = () => {
     return (
-        <div className="w-full h-[740px] sm:min-h-[850px] md:min-h-[750px] lg:min-h-[700px] xl:min-h-[650px] 2xl:min-h-[600px] bg-gradient-to-b from-purple-900 to-black xl:mt-[40px]">
+        <div className="w-full h-[740px] sm:min-h-[850px] md:min-h-[750px] lg:min-h-[700px] xl:min-h-[650px] 2xl:min-h-[600px] bg-gradient-to-b from-purple-900 to-black xl:mt-[40px]" id="rols">
             <div className="h-[150px] sm:h-[180px] md:h-[200px] flex justify-center items-center">
                 <h1 className="text-white text-[28px] sm:text-[32px] md:text-[40px] lg:text-[46px] xl:text-[50px] 2xl:text-[54px] font-extrabold drop-shadow-lg text-center">
                     Nuestros roles
