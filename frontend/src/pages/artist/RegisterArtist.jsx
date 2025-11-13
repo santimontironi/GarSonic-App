@@ -79,7 +79,16 @@ const RegisterArtist = () => {
         <form className="flex flex-col w-[350px] m-auto h-auto p-[20px] rounded-[10px] shadow-[5px_7px_10px_#000] md:w-[450px]" method="post" onSubmit={handleSubmit(submitForm)}>
 
           <div className="mt-5 flex flex-col gap-[6px]">
+
             <label className="text-white">Foto de perfil</label>
+
+            <input
+              type="hidden"
+              {...register("profilePhoto", {
+                required: "La foto de perfil es requerida",
+                validate: () => file !== null || "La foto de perfil es requerida"
+              })}
+            />
 
             <div
               {...getRootProps()}

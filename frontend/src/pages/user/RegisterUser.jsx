@@ -29,15 +29,17 @@ const RegisterUser = () => {
   const { signUpUser } = UseContextUser()
 
   async function submitForm(values) {
-    toast.loading("Registrando usuario...", { autoClose: 1000, theme: "dark" });
     try {
 
       if (!file) {
         setError("profilePhoto", { type: "manual", message: "La foto de perfil es requerida" });
+        toast.error("La foto de perfil es requerida", { theme: "dark" });
         return;
       } else {
         clearErrors("profilePhoto");
       }
+
+      toast.loading("Registrando usuario...", { autoClose: 1000, theme: "dark" });
 
       const formData = new FormData();
       formData.append("name", values.name);
@@ -55,8 +57,10 @@ const RegisterUser = () => {
       setFile(null);
     }
     catch (error) {
+      toast.dismiss();
       if (error.response?.data?.message) {
         setErrorRegister(error.response.data.message);
+        toast.error(error.response.data.message, { theme: "dark" });
       }
     }
   }
@@ -88,6 +92,14 @@ const RegisterUser = () => {
 
           <div className="mt-5 flex flex-col gap-[6px]">
             <label className="text-white">Foto de perfil</label>
+            
+            <input 
+              type="hidden" 
+              {...register("profilePhoto", { 
+                required: "La foto de perfil es requerida",
+                validate: () => file !== null || "La foto de perfil es requerida"
+              })} 
+            />
 
             <div
               {...getRootProps()}
