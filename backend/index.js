@@ -1,9 +1,5 @@
-import app from "./app.js";
+import { startServer } from "./server";
 
-import dotenv from "dotenv";
-
-dotenv.config();
-
-export default app
+startServer();
 
 
