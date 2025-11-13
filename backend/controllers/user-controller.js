@@ -89,10 +89,6 @@ export const DashboardUser = async (req, res) => {
         const userId = req.userId;
         const user = await User.findById(userId);
 
-        if (!user) {
-            return res.status(404).json({ message: "Usuario no encontrado" });
-        }
-
         res.json({ authenticated: true, user });
     } catch (error) {
         return res.status(500).json({ message: "Error al obtener datos del usuario", error: error.message });

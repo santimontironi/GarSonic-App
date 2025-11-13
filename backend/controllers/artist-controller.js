@@ -160,18 +160,6 @@ export const DashboardArtist = async (req, res) => {
         const artistId = req.artistId;
         const artist = await Artist.findById(artistId);
 
-        if (!artist) {
-            return res.status(404).json({ message: "Artista no encontrado." });
-        }
-
-        if (!artist.isVerified) {
-            return res.status(403).json({ message: "Tu cuenta no está verificada. No puedes subir canciones." });
-        }
-
-        if (!artist) {
-            return res.status(404).json({ message: "Artista no encontrado" });
-        }
-
         res.json({ authenticated: true, artist });
     }
     catch (error) {
