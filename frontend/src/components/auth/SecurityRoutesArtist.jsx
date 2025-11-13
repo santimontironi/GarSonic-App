@@ -4,9 +4,9 @@ import { Navigate } from "react-router-dom"
 
 const SecurityRoutesArtist = ({children}) => {
 
-    const {artist, loading} = UseContextArtist()
+    const {artist, loadingDashboardArtist} = UseContextArtist()
 
-    if(loading){
+    if(loadingDashboardArtist){
         return <Loader/>
     }
 

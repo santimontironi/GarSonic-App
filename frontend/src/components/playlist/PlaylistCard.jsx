@@ -85,10 +85,10 @@ const PlaylistCard = ({ id, name, description, coverImage, date, songs }) => {
             {playlistSongs.map((song) => (
               <SongList
                 key={song._id}
-                coverImage={`http://localhost:3000/uploads/${song.coverImage}`}
+                coverImage={song.coverImage}
                 artist={song.artist.artistName}
                 title={song.title}
-                audioFile={`http://localhost:3000/uploads/${song.audioFile}`}
+                audioFile={song.audioFile}
                 duration={song.duration}
                 releaseDate={song.releaseDate}
                 genre={song.genre}

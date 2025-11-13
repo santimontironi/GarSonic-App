@@ -4,10 +4,10 @@ import Loader from "../layout/Loader.jsx";
 
 const SecurityRoutesUser = ({children}) => {
 
-    const {user, loading} = UseContextUser()
+    const {user, loadingDashboardUser} = UseContextUser()
 
     // Si todavía está verificando, no redirigir
-    if(loading) {
+    if(loadingDashboardUser) {
         return <Loader/>
     }
 

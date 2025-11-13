@@ -6,7 +6,7 @@ const ArtistProvider = ({children}) => {
 
     const[artist,setArtist] = useState(null)
 
-    const[loading,setLoading] = useState(true)
+    const[loadingDashboardArtist,setLoadingDashboardArtist] = useState(true)
 
     async function signUpArtist(artist){
         const res = await registerArtistAxios(artist)
@@ -27,6 +27,7 @@ const ArtistProvider = ({children}) => {
     }
 
     async function fetchArtist(){
+        setLoadingDashboardArtist(true)
         try {
             const res = await dashboardArtistAxios();
             if(res.data.authenticated === false){
@@ -40,7 +41,7 @@ const ArtistProvider = ({children}) => {
         }
         finally{
             setTimeout(function() {
-                setLoading(false)
+                setLoadingDashboardArtist(false)
             }, 1500)
         }
     }
@@ -71,7 +72,7 @@ const ArtistProvider = ({children}) => {
     }
 
     return (
-        <ArtistContext.Provider value={{artist,signInArtist,signUpArtist,fetchArtist,logout,loading,uploadSong,deleteSong,mySongs, verifyArtist}}>
+        <ArtistContext.Provider value={{artist,signInArtist,signUpArtist,fetchArtist,logout,loadingDashboardArtist,uploadSong,deleteSong,mySongs, verifyArtist}}>
             {children}
         </ArtistContext.Provider>
     )
