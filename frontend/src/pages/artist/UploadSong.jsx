@@ -74,7 +74,7 @@ const UploadSong = () => {
 
     useEffect(() => {
       if(correctUpload) {
-        navigate("/artista/mis-canciones")
+        navigate("/artista/misCanciones")
       } 
     }, [correctUpload, navigate])
 

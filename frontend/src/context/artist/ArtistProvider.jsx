@@ -40,7 +40,6 @@ const ArtistProvider = ({ children }) => {
                 if (res.data.authenticated === false) {
                     setArtist(null)
                 } else {
-                    console.log(res.data.artist)
                     setArtist(res.data.artist);
                 }
                 return res
@@ -59,8 +58,21 @@ const ArtistProvider = ({ children }) => {
 
 
     async function uploadSong(song) {
-        const res = await uploadSongAxios(song)
-        return res.data
+        setLoadingAddSong(true)
+        try{
+            const res = await uploadSongAxios(song)
+            const newSong = res.data.newSong
+            setSongs((prev) => [...prev, newSong])
+            return res.data
+        }
+        catch(error){
+            console.log(error)
+        }
+        finally{
+            setTimeout(() => {
+                setLoadingAddSong(false)
+            }, 1500)
+        }
     }
 
     useEffect(() => {

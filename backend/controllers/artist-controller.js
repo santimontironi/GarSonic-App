@@ -203,7 +203,15 @@ export const UploadSong = async (req, res) => {
 
         await newSong.save()
 
-        res.status(201).json({ message: "Canción agregada correctamente" });
+        const populatedSong = await Song.findById(newSong._id)
+            .populate("artist", "artistName email")
+
+        const formattedSong = {
+            ...populatedSong.toObject(),
+            releaseDate: Dayjs(populatedSong.releaseDate).format('DD/MM/YYYY')
+        };
+
+        res.status(201).json({ newSong: formattedSong });
     }
     catch (error) {
         return res.status(500).json({ message: "Error al subir la canción", error })
