@@ -13,7 +13,7 @@ const DashboardArtist = () => {
   const [artistData, setArtistData] = useState({})
   const [errorData, setErrorData] = useState(null)
 
-  const { fetchArtist, logout } = UseContextArtist()
+  const { fetchArtist, logout, loadingDashboardArtist } = UseContextArtist()
 
   useEffect(() => {
     async function fetchArtistData() {
@@ -41,10 +41,9 @@ const DashboardArtist = () => {
 
       <ToastContainer />
 
-      {!artistData?.artistName ? (
-        <p className="text-white">Cargando datos del artista...</p>
+      {loadingDashboardArtist ? (
+        <Loader />
       ) : (
-
         <motion.section
           initial={{ opacity: 0, y: 70 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -81,7 +80,7 @@ const DashboardArtist = () => {
 
         </motion.section>
 
-      )} 
+      )}
       
       {errorData && <p>{errorData}</p>}
       

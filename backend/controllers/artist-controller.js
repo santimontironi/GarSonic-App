@@ -280,7 +280,8 @@ export const Logout = async (req, res) => {
     try {
         res.clearCookie("tokenArtist", {
             httpOnly: true,
-            sameSite: "Lax"
+            sameSite: "none",
+            secure: true
         });
         res.json({ message: "Logout exitoso" });
     }
