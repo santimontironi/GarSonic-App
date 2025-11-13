@@ -21,7 +21,7 @@ const MySongs = () => {
 
       {loadingSongs ? (
         <Loader />
-      ) : songs.length === 0 || !songs ? (
+      ) : songs?.length === 0 || !songs ? (
         <div className="flex justify-center items-center mt-[30px] mx-auto text-center">
           <p className="text-gray-300 w-[400px] md:w-[640px] bg-purple-900/50 border border-purple-700 rounded-lg p-6 m-4 md:p-8 md:m-6 text-base md:text-lg lg:text-xl font-medium shadow-lg">
             No tienes canciones subidas. Sube tu primera canción en el panel de artista.

@@ -59,16 +59,16 @@ const ArtistProvider = ({ children }) => {
 
     async function uploadSong(song) {
         setLoadingAddSong(true)
-        try{
+        try {
             const res = await uploadSongAxios(song)
             const newSong = res.data.newSong
             setSongs((prev) => [...prev, newSong])
             return res.data
         }
-        catch(error){
+        catch (error) {
             console.log(error)
         }
-        finally{
+        finally {
             setTimeout(() => {
                 setLoadingAddSong(false)
             }, 1500)
@@ -79,52 +79,52 @@ const ArtistProvider = ({ children }) => {
 
         async function mySongs() {
             setLoadingSongs(true)
-            try{
+            try {
                 const res = await mySongsAxios()
                 setSongs(res.data.songs)
                 return res.data
             }
-            catch(error){
+            catch (error) {
                 console.log(error)
             }
-            finally{
+            finally {
                 setTimeout(() => {
                     setLoadingSongs(false)
-                },1500)
+                }, 2000)
             }
         }
-    
+
         mySongs()
     }, [])
 
 
     async function deleteSong(idSong) {
         setLoadingSongs(true)
-        try{
+        try {
             const res = await deleteSongAxios(idSong)
             return res
         }
-        catch(error){
+        catch (error) {
             console.log(error)
         }
-        finally{
+        finally {
             setTimeout(() => {
                 setLoadingSongs(false)
-            },1500)
+            }, 1500)
         }
     }
 
-async function logout() {
-    const res = await logoutArtist()
-    setArtist(null)
-    return res
-}
+    async function logout() {
+        const res = await logoutArtist()
+        setArtist(null)
+        return res
+    }
 
-return (
-    <ArtistContext.Provider value={{ artist, signInArtist, signUpArtist, logout, loadingDashboardArtist, uploadSong, deleteSong, songs, loadingSongs, verifyArtist, loadingAddSong }}>
-        {children}
-    </ArtistContext.Provider>
-)
+    return (
+        <ArtistContext.Provider value={{ artist, signInArtist, signUpArtist, logout, loadingDashboardArtist, uploadSong, deleteSong, songs, loadingSongs, verifyArtist, loadingAddSong }}>
+            {children}
+        </ArtistContext.Provider>
+    )
 }
 
 export default ArtistProvider

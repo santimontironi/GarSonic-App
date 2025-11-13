@@ -32,9 +32,8 @@ const RegisterArtist = () => {
       formData.append("description", values.description);
       formData.append("genre", values.genre);
       formData.append("password", values.password);
-      if (file) {
-        formData.append("profilePhoto", file);
-      }
+      formData.append("profilePhoto", file);
+      
 
       await signUpArtist(formData);
 

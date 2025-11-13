@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion"
 import BackButton from "../../components/layout/BackButton.jsx";
 import { useDropzone } from 'react-dropzone';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const RegisterUser = () => {
 
@@ -27,6 +29,7 @@ const RegisterUser = () => {
   const { signUpUser } = UseContextUser()
 
   async function submitForm(values) {
+    toast.loading("Registrando usuario...", { autoClose: 1000, theme: "dark" });
     try {
       const formData = new FormData();
       formData.append("name", values.name);
@@ -60,6 +63,8 @@ const RegisterUser = () => {
 
   return (
     <main className="containerRegisterUser min-h-screen w-full md:pb-[50px]">
+
+      <ToastContainer />
 
       <BackButton to="/loginUsuario" />
 

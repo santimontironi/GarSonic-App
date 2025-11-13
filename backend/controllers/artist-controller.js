@@ -241,7 +241,7 @@ export const GetSongs = async (req, res) => {
             releaseDate: Dayjs(song.releaseDate).format('DD/MM/YYYY')
         }));
 
-        res.json({ message: "Canciones obtenidas correctamente", songs: formattedSongs });
+        res.json({ songs: formattedSongs });
     }
     catch (error) {
         return res.status(500).json({ message: "Error al obtener canciones." })
