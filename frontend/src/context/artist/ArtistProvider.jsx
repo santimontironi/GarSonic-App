@@ -6,7 +6,7 @@ const ArtistProvider = ({ children }) => {
 
     const [artist, setArtist] = useState(null)
 
-    const [songs, setSongs] = useState(null)
+    const [songs, setSongs] = useState([])
 
     const [loadingDashboardArtist, setLoadingDashboardArtist] = useState(true)
 

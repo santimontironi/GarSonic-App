@@ -6,7 +6,7 @@ import { ContextUser } from "./UserContext.jsx";
 export const UserProvider = ({ children }) => {
 
     const [user, setUser] = useState(null)
-    const [playlists, setPlaylists] = useState(null)
+    const [playlists, setPlaylists] = useState([])
     const [loadingDashboardUser, setLoadingDashboardUser] = useState(true)
     const [loadingPlaylists, setLoadingPlaylists] = useState(true)
 
