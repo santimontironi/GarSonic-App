@@ -13,7 +13,7 @@ dotenv.config();
 export const RegisterArtist = async (req, res) => {
     try {
         const { email, password, artistName, genre, description } = req.body
-        
+
 
         const existingArtist = await Artist.findOne({ email })
 
@@ -143,8 +143,8 @@ export const LoginArtist = async (req, res) => {
 
         res.cookie("tokenArtist", token, {
             httpOnly: true,
-            secure: true,         
-            sameSite: "none", 
+            secure: true,
+            sameSite: "none",
             maxAge: 86400000
         });
 
@@ -188,9 +188,16 @@ export const UploadSong = async (req, res) => {
             folder: "songs_covers",
         });
 
+        const fileBase64Audio = `data:${req.files.audioFile[0].mimetype};base64,${req.files.audioFile[0].buffer.toString("base64")}`;
+
+        const resultAudio = await cloudinary.uploader.upload(fileBase64Audio, {
+            resource_type: "video", // Cloudinary trata los mp3 como tipo "video"
+            folder: "songs_audios",
+        });
+
+        const audioFile = resultAudio.secure_url;
+
         const coverImage = resultCover.secure_url
-        
-        const audioFile = req.files.audioFile[0].path;
 
         const newSong = new Song({ title, coverImage, genre, audioFile, releaseDate, duration, artist: artistId })
 
