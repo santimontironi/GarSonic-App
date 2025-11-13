@@ -67,7 +67,7 @@ const ArtistProvider = ({ children }) => {
             setLoadingSongs(true)
             try{
                 const res = await mySongsAxios()
-                setSongs(res.data.formattedSongs)
+                setSongs(res.data.songs)
                 return res.data
             }
             catch(error){
