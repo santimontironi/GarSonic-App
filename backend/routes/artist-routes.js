@@ -1,7 +1,7 @@
 import { Router } from "express"
 import { RegisterArtist, LoginArtist, DashboardArtist, UploadSong, GetSongs, DeleteSong, Logout, VerifyArtist } from "../controllers/artist-controller.js"
 import { verifyToken } from "../middlewares/verifyTokenArtist.js";
-import upload from "../middlewares/upload.js";
+import { upload } from "../middlewares/upload.js";
 
 const router = Router()
 
