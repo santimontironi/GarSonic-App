@@ -3,27 +3,10 @@ import { UseContextUser } from "../../context/user/UseContextUser"
 import Swal from "sweetalert2";
 
 const PlaylistModal = ({ closeModal, songId }) => {
-  const [playlists, setPlaylists] = useState([])
+  
   const [errorGetPlaylists, setErrorGetPlaylists] = useState(null)
 
-  const { getAllPlaylists, addToPlaylist } = UseContextUser()
-
-
-  useEffect(() => {
-    async function getPlaylists() {
-      try {
-        const res = await getAllPlaylists()
-        setPlaylists(res.data)
-        setErrorGetPlaylists(null)
-      } catch (error) {
-        if (error.response?.data?.message) {
-          setErrorGetPlaylists(error.response.data.message)
-        }
-      }
-    }
-
-    getPlaylists()
-  }, [])
+  const { playlists, addToPlaylist } = UseContextUser()
 
   async function handleAddToPlaylist(playlistId, songId) {
     const result = await Swal.fire({
