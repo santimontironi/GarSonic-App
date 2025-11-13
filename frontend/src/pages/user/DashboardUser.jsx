@@ -22,7 +22,9 @@ const DashboardUser = () => {
         setUserData(res.data.user);
         setErrorData("");
       } catch (error) {
-        setErrorData(error.message);
+        if (error.response?.data?.message) {
+          setErrorData(error.response.data.message);
+        }
       }
     }
     fetchUserData();
