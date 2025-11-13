@@ -31,15 +31,11 @@ const RegisterUser = () => {
   async function submitForm(values) {
     try {
 
-      if (!file) {
-        setError("profilePhoto", { type: "manual", message: "La foto de perfil es requerida" });
-        toast.error("La foto de perfil es requerida", { theme: "dark" });
-        return;
-      } else {
-        clearErrors("profilePhoto");
-      }
-
       toast.loading("Registrando usuario...", { autoClose: 1000, theme: "dark" });
+
+      if (!file) return;
+
+      clearErrors("profilePhoto");
 
       const formData = new FormData();
       formData.append("name", values.name);
@@ -71,6 +67,12 @@ const RegisterUser = () => {
     }
   }, [correctRegister])
 
+  useEffect(() => {
+    if (file) {
+      clearErrors("profilePhoto");
+    }
+  },[file])
+
   return (
     <main className="containerRegisterUser min-h-screen w-full md:pb-[50px]">
 
@@ -92,13 +94,12 @@ const RegisterUser = () => {
 
           <div className="mt-5 flex flex-col gap-[6px]">
             <label className="text-white">Foto de perfil</label>
-            
-            <input 
-              type="hidden" 
-              {...register("profilePhoto", { 
-                required: "La foto de perfil es requerida",
-                validate: () => file !== null || "La foto de perfil es requerida"
-              })} 
+
+            <input
+              type="hidden"
+              {...register("profilePhoto", {
+                validate: (value) => file !== null || "La foto de perfil es requerida"
+              })}
             />
 
             <div
@@ -113,16 +114,16 @@ const RegisterUser = () => {
               )}
             </div>
 
-            {errors.profilePhoto && (
-              <p className="text-white">{errors.profilePhoto.message}</p>
-            )}
-
             {file && (
               <img
                 src={URL.createObjectURL(file)}
                 alt="preview"
                 className="mt-3 w-32 h-32 object-cover rounded-lg shadow-[5px_10px_10px_#000] mx-auto"
               />
+            )}
+
+            {errors.profilePhoto && (
+              <p className="text-white">{errors.profilePhoto.message}</p>
             )}
           </div>
 

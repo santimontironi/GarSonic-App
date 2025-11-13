@@ -13,7 +13,7 @@ const RegisterArtist = () => {
 
   const [file, setFile] = useState(null)
 
-  const { register, handleSubmit, reset, formState: { errors }, setError, clearErrors } = useForm()
+  const { register, handleSubmit, reset, formState: { errors }, clearErrors } = useForm()
 
   const { signUpArtist } = UseContextArtist()
 
@@ -27,12 +27,9 @@ const RegisterArtist = () => {
     toast.loading("Registrando artista...", { autoClose: 1000, theme: "dark" });
     try {
 
-      if (!file) {
-        setError("profilePhoto", { type: "manual", message: "La foto de perfil es requerida" });
-        return;
-      } else {
-        clearErrors("profilePhoto");
-      }
+      if (!file) return;
+
+      clearErrors("profilePhoto");
 
       const formData = new FormData();
       formData.append("artistName", values.artistName);
@@ -61,6 +58,13 @@ const RegisterArtist = () => {
     }
   }
 
+  useEffect(() => {
+    if (file) {
+      clearErrors("profilePhoto");
+    }
+  }, [file])
+
+
   return (
     <main className="containerRegisterArtist min-h-screen w-full pb-[40px]">
 
@@ -79,14 +83,12 @@ const RegisterArtist = () => {
         <form className="flex flex-col w-[350px] m-auto h-auto p-[20px] rounded-[10px] shadow-[5px_7px_10px_#000] md:w-[450px]" method="post" onSubmit={handleSubmit(submitForm)}>
 
           <div className="mt-5 flex flex-col gap-[6px]">
-
             <label className="text-white">Foto de perfil</label>
 
             <input
               type="hidden"
               {...register("profilePhoto", {
-                required: "La foto de perfil es requerida",
-                validate: () => file !== null || "La foto de perfil es requerida"
+                validate: (value) => file !== null || "La foto de perfil es requerida"
               })}
             />
 
@@ -102,16 +104,16 @@ const RegisterArtist = () => {
               )}
             </div>
 
-            {errors.profilePhoto && (
-              <p className="text-white">{errors.profilePhoto.message}</p>
-            )}
-
             {file && (
               <img
                 src={URL.createObjectURL(file)}
                 alt="preview"
                 className="mt-3 w-32 h-32 object-cover rounded-lg shadow-[5px_10px_10px_#000] mx-auto"
               />
+            )}
+
+            {errors.profilePhoto && (
+              <p className="text-white">{errors.profilePhoto.message}</p>
             )}
           </div>
 
