@@ -13,7 +13,7 @@ const RegisterArtist = () => {
 
   const [file, setFile] = useState(null)
 
-  const { register, handleSubmit, reset, formState: { errors } } = useForm()
+  const { register, handleSubmit, reset, formState: { errors }, setError, clearErrors } = useForm()
 
   const { signUpArtist } = UseContextArtist()
 
@@ -26,6 +26,14 @@ const RegisterArtist = () => {
   async function submitForm(values) {
     toast.loading("Registrando artista...", { autoClose: 1000, theme: "dark" });
     try {
+
+      if (!file) {
+        setError("profilePhoto", { type: "manual", message: "La foto de perfil es requerida" });
+        return;
+      } else {
+        clearErrors("profilePhoto");
+      }
+
       const formData = new FormData();
       formData.append("artistName", values.artistName);
       formData.append("email", values.email);
@@ -33,7 +41,6 @@ const RegisterArtist = () => {
       formData.append("genre", values.genre);
       formData.append("password", values.password);
       formData.append("profilePhoto", file);
-      
 
       await signUpArtist(formData);
 
