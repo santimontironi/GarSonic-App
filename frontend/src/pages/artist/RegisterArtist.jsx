@@ -94,7 +94,7 @@ const RegisterArtist = () => {
             </div>
 
             {errors.profilePhoto && (
-              <p className="text-white">La foto de perfil es requerida</p>
+              <p className="text-white">{errors.profilePhoto.message}</p>
             )}
 
             {file && (
