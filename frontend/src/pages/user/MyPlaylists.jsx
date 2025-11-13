@@ -17,7 +17,6 @@ const MyPlaylists = () => {
         const res = await getAllPlaylists()
         setPlaylists(res.data)
         setErrorGetPlaylists(null)
-        console.log(res.data)
       }
       catch (error) {
         if (error.response?.data?.message) {
@@ -39,7 +38,7 @@ const MyPlaylists = () => {
       </div>
 
       {playlists.length === 0 ? (
-        <p className="text-gray-400 text-center">No hay playlists todavía</p>
+        <p className="text-gray-200 bg-red-500 p-[12px] w-[320px] md:w-[600px] md:text-[20px] text-[16px] text-center">No hay playlists agregadas aún</p>
       ) : (
         <div className="flex flex-col items-center justify-center gap-[20px] md:grid md:grid-cols-2 md:w-[750px] md:items-center md:justify-items-center md:gap-[40px] xl:grid xl:grid-cols-3 xl:w-[1200px] xl:gap-[40px] 2xl:grid 2xl:grid-cols-3 2xl:w-[1350px] mx-auto 2xl:gap-[50px]">
           {playlists.map((playlist) => (

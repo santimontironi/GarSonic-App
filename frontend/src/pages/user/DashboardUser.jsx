@@ -54,7 +54,7 @@ const DashboardUser = () => {
               <img
                 className="w-[145px] h-[145px] md:w-[185px] md:h-[185px] rounded-full object-cover"
                 src={userData.profilePhoto}
-                alt={`foto de perfil de ${userData?.username}`}
+                alt={`foto de perfil de ${userData.username}`}
               />
             </figure>
             <div className="flex gap-[15px] justify-center mt-4">

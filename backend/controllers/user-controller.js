@@ -26,7 +26,13 @@ export const RegisterUser = async (req, res) => {
 
         const hashPassword = await bcrypt.hash(password, 10)
 
-        const profilePhoto = req.file ? req.file.path : null
+        const fileBase64 = `data:${req.file.mimetype};base64,${req.file.buffer.toString("base64")}`;
+
+        const result = await cloudinary.uploader.upload(fileBase64, {
+            folder: "users_profiles",
+        });
+
+        const profilePhoto = result.secure_url;
 
         const newUser = new User({ name, surname, email, username, password: hashPassword, profilePhoto })
         await newUser.save()

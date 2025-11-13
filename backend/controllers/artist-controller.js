@@ -13,7 +13,7 @@ dotenv.config();
 export const RegisterArtist = async (req, res) => {
     try {
         const { email, password, artistName, genre, description } = req.body
-        const profilePhoto = req.file.path;
+        
 
         const existingArtist = await Artist.findOne({ email })
 
@@ -25,6 +25,14 @@ export const RegisterArtist = async (req, res) => {
 
         // se genera un token de verificación único
         const token = crypto.randomBytes(32).toString("hex");
+
+        const fileBase64 = `data:${req.file.mimetype};base64,${req.file.buffer.toString("base64")}`;
+
+        const result = await cloudinary.uploader.upload(fileBase64, {
+            folder: "artists_profiles",
+        });
+
+        const profilePhoto = result.secure_url;
 
         const newArtist = new Artist({ profilePhoto, email, password: hashPassword, artistName, genre, description, verificationToken: token, isVerified: false })
 
