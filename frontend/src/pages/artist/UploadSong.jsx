@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form"
 import { motion } from "framer-motion"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UseContextArtist } from "../../context/artist/UseContextArtist.js";
 import BackButton from "../../components/layout/BackButton.jsx";
@@ -13,6 +13,8 @@ const UploadSong = () => {
     const navigate = useNavigate()
 
     const { uploadSong, loadingAddSong } = UseContextArtist()
+
+    const [correctUpload, setCorrectUpload] = useState("")
 
     const [errorUpload, setErrorUpload] = useState("")
 
@@ -54,9 +56,9 @@ const UploadSong = () => {
 
             await uploadSong(formData);
 
-            Swal.fire('¡Subido!', 'Canción subida con éxito.', 'success').then(() => {
-                navigate('/artista/misCanciones')
-            })
+            setCorrectUpload(true);
+
+            Swal.fire('¡Subido!', 'Canción subida con éxito.', 'success');
 
             setErrorUpload("");
             setFile(null);
@@ -69,6 +71,12 @@ const UploadSong = () => {
             }
         }
     }
+
+    useEffect(() => {
+      if(correctUpload) {
+        navigate("/artista/mis-canciones")
+      } 
+    }, [correctUpload, navigate])
 
     return (
         <main className="containerUploadSong min-h-screen w-full pb-[20px]">
