@@ -241,7 +241,8 @@ export const DeleteSongPlaylist = async (req, res) => {
 export const LogoutUser = (req, res) => {
     res.clearCookie("token", {
         httpOnly: true,
-        sameSite: "Lax"
+        sameSite: "none",
+        secure: true
     });
     res.json({ message: "Logout exitoso" });
 }
