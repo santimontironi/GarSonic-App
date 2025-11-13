@@ -141,7 +141,7 @@ export const LoginArtist = async (req, res) => {
             { expiresIn: "1d" }
         )
 
-        res.cookie("token", token, {
+        res.cookie("tokenArtist", token, {
             httpOnly: true,
             secure: true,         
             sameSite: "none", 
