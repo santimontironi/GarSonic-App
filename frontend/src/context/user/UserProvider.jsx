@@ -7,6 +7,7 @@ export const UserProvider = ({children}) => {
 
     const[user,setUser] = useState(null)
     const[loadingDashboardUser,setLoadingDashboardUser] = useState(true)
+    const[loadingPlaylists,setLoadingPlaylists] = useState(true)
 
     async function signUpUser(user){
         const res = await registerUserAxios(user)
@@ -57,8 +58,19 @@ export const UserProvider = ({children}) => {
     }
 
     async function getAllPlaylists() {
-        const res = await getPlaylists();
-        return res
+        setLoadingPlaylists(true)
+        try{
+            const res = await getPlaylists();
+            return res
+        }
+        catch(error){
+            console.error("Error al obtener las playlists:", error);
+        }
+        finally{
+            setTimeout(() => {
+                setLoadingPlaylists(false)
+            }, 1500)
+        }
     }
 
     async function deletePlaylist(playlistId) {
@@ -94,7 +106,8 @@ export const UserProvider = ({children}) => {
             search,
             deletePlaylist,
             addToPlaylist,
-            deleteSongPlaylist
+            deleteSongPlaylist,
+            loadingPlaylists
         }}>
             {children}
         </ContextUser.Provider>
