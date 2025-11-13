@@ -137,7 +137,7 @@ export const GetPlaylists = async (req, res) => {
             createdAt: Dayjs(playlist.createdAt).format('DD/MM/YYYY')
         }))
 
-        res.json(playlistFormated);
+        res.json({ message: "Listas de reproducción obtenidas correctamente", playlists: playlistFormated });
     }
     catch (error) {
         return res.status(500).json({ message: "Error al obtener las listas de reproducción", error: error.message });

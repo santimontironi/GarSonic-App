@@ -62,7 +62,7 @@ export const UserProvider = ({ children }) => {
             setLoadingPlaylists(true)
             try {
                 const res = await getPlaylists();
-                setPlaylists(res.data.playlistFormated)
+                setPlaylists(res.data.playlists)
                 return res
             }
             catch (error) {
@@ -110,6 +110,7 @@ export const UserProvider = ({ children }) => {
             deletePlaylist,
             addToPlaylist,
             deleteSongPlaylist,
+            playlists,
             loadingPlaylists
         }}>
             {children}
