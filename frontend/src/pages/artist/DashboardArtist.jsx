@@ -13,7 +13,7 @@ const DashboardArtist = () => {
   const [artistData, setArtistData] = useState({})
   const [errorData, setErrorData] = useState(null)
 
-  const { fetchArtist, logout, loadingDashboardArtist } = UseContextArtist()
+  const { artist, logout, loadingDashboardArtist } = UseContextArtist()
 
   useEffect(() => {
     async function fetchArtistData() {
@@ -51,20 +51,20 @@ const DashboardArtist = () => {
           viewport={{ once: false, amount: 0.3 }}
           className="relative flex flex-col items-center h-auto bg-black shadow-[17px_10px_20px_#000] justify-center gap-[15px] border-1 border-white rounded-[8px] p-[20px] w-[360px] mx-auto md:w-[90%]"
         >
-          <h1 className="text-white tituloDashboard text-[40px] border-b-2 border-purple-600 md:text-[60px]">Bienvenido <span>{artistData?.artistName}</span></h1>
+          <h1 className="text-white tituloDashboard text-[40px] border-b-2 border-purple-600 md:text-[60px]">Bienvenido <span>{artist.artistName}</span></h1>
 
           <p className="text-white text-[16px] md:text-[19px] w-[300px] md:w-[600px] text-center">Este es tu panel de artista, donde podrás gestionar tu música, crear nuevos lanzamientos y conectar con tus oyentes.</p>
 
           <figure className="w-[150px] md:w-[200px] md:h-[200px] h-[150px] bg-purple-600 rounded-full flex items-center justify-center">
             <img
               className="w-[145px] h-[145px] md:w-[185px] md:h-[185px] rounded-full object-cover"
-              src={artistData?.profilePhoto}
-              alt={`foto de perfil de ${artistData?.artistName}`}
+              src={artist.profilePhoto}
+              alt={`foto de perfil de ${artist.artistName}`}
             />
           </figure>
 
           <p className="text-gray-300 italic text-[14px] md:text-[16px] w-[300px] md:w-[600px] text-center">
-            "{artistData.description}"
+            "{artist.description}"
           </p>
 
           <div className="flex gap-[15px]">

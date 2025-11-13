@@ -8,27 +8,12 @@ import SongSearch from "../../components/song/SongSearch.jsx";
 import "react-toastify/dist/ReactToastify.css";
 
 const DashboardUser = () => {
-  const [userData, setUserData] = useState({});
+
   const [errorData, setErrorData] = useState(null);
 
   const [searched, setSearched] = useState(false);
 
-  const { fetchUser, search, logout, loadingDashboardUser } = UseContextUser();
-
-  useEffect(() => {
-    async function fetchUserData() {
-      try {
-        const res = await fetchUser();
-        setUserData(res.data.user);
-        setErrorData("");
-      } catch (error) {
-        if (error.response?.data?.message) {
-          setErrorData(error.response.data.message);
-        }
-      }
-    }
-    fetchUserData();
-  }, []);
+  const { user, loadingDashboardUser, search} = UseContextUser();
 
   return (
     <main className="w-full h-screen flex justify-center items-center bg-[#171717]">
@@ -52,7 +37,7 @@ const DashboardUser = () => {
           {!searched && (
             <div className="mt-8 text-center">
               <h1 className="text-white tituloDashboard text-[40px] border-b-2 border-purple-600 md:text-[60px]">
-                Bienvenido <span>{userData.name}</span>
+                Bienvenido <span>{user.name}</span>
               </h1>
               <p className="text-white text-[16px] md:text-[19px] w-[300px] md:w-[600px] text-center">
                 Aquí puedes encontrar tus canciones favoritas y hacer tus playlist a tu gusto.
@@ -60,8 +45,8 @@ const DashboardUser = () => {
               <figure className="w-[150px] md:w-[200px] md:h-[200px] h-[150px] bg-purple-600 rounded-full flex items-center justify-center mx-auto mt-4">
                 <img
                   className="w-[145px] h-[145px] md:w-[185px] md:h-[185px] rounded-full object-cover"
-                  src={userData.profilePhoto}
-                  alt={`foto de perfil de ${userData.username}`}
+                  src={user.profilePhoto}
+                  alt={`foto de perfil de ${user.username}`}
                 />
               </figure>
               <div className="flex gap-[15px] justify-center mt-4">

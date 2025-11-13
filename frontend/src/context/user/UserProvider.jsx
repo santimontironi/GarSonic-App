@@ -3,54 +3,53 @@ import { useState, useEffect } from "react";
 import { ContextUser } from "./UserContext.jsx";
 
 
-export const UserProvider = ({children}) => {
+export const UserProvider = ({ children }) => {
 
-    const[user,setUser] = useState(null)
-    const[loadingDashboardUser,setLoadingDashboardUser] = useState(true)
-    const[loadingPlaylists,setLoadingPlaylists] = useState(true)
+    const [user, setUser] = useState(null)
+    const [loadingDashboardUser, setLoadingDashboardUser] = useState(true)
+    const [loadingPlaylists, setLoadingPlaylists] = useState(true)
 
-    async function signUpUser(user){
+    async function signUpUser(user) {
         const res = await registerUserAxios(user)
         setUser(res.data.user)
         return res.data
     }
 
-    async function signInUser(user){
+    async function signInUser(user) {
         const res = await loginUserAxios(user)
         setUser(res.data.user)
         return res.data
     }
 
-    async function logout(){
+    async function logout() {
         const res = await logoutUser()
         setUser(null)
         return res
     }
 
-    async function fetchUser() {
-        setLoadingDashboardUser(true)
-        try {
-            const res = await dashboardUser();
-            if(res.data.authenticated === false){
-                setUser(null)
-            }else{
-                setUser(res.data.user);
-            }
-            return res
-        } catch (error) {
-            setUser(null);
-        }
-        finally{
-            setTimeout(function() {
-                setLoadingDashboardUser(false)
-            }, 1500)
-        }
-    }
-
-    //se pone en un useffect para que se ejecute cuando se monte el componente
     useEffect(() => {
-        fetchUser();
-    }, []);
+        async function fetchUser() {
+            setLoadingDashboardUser(true)
+            try {
+                const res = await dashboardUser();
+                if (res.data.authenticated === false) {
+                    setUser(null)
+                } else {
+                    setUser(res.data.user);
+                }
+                return res
+            } catch (error) {
+                setUser(null);
+            }
+            finally {
+                setTimeout(function () {
+                    setLoadingDashboardUser(false)
+                }, 1500)
+            }
+        }
+        fetchUser()
+    },[])
+
 
     async function createPlaylist(formData) {
         const res = await addPlaylist(formData);
@@ -59,14 +58,14 @@ export const UserProvider = ({children}) => {
 
     async function getAllPlaylists() {
         setLoadingPlaylists(true)
-        try{
+        try {
             const res = await getPlaylists();
             return res
         }
-        catch(error){
+        catch (error) {
             console.error("Error al obtener las playlists:", error);
         }
-        finally{
+        finally {
             setTimeout(() => {
                 setLoadingPlaylists(false)
             }, 1500)
@@ -93,11 +92,10 @@ export const UserProvider = ({children}) => {
         return res;
     }
 
-    return(
+    return (
         <ContextUser.Provider value={{
             signUpUser,
             signInUser,
-            fetchUser,
             logout,
             user,
             loadingDashboardUser,

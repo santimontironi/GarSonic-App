@@ -1,78 +1,80 @@
 import { ArtistContext } from "./ArtistContext"
 import { useEffect, useState } from "react"
-import { loginArtistAxios, registerArtistAxios, dashboardArtistAxios, uploadSongAxios, mySongsAxios, deleteSongAxios, logoutArtist, verifyArtistAxios} from "../../api/api.js"
+import { loginArtistAxios, registerArtistAxios, dashboardArtistAxios, uploadSongAxios, mySongsAxios, deleteSongAxios, logoutArtist, verifyArtistAxios } from "../../api/api.js"
 
-const ArtistProvider = ({children}) => {
+const ArtistProvider = ({ children }) => {
 
-    const[artist,setArtist] = useState(null)
+    const [artist, setArtist] = useState(null)
 
-    const[loadingDashboardArtist,setLoadingDashboardArtist] = useState(true)
+    const [loadingDashboardArtist, setLoadingDashboardArtist] = useState(true)
 
-    async function signUpArtist(artist){
+    async function signUpArtist(artist) {
         const res = await registerArtistAxios(artist)
         setArtist(res.data.artist)
         return res.data
     }
 
-    async function verifyArtist(token){
+    async function verifyArtist(token) {
         const res = await verifyArtistAxios(token)
         setArtist(res.data)
         return res.data
     }
-    
-    async function signInArtist(artist){
+
+    async function signInArtist(artist) {
         const res = await loginArtistAxios(artist)
         setArtist(res.data.artist)
         return res.data
     }
 
-    async function fetchArtist(){
-        setLoadingDashboardArtist(true)
-        try {
-            const res = await dashboardArtistAxios();
-            if(res.data.authenticated === false){
-                setArtist(null)
-            }else{
-                setArtist(res.data.artist);
-            }
-            return res
-        } catch (error) {
-            setArtist(null);
-        }
-        finally{
-            setTimeout(function() {
-                setLoadingDashboardArtist(false)
-            }, 1500)
-        }
-    }
-    
     useEffect(() => {
-        fetchArtist()
-    }, [])
+        async function fetchArtist() {
+            setLoadingDashboardArtist(true)
+            try {
+                const res = await dashboardArtistAxios();
+                if (res.data.authenticated === false) {
+                    setArtist(null)
+                } else {
+                    console.log(res.data.artist)
+                    setArtist(res.data.artist);
+                }
+                return res
+            } catch (error) {
+                setArtist(null);
+            }
+            finally {
+                setTimeout(function () {
+                    setLoadingDashboardArtist(false)
+                }, 1500)
+            }
+        }
 
-    async function uploadSong(song){
+        fetchArtist()
+    },[])
+
+
+    async function uploadSong(song) {
         const res = await uploadSongAxios(song)
         return res.data
     }
 
-    async function mySongs(){
+    async function mySongs() {
         const res = await mySongsAxios()
         return res.data
     }
 
-    async function deleteSong(idSong){
+    async function deleteSong(idSong) {
         const res = await deleteSongAxios(idSong)
         return res
     }
 
-    async function logout(){
+    async function logout() {
         const res = await logoutArtist()
         setArtist(null)
         return res
     }
 
     return (
-        <ArtistContext.Provider value={{artist,signInArtist,signUpArtist,fetchArtist,logout,loadingDashboardArtist,uploadSong,deleteSong,mySongs, verifyArtist}}>
+        <ArtistContext.Provider value={{ artist, signInArtist, signUpArtist, logout, loadingDashboardArtist, uploadSong, deleteSong, mySongs, verifyArtist }}>
             {children}
         </ArtistContext.Provider>
     )
