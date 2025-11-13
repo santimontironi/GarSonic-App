@@ -6,7 +6,11 @@ const ArtistProvider = ({ children }) => {
 
     const [artist, setArtist] = useState(null)
 
+    const [songs, setSongs] = useState(null)
+
     const [loadingDashboardArtist, setLoadingDashboardArtist] = useState(true)
+
+    const [loadingSongs, setLoadingSongs] = useState(true)
 
     async function signUpArtist(artist) {
         const res = await registerArtistAxios(artist)
@@ -49,7 +53,7 @@ const ArtistProvider = ({ children }) => {
         }
 
         fetchArtist()
-    },[])
+    }, [])
 
 
     async function uploadSong(song) {
@@ -57,27 +61,45 @@ const ArtistProvider = ({ children }) => {
         return res.data
     }
 
-    async function mySongs() {
-        const res = await mySongsAxios()
-        return res.data
-    }
+    useEffect(() => {
+
+        async function mySongs() {
+            setLoadingSongs(true)
+            try{
+                const res = await mySongsAxios()
+                setSongs(res.data.formattedSongs)
+                return res.data
+            }
+            catch(error){
+                console.log(error)
+            }
+            finally{
+                setTimeout(() => {
+                    setLoadingSongs(false)
+                },1500)
+            }
+        }
+    
+        mySongs()
+    }, [])
+
 
     async function deleteSong(idSong) {
         const res = await deleteSongAxios(idSong)
         return res
     }
 
-    async function logout() {
-        const res = await logoutArtist()
-        setArtist(null)
-        return res
-    }
+async function logout() {
+    const res = await logoutArtist()
+    setArtist(null)
+    return res
+}
 
-    return (
-        <ArtistContext.Provider value={{ artist, signInArtist, signUpArtist, logout, loadingDashboardArtist, uploadSong, deleteSong, mySongs, verifyArtist }}>
-            {children}
-        </ArtistContext.Provider>
-    )
+return (
+    <ArtistContext.Provider value={{ artist, signInArtist, signUpArtist, logout, loadingDashboardArtist, uploadSong, deleteSong, songs, loadingSongs, verifyArtist }}>
+        {children}
+    </ArtistContext.Provider>
+)
 }
 
 export default ArtistProvider
