@@ -1,24 +1,11 @@
-import { Play, Pause } from "lucide-react";
-import { useState, useRef } from "react";
 import { UseContextArtist } from "../../context/artist/UseContextArtist";
 import Swal from "sweetalert2";
+import AudioPlayer from "react-h5-audio-player";
+import "react-h5-audio-player/lib/styles.css";
 
 const SongCard = ({ idSong, coverImage, artist, title, audioFile, duration, releaseDate }) => {
 
-  const audioRef = useRef(null)
-  const [isPlaying, setIsPlaying] = useState(false)
-
   const { deleteSong } = UseContextArtist()
-
-  function handlePlay() {
-    if (audioRef.current.paused) {
-      audioRef.current.play()
-      setIsPlaying(true)
-    } else {
-      audioRef.current.pause()
-      setIsPlaying(false)
-    }
-  }
 
   function handleDeleteSong() {
     Swal.fire({
@@ -49,39 +36,43 @@ const SongCard = ({ idSong, coverImage, artist, title, audioFile, duration, rele
   }
 
   return (
+    <div className="relative flex flex-col w-[380px] 2xl:w-[430px] bg-[#9032d8] rounded-2xl shadow-[4px_4px_10px_rgba(0,0,0,0.5)] p-[20px] gap-[15px] md:hover:scale-105 md:transition md:ease-in md:duration-300">
 
-    <div className="relative flex w-[380px] rounded-2xl bg-[#9032d8] shadow-[4px_4px_10px_rgba(0,0,0,0.5)] items-center gap-[10px] p-[20px] transform md:hover:scale-105 md:transition md:ease-in md:duration-300 2xl:w-[430px]">
+      <img
+        className="w-full h-[200px] 2xl:h-[230px] object-cover border-2 border-purple-800 rounded-2xl"
+        src={coverImage}
+        alt={title}
+      />
 
-      <img className="w-[120px] h-[120px] 2xl:w-[160px] 2xl:h-[140px] border-2 border-purple-800 rounded-2xl bg-cover" src={coverImage} alt={title} />
-
-      <button className="absolute right-[10px] top-[10px]"><i onClick={handleDeleteSong} className="bi bi-trash cursor-pointer text-[20px] text-white bg-red-500 rounded-3xl p-[5px] hover:bg-red-700"></i></button>
+      <button
+        onClick={handleDeleteSong}
+        className="absolute right-[10px] top-[10px] bg-red-500 hover:bg-red-700 text-white rounded-3xl p-[6px]"
+      >
+        <i className="bi bi-trash text-[20px]"></i>
+      </button>
 
       <div className="flex flex-col">
-
-        <div className="flex flex-col gap-[7px]">
-          <span className="font-bold text-[20px] 2xl:text-[25px]">{title}</span>
-          <span className="font-light text-gray-200 2xl:text-[18px]">{artist}</span>
-        </div>
-
-        <div className="flex mt-[10px] gap-[15px]">
-
-          <button className="bg-white text-black rounded-3xl flex items-center justify-center p-[10px] lg:cursor-pointer" onClick={handlePlay}>
-            {isPlaying ? <Pause size={20} /> : <Play size={20} />}
-          </button>
-
-          <div className="flex flex-col">
-            <audio src={audioFile} ref={audioRef} onEnded={() => setIsPlaying(false)}></audio>
-            <span className="text-[13px]">Duración: {duration}</span>
-            <span className="text-[13px]">Lanzamiento: {releaseDate}</span>
-          </div>
-
-        </div>
-
+        <span className="font-bold text-[20px] 2xl:text-[24px] text-white">{title}</span>
+        <span className="font-light text-gray-200 2xl:text-[18px]">{artist}</span>
+        <span className="text-[13px] text-gray-300 mt-[5px]">Duración: {duration}</span>
+        <span className="text-[13px] text-gray-300">Lanzamiento: {releaseDate}</span>
       </div>
 
-    </div>
+      <AudioPlayer
+        src={audioFile}
+        showSkipControls={false}
+        showJumpControls={false}
+        layout="horizontal"
+        autoPlayAfterSrcChange={false}
+        style={{
+          borderRadius: "12px",
+          backgroundColor: "#6a1bb9"
+        }}
+        className="custom-audio-player"
+      />
 
-  )
+    </div>
+  );
 }
 
 export default SongCard
