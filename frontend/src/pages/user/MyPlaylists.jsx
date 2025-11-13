@@ -1,33 +1,14 @@
 import PlaylistCard from "../../components/playlist/PlaylistCard.jsx"
 import { UseContextUser } from "../../context/user/UseContextUser.js";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import BackButton from "../../components/layout/BackButton.jsx";
 import Loader from "../../components/layout/Loader.jsx";
 
 const MyPlaylists = () => {
 
-  const [playlists, setPlaylists] = useState([])
-
-  const { getAllPlaylists, loadingPlaylists } = UseContextUser()
+  const { playlists, loadingPlaylists } = UseContextUser()
 
   const [errorGetPlaylists, setErrorGetPlaylists] = useState(null)
-
-  useEffect(() => {
-    async function getPlaylists() {
-      try {
-        const res = await getAllPlaylists()
-        setPlaylists(res.data)
-        setErrorGetPlaylists(null)
-      }
-      catch (error) {
-        if (error.response?.data?.message) {
-          setErrorGetPlaylists(error.response.data.message);
-        }
-      }
-    }
-
-    getPlaylists()
-  }, [])
 
   return (
     <main className="containerMyPlaylists w-full min-h-screen pb-[50px]">

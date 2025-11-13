@@ -6,6 +6,7 @@ import { ContextUser } from "./UserContext.jsx";
 export const UserProvider = ({ children }) => {
 
     const [user, setUser] = useState(null)
+    const [playlists, setPlaylists] = useState(null)
     const [loadingDashboardUser, setLoadingDashboardUser] = useState(true)
     const [loadingPlaylists, setLoadingPlaylists] = useState(true)
 
@@ -48,7 +49,7 @@ export const UserProvider = ({ children }) => {
             }
         }
         fetchUser()
-    },[])
+    }, [])
 
 
     async function createPlaylist(formData) {
@@ -56,21 +57,26 @@ export const UserProvider = ({ children }) => {
         return res
     }
 
-    async function getAllPlaylists() {
-        setLoadingPlaylists(true)
-        try {
-            const res = await getPlaylists();
-            return res
+    useEffect(() => {
+        async function getAllPlaylists() {
+            setLoadingPlaylists(true)
+            try {
+                const res = await getPlaylists();
+                setPlaylists(res.data.playlistFormated)
+                return res
+            }
+            catch (error) {
+                console.error("Error al obtener las playlists:", error);
+            }
+            finally {
+                setTimeout(() => {
+                    setLoadingPlaylists(false)
+                }, 1500)
+            }
         }
-        catch (error) {
-            console.error("Error al obtener las playlists:", error);
-        }
-        finally {
-            setTimeout(() => {
-                setLoadingPlaylists(false)
-            }, 1500)
-        }
-    }
+
+        getAllPlaylists()
+    }, [])
 
     async function deletePlaylist(playlistId) {
         const res = await deletePlaylistAxios(playlistId);
@@ -100,7 +106,6 @@ export const UserProvider = ({ children }) => {
             user,
             loadingDashboardUser,
             createPlaylist,
-            getAllPlaylists,
             search,
             deletePlaylist,
             addToPlaylist,
