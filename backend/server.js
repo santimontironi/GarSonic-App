@@ -1,12 +1,12 @@
 import app from "./app.js";
-import { connect } from "./db.js";
+import { connectDB } from "./db.js";
 import dotenv from "dotenv";
 
 dotenv.config();
 
 export const startServer = async () => {
   try {
-    await connect();
+    await connectDB();
     const PORT = process.env.PORT || 3000;
 
     app.listen(PORT, () => {
