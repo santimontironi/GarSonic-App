@@ -3,14 +3,14 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-mongoose.set('bufferCommands', false);
+const MONGO_URL = process.env.MONGO_URI;
 
-export const connect = async () => {
-    try{
-        await mongoose.connect(process.env.MONGODB_URI)
-        console.log("Successfully connection to database.")
-    }
-    catch(error){
-        console.log("Error in database connection: ",error.message)
-    }
-}
+export const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URI);
+    console.log("✅ MongoDB conectado correctamente");
+  } catch (error) {
+    console.error("❌ Error al conectar a MongoDB:", error.message);
+  }
+};
+
