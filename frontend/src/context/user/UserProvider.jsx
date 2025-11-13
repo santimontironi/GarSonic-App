@@ -6,7 +6,7 @@ import { ContextUser } from "./UserContext.jsx";
 export const UserProvider = ({children}) => {
 
     const[user,setUser] = useState(null)
-    const[loading,setLoading] = useState(true)
+    const[loadingDashboardUser,setLoadingDashboardUser] = useState(true)
 
     async function signUpUser(user){
         const res = await registerUserAxios(user)
@@ -27,6 +27,7 @@ export const UserProvider = ({children}) => {
     }
 
     async function fetchUser() {
+        setLoadingDashboardUser(true)
         try {
             const res = await dashboardUser();
             if(res.data.authenticated === false){
@@ -40,7 +41,7 @@ export const UserProvider = ({children}) => {
         }
         finally{
             setTimeout(function() {
-                setLoading(false)
+                setLoadingDashboardUser(false)
             }, 1500)
         }
     }
@@ -87,7 +88,7 @@ export const UserProvider = ({children}) => {
             fetchUser,
             logout,
             user,
-            loading,
+            loadingDashboardUser,
             createPlaylist,
             getAllPlaylists,
             search,
