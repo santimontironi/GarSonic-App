@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { UseContextArtist } from "../../context/artist/UseContextArtist.js";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import BackButton from "../../components/layout/BackButton.jsx";
 import { useDropzone } from 'react-dropzone';

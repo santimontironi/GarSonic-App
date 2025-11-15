@@ -100,11 +100,10 @@ const UploadSong = () => {
                         className="flex flex-col w-[350px] m-auto h-auto p-[20px] rounded-[10px] shadow-[5px_7px_10px_#000] md:w-[450px] bg-gradient-to-b from-[#000] to-[#662d91]"
                         onSubmit={handleSubmit(submitForm)}
                     >
-                        {/* Hidden inputs para React Hook Form */}
+                        
                         <input type="hidden" {...register("coverImage", { validate: () => file !== null || "La imagen de portada es requerida" })} />
                         <input type="hidden" {...register("audioFile", { validate: () => audioFile !== null || "El audio es requerido" })} />
 
-                        {/* Portada */}
                         <div className="mt-5 flex flex-col gap-[6px]">
                             <label className="text-white">Portada</label>
                             <div {...getCoverProps()} className="flex items-center justify-center w-full p-6 border-2 border-dashed border-gray-400 rounded-lg cursor-pointer bg-white text-black hover:bg-gray-200">
@@ -121,14 +120,12 @@ const UploadSong = () => {
                             {errors.coverImage && <p className="text-white">{errors.coverImage.message}</p>}
                         </div>
 
-                        {/* Título */}
                         <div className="mt-5 flex flex-col gap-[6px]">
                             <label className="text-white" htmlFor="title">Título</label>
                             <input className="w-full p-[7px] bg-white text-black" type="text" {...register("title", { required: "El título es requerido" })} />
                             {errors.title && <p className="text-white">{errors.title.message}</p>}
                         </div>
 
-                        {/* Género */}
                         <div className="mt-5 flex flex-col gap-[6px]">
                             <label className="text-white" htmlFor="genre">Género</label>
                             <select className="bg-white text-black p-[7px]" {...register("genre", { required: "El género es requerido" })}>
@@ -143,7 +140,6 @@ const UploadSong = () => {
                             {errors.genre && <p className="text-white">{errors.genre.message}</p>}
                         </div>
 
-                        {/* Audio */}
                         <div className="mt-5 flex flex-col gap-[6px]">
                             <label className="text-white">Audio</label>
                             <div {...getAudioProps()} className="flex items-center justify-center w-full p-6 border-2 border-dashed border-gray-400 rounded-lg cursor-pointer bg-white text-black hover:bg-gray-200">
@@ -154,14 +150,13 @@ const UploadSong = () => {
                             {errors.audioFile && <p className="text-white">{errors.audioFile.message}</p>}
                         </div>
 
-                        {/* Fecha lanzamiento */}
                         <div className="mt-5 flex flex-col gap-[6px]">
                             <label className="text-white" htmlFor="releaseDate">Fecha lanzamiento</label>
                             <input className="w-full p-[7px] bg-white text-black" type="date" {...register("releaseDate", { required: "La fecha de lanzamiento es requerida" })} />
                             {errors.releaseDate && <p className="text-white">{errors.releaseDate.message}</p>}
                         </div>
 
-                        {/* Duración */}
+                      
                         <div className="mt-5 flex flex-col gap-[6px]">
                             <label className="text-white" htmlFor="duration">Duración (minutos : segundos)</label>
                             <input className="w-full p-[7px] bg-white text-black" type="text" {...register("duration", { required: "La duración es requerida" })} />
