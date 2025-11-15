@@ -1,4 +1,7 @@
-# GarSonic - App De Música 🎧 (en desarrollo, pronto en producción)
+# GarSonic - App De Música 🎧
+
+## Despliegue:
+- https://garsonic.netlify.app/
 
 **GarSonic** es una aplicación web inspirada en Spotify, que permite a los usuarios y/o artistas registrarse, iniciar sesión, gestionar playlists (CRUD), escuchar música y subir canciones. Está desarrollada con el stack **MERN** (MongoDB, Express.js, React.js y Node.js), y cuenta con autenticación segura utilizando **JWT**.
 
