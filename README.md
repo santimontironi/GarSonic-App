@@ -1,4 +1,4 @@
-# GarSonic - App De Música 🎧
+# GarSonic - Aplicación De Música 🎧
 
 ## Despliegue:
 - https://garsonic.netlify.app/
